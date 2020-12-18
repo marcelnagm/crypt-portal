@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
         'whatsapp',
         'auth_gmail',
-        'profile',
+        'profile_id',
     ];
 
     /**
