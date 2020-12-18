@@ -27,4 +27,16 @@ class UserSignature extends Model
     {
         return $this->belongsTo(User::class,'id','user_id');
     }
+    
+       public function signature_type(){
+           return SignatureType::find($this->signature_type_id);
+       }
+       
+       public function isValid(){
+           $t = time();
+           if($t >= strtotime($this->start_at) && $t <= strtotime($this->finish_at)){
+               return 'true';
+           }else return 'false';
+       }
+    
 }

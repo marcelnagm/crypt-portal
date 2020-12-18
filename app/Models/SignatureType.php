@@ -15,4 +15,7 @@ class SignatureType extends Model
         'cost',
     ];
     
+    public function __toString() {
+        return ucwords($this->name) ;
+    }
 }

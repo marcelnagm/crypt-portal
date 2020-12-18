@@ -37,6 +37,19 @@ class PopulateUser extends Migration
             'profile_id' => 1,              
         ]);
           
+          DB::table('users_signature')->insert([
+            'user_id' => 1 ,
+        'signature_type_id' => 1,
+        'start_at' => '2020-12-01 17:47:15',
+        'finish_at'=> '2020-12-03 17:47:15',
+        ]);  
+          DB::table('users_signature')->insert([
+            'user_id' => 1 ,
+        'signature_type_id' => 3,
+        'start_at' => '2020-12-01 17:47:15',
+        'finish_at'=> '2020-12-24 17:47:15',
+        ]);  
+          
           
     }
 

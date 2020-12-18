@@ -1,4 +1,4 @@
-@extends('layouts')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -28,6 +28,41 @@
                                         <th>ID</th><td>{{ $user->id }}</td>
                                     </tr>
                                     <tr><th> Name </th><td> {{ $user->name }} </td></tr><tr><th> Email </th><td> {{ $user->email }} </td></tr><tr><th> Email Verifyed At </th><td> {{ $user->email_verifyed_at }} </td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <b>Histórico de Assinaturas</b>
+                        <div class="table-responsive">
+                            <table class="table">                                
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            Id
+                                        </td>
+                                        <td>
+                                            Tipo
+                                        </td>
+                                        <td>
+                                            Inicio Vigência
+                                        </td>
+                                        <td>
+                                            Fim Vigência
+                                        </td>
+                                        <td>
+                                            Ativo
+                                        </td>
+                                    </tr>  
+                                </thead>
+                                <tbody>
+                                    <?php foreach ( $user->signatures() as $sign){ ?>                                    
+                                    <tr>
+                                        <td>{{ $sign->id }}</td>
+                                        <td>{{ $sign->signature_type() }}</td>
+                                        <td>{{ $sign->start_at }}</td>
+                                        <td>{{ $sign->finish_at }}</td>                                        
+                                        <td>{{ $sign->isValid() }}</td>                                        
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

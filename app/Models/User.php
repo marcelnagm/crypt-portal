@@ -47,7 +47,7 @@ class User extends Authenticatable
     ];
     
     public function signatures(){
-          return $this->hasMany(UserSignature::class,'user_id');
+          return UserSignature::where('user_id',$this->id)->get();
     }
     
 }

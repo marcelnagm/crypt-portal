@@ -23,6 +23,7 @@ Route::get('/greeting', function () {
 
 Route::resource('produtos', 'App\Http\Controllers\ProdutosController');
 Route::resource('user', 'App\Http\Controllers\UserController');
+//        ->middleware('auth');
 Route::resource('profile', 'App\Http\Controllers\ProfileController');
 
 Route::resource('signature-type', 'App\Http\Controllers\\SignatureTypeController');
