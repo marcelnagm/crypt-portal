@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
-use App\Models\Profile;
+use App\Models\SignatureType;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class SignatureTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +21,14 @@ class ProfileController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $profile = Profile::where('name', 'LIKE', "%$keyword%")
+            $signaturetype = SignatureType::where('name', 'LIKE', "%$keyword%")
+                ->orWhere('cost', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $profile = Profile::latest()->paginate($perPage);
+            $signaturetype = SignatureType::latest()->paginate($perPage);
         }
 
-        return view('profile.index', compact('profile'));
+        return view('signature-type.index', compact('signaturetype'));
     }
 
     /**
@@ -37,7 +38,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.create');
+        return view('signature-type.create');
     }
 
     /**
@@ -52,9 +53,9 @@ class ProfileController extends Controller
         
         $requestData = $request->all();
         
-        Profile::create($requestData);
+        SignatureType::create($requestData);
 
-        return redirect('profile')->with('flash_message', 'Profile added!');
+        return redirect('signature-type')->with('flash_message', 'SignatureType added!');
     }
 
     /**
@@ -66,9 +67,9 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $profile = Profile::findOrFail($id);
+        $signaturetype = SignatureType::findOrFail($id);
 
-        return view('profile.show', compact('profile'));
+        return view('signature-type.show', compact('signaturetype'));
     }
 
     /**
@@ -80,9 +81,9 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = Profile::findOrFail($id);
+        $signaturetype = SignatureType::findOrFail($id);
 
-        return view('profile.edit', compact('profile'));
+        return view('signature-type.edit', compact('signaturetype'));
     }
 
     /**
@@ -98,10 +99,10 @@ class ProfileController extends Controller
         
         $requestData = $request->all();
         
-        $profile = Profile::findOrFail($id);
-        $profile->update($requestData);
+        $signaturetype = SignatureType::findOrFail($id);
+        $signaturetype->update($requestData);
 
-        return redirect('profile')->with('flash_message', 'Profile updated!');
+        return redirect('signature-type')->with('flash_message', 'SignatureType updated!');
     }
 
     /**
@@ -113,8 +114,8 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        Profile::destroy($id);
+        SignatureType::destroy($id);
 
-        return redirect('profile')->with('flash_message', 'Profile deleted!');
+        return redirect('signature-type')->with('flash_message', 'SignatureType deleted!');
     }
 }
