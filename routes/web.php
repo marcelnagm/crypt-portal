@@ -23,6 +23,7 @@ Route::get('/greeting', function () {
 
 Route::resource('produtos', 'App\Http\Controllers\ProdutosController');
 Route::resource('user', 'App\Http\Controllers\UsersController');
+Route::resource('profile', 'App\Http\Controllers\ProfileController');
 
 //Route::prefix('produtos')->group(function () {
 //    Route::get('/new', 'App\Http\Controllers\ProdutosController@create');

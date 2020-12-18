@@ -34,8 +34,7 @@ class PopulateUser extends Migration
             'password' => Hash::make('password'),
             'whatsapp' => Str::random(10),
             'auth_gmail' => '0',
-            'profile' => Str::random(10),
-              
+            'profile_id' => 1,              
         ]);
           
           
