@@ -613,8 +613,8 @@
         <!-- Internal jquery-simple-datetimepicker js -->
         <script src="{{ asset('/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js')}}"></script>
 
-        <!-- Sidebar js -->
-        <script src="{{ asset('/plugins/side-menu/sidemenu.js')}}"></script>
+        <!-- Sidebar js 
+        <script src="{{ asset('/plugins/side-menu/sidemenu.js')}}"></script>-->
 
         <!-- right-sidebar js 
         <script src="{{ asset('/plugins/sidebar/sidebar.js')}}"></script>
@@ -658,6 +658,8 @@
 
         <!-- Sticky js -->
         <script src="{{ asset('/js/sticky.js')}}"></script>
+
+        <script src="{{ asset('/js/modal.js') }}"></script>
 
         <!-- index js
         <script src="{{ asset('/js/dashboard.js')}}"></script>-->

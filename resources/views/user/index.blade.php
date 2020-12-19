@@ -2,6 +2,7 @@
 
 @section('content')
         <div class="row">
+          @include('admin.sidebar')
           <div class="col-xl-12">
 					<div class="d-flex align-items-end flex-wrap my-auto mg-b-20">
 						<a href="{{ url('/user/create') }}" class="btn btn-primary mt-2 mt-xl-0 mg-b-20"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Usuário</a>
