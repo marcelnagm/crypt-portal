@@ -33,7 +33,7 @@
 						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon ti-write menu-icons"></i><span class="side-menu__label">Estatísticas</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="mail.html">Usuários</a></li>
-							<li><a class="slide-item" href="mail-compose.html">Sinais</a></li>
+							<li><a class="slide-item" href="{{url('statistics')}}">Sinais</a></li>
 						</ul>
 					</li>
 					<li class="slide">

@@ -50,7 +50,8 @@ class CreateSignals extends Migration
         'stop' => 18,
         'stop_up'=> 0.01,
         'created_by'=> 1,
-         'sended_at' => '2020-12-01 17:47:15'
+         'sended_at' => '2020-12-01 17:47:15',
+          'status' => 1
         ]);  
            
            DB::table('signals')->insert([
@@ -60,7 +61,8 @@ class CreateSignals extends Migration
         'stop' => 18,
         'stop_up'=> 0.01,
         'created_by'=> 1,
-         'sended_at' => '2020-12-01 17:47:15'
+         'sended_at' => '2020-12-01 17:47:15',
+         'status' => 1      
         ]);  
            
            DB::table('signals')->insert([
@@ -70,7 +72,7 @@ class CreateSignals extends Migration
         'stop' => 18,
         'stop_up'=> 0.01,
         'created_by'=> 1,
-        'sended_at' => '2020-12-01 17:47:15'               
+        'sended_at' =>null              
         ]);  
         
     }

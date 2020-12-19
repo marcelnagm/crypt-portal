@@ -30,6 +30,7 @@ Route::resource('user', 'App\Http\Controllers\UserController');
 Route::resource('profile', 'App\Http\Controllers\ProfileController');
 
 Route::resource('signature-type', 'App\Http\Controllers\\SignatureTypeController');
+Route::resource('statistics', 'App\Http\Controllers\\StatisticsController');
 
 //Route::prefix('produtos')->group(function () {
 //    Route::get('/new', 'App\Http\Controllers\ProdutosController@create');
