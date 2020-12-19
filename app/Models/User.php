@@ -46,8 +46,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    public function profile(){
+    return Profile::find($this->profile_id);
+    }
+    
     public function signatures(){
           return UserSignature::where('user_id',$this->id)->get();
+    }
+    
+    
+    
+    public function __toString() {
+        return $this->name.' / '.$this->profile();
     }
     
 }

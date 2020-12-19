@@ -24,7 +24,7 @@
 						<a class="side-menu__item" href="{{url('signature-type/')}}"><i class="side-menu__icon ti-user"></i><span class="side-menu__label">Planos</span></a>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" href="widgets.html"><i class="side-menu__icon ti-stats-up"></i><span class="side-menu__label">Sinais</span></a>
+						<a class="side-menu__item" href="{{url('signal')}}"><i class="side-menu__icon ti-stats-up"></i><span class="side-menu__label">Sinais</span></a>
 					</li>
 					<li class="slide">
 						<a class="side-menu__item" href="widgets.html"><i class="side-menu__icon ti-comments"></i><span class="side-menu__label">Notificações</span></a>

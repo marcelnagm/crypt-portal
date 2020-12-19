@@ -67,8 +67,6 @@
         <!-- Page -->
         <div class="page">
 
-            <!-- main-sidebar opened -->
-            @include('admin')
             <!-- main-sidebar -->
 
             <!-- main-content -->
@@ -375,11 +373,48 @@
                     if (Auth::check()) {
                         // The user is logged in...
                         echo "sim";
-                    }else{
+                    } else {
                         echo "Não";
                     }
                     ?>
-                    @yield('content');       
+                    <!-- main-signin-wrapper -->
+                    <div class="my-auto page page-h">
+                        <div class="main-signin-wrapper">
+                            <div class="main-card-signin d-md-flex wd-100p">
+                                <div class="wd-md-50p login d-none d-md-block page-signin-style p-5 text-white" >
+                                    <div class="my-auto authentication-pages">
+                                        <div>
+                                                <!--<img src="assets/img/brand/logo-white.png" class=" m-0 mb-4" alt="logo">-->
+                                            <h4 class="mb-4">Auto Crypto Trading</h5>
+                                                <h5 class="mb-4">Rendimentos automáticos</h5>
+                                                <p class="mb-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                <a href="index.html" class="btn btn-danger">Saiba mais</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-5 wd-md-50p">
+                                    <div class="main-signin-header">
+                                        <h2>Bem vindo!</h2>
+                                        <h4>Faça login para continuar.</h4>
+                                        <form action="index.html">
+                                            <div class="form-group">
+                                                <label>Email</label><input class="form-control" placeholder="Enter your email" type="text" value="info@spruko.com">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Senha</label> <input class="form-control" placeholder="Enter your password" type="password" value="sprukodemo">
+                                            </div><button class="btn btn-main-primary btn-block">Acessar</button>
+                                        </form>
+                                    </div>
+                                    <div class="main-signin-footer mt-3 mg-t-5">
+                                        <p><a href="index.html" class="btn btn-danger btn-block">Entrar com GMAIL</a></p>
+                                        <p><a href="#">Esqueceu sua senha?</a></p>
+                                        <p>Não tem uma conta? <a href="#">Criar sua conta</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /main-signin-wrapper -->      
                 </div>
                 <!-- /conatiner -->
             </div>
@@ -409,7 +444,9 @@
         <script src="{{ asset("/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 
         <!-- Internal Newsticker js--> f
-     
+        <script src="{{ asset("/plugins/newsticker/jquery.jConveyorTicker.js")}}></script>
+        <script src="{{ asset("/js/newsticker.js")}}"></script>
+
         <!-- Eva-icons js -->
         <script src="{{ asset("/js/eva-icons.min.js")}}"></script>
 

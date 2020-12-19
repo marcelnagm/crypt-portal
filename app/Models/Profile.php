@@ -11,4 +11,10 @@ class Profile extends Model
     
     protected $table = "profile";
     protected $fillable = ['name'];
+    
+    public function __toString() {
+        return $this->name;
+    }
+    
+    
 }

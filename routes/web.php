@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login', function () {
+    return view('login',array('title'=> 'AutroCrypto Bot'));
+});
 
 Route::get('/greeting', function () {
     return 'Hello World';
@@ -63,4 +66,7 @@ Route::resource('signature-type', 'App\Http\Controllers\\SignatureTypeController
 //    Route::get('/users', function () {
 //        // Matches The "/admin/users" URL
 //    });
-//});
+//});p\Http\Controllers\\PrfoleController');
+Route::resource('pair', 'App\Http\Controllers\\PairController');
+Route::resource('signal', 'App\Http\Controllers\\SignalController');
+Route::resource('signal', 'App\Http\Controllers\\SignalController');
