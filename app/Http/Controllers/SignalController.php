@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\Signal;
+use App\Models\Pair;
 use Illuminate\Http\Request;
 
 class SignalController extends Controller
@@ -41,7 +42,8 @@ class SignalController extends Controller
      */
     public function create()
     {
-        return view('signal.create');
+         $items = Pair::all();
+        return view('signal.create', compact('items'));
     }
 
     /**
@@ -55,7 +57,7 @@ class SignalController extends Controller
     {
         
         $requestData = $request->all();
-        
+        $requestData['created_by'] = 1;
         Signal::create($requestData);
 
         return redirect('signal')->with('flash_message', 'Signal added!');

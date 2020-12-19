@@ -35,7 +35,7 @@
                                     <td>01/01/2021</td>
                                     <td>21</td>
                                     <td>{{ $item->email_verifyed_at }}</td>
-                                    <td>Nível</td>
+                                    <td>{{$item->profile()}}</td>
                                     <td>
                                         <a href="{{ url('/user/' . $item->id) }}" title="View user"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                         <a href="{{ url('/user/' . $item->id . '/edit') }}" title="Edit user"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>

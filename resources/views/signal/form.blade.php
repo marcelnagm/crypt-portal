@@ -1,6 +1,12 @@
 <div class="form-group {{ $errors->has('pair_id') ? 'has-error' : ''}}">
-    <label for="pair_id" class="control-label">{{ 'Pair Id' }}</label>
-    <input class="form-control" name="pair_id" type="number" id="pair_id" value="{{ isset($signal->pair_id) ? $signal->pair_id : ''}}" >
+    <label for="pair_id" class="control-label">{{ 'Pares' }}</label>
+    
+      @include('partials.select', 
+    array(
+    'field' => 'pair_id',
+    'items' => $items,
+    'selected' => isset($user->pair_id) ? $user->pair_id : ''
+    ))
     {!! $errors->first('pair_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('entry_value') ? 'has-error' : ''}}">

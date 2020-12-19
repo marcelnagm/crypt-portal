@@ -29,12 +29,16 @@
     {!! $errors->first('auth_gmail', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('profile_id') ? 'has-error' : ''}}">
-    <label for="profile_id" class="control-label">{{ 'profile_id' }}</label>
-    <input class="form-control" name="profile_id" type="number" id="profile_id" value="{{ isset($user->auth_gmail) ? $user->profile_id : ''}}" >
-    {!! $errors->first('auth_gmail', '<p class="help-block">:message</p>') !!}
+    <label class="main-content-label tx-11 tx-medium tx-gray-600"> Perfil
+</label>
+    @include('partials.select', 
+    array(
+    'field' => 'profile_id',
+    'items' => $items,
+    'selected' => isset($user->profile_id) ? $user->profile_id : ''
+    ))
+    
 </div>
-
-
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>

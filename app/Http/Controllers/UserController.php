@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -36,7 +37,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        
+        $items = \App\Models\Profile::all();
+        return view('user.create', compact('items'));
     }
 
     /**
@@ -80,8 +83,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-
-        return view('user.edit', compact('user'));
+        $items = \App\Models\Profile::all();
+        return view('user.edit', compact('user','items'));
     }
 
     /**
