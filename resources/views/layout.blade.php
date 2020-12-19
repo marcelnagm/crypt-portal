@@ -173,19 +173,6 @@
                     <div class="mb-1 navbar navbar-expand-lg  nav nav-item  navbar-nav-right responsive-navbar navbar-dark d-sm-none ">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
                             <div class="d-flex order-lg-2 ml-auto">
-                                <form class="navbar-form nav-item my-auto d-lg-none" role="search">
-                                    <div class="input-group nav-item my-auto">
-                                        <input type="text" class="form-control" placeholder="Search">
-                                        <span class="input-group-btn">
-                                            <button type="reset" class="btn btn-default">
-                                                <i class="ti-close"></i>
-                                            </button>
-                                            <button type="submit" class="btn btn-default nav-link">
-                                                <i class="ti-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
                                 <div class="d-md-flex">
                                     <div class="nav-item full-screen fullscreen-button">
                                         <a class="new nav-link full-screen-link" href="#"><i class="ti-fullscreen"></i></span></a>
@@ -207,7 +194,7 @@
                                         </div>
                                         <div class="main-message-list text-scroll">
                                             <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="  drop-img  cover-image  " data-image-src="assets/img/faces/3.jpg">
+                                                <div class="  drop-img  cover-image  " data-image-src="{{ asset('/img/faces/3.jpg') }}">
                                                     <span class="avatar-status bg-teal"></span>
                                                 </div>
 
@@ -220,7 +207,7 @@
                                                 </div>
                                             </a>
                                             <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="drop-img cover-image" data-image-src="assets/img/faces/2.jpg">
+                                                <div class="drop-img cover-image" data-image-src="{{ asset('/img/faces/2.jpg') }}">
                                                     <span class="avatar-status bg-teal"></span>
                                                 </div>
                                                 <div class="wd-90p">
@@ -232,7 +219,7 @@
                                                 </div>
                                             </a>
                                             <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="drop-img cover-image" data-image-src="assets/img/faces/9.jpg">
+                                                <div class="drop-img cover-image" data-image-src="{{ asset('/img/faces/9.jpg') }}">
                                                     <span class="avatar-status bg-teal"></span>
                                                 </div>
                                                 <div class="wd-90p">
@@ -244,7 +231,7 @@
                                                 </div>
                                             </a>
                                             <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="drop-img cover-image" data-image-src="assets/img/faces/12.jpg">
+                                                <div class="drop-img cover-image" data-image-src="{{ asset('/img/faces/12.jpg') }}">
                                                     <span class="avatar-status bg-danger"></span>
                                                 </div>
                                                 <div class="wd-90p">
@@ -256,7 +243,7 @@
                                                 </div>
                                             </a>
                                             <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="drop-img cover-image" data-image-src="assets/img/faces/5.jpg">
+                                                <div class="drop-img cover-image" data-image-src="{{ asset('/img/faces/5.jpg') }}">
                                                     <span class="avatar-status bg-teal"></span>
                                                 </div>
                                                 <div class="wd-90p">
@@ -340,10 +327,10 @@
                                     </div>
                                 </div>
                                 <div class="dropdown main-profile-menu nav nav-item nav-link">
-                                    <a class="profile-user" href=""><img alt="" src="assets/img/faces/5.jpg"></a>
+                                    <a class="profile-user" href=""><img alt="" src="{{ asset('/img/faces/5.jpg') }}"></a>
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
                                         <div class="main-header-profile header-img">
-                                            <div class="main-img-user"><img alt="" src="assets/img/faces/5.jpg"></div>
+                                            <div class="main-img-user"><img alt="" src="{{ asset('/img/faces/5.jpg') }}"></div>
                                             <h6>Elizabeth Jane</h6><span>Premium Member</span>
                                         </div>
                                         <a class="dropdown-item" href=""><i class="far fa-user"></i> Meus Dados</a>
@@ -419,7 +406,7 @@
                                 <div class="row">
                                   <div class="d-flex">
                                     <div class="">
-                                      <img src="assets/img/crypto-currencies/round-outline/BitShares.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/BitShares.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">BTS / INR</p>
@@ -434,7 +421,7 @@
                                  <div class="row">
                                   <div class="d-flex">
                                     <div class="">
-                                      <img src="assets/img/crypto-currencies/round-outline/Bytecoin.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Bytecoin.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">BCN / INR</p>
@@ -450,7 +437,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="my-auto">
-                                      <img src="assets/img/crypto-currencies/round-outline/Dash.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Dash.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">Dash / INR</p>
@@ -466,7 +453,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="assets/img/crypto-currencies/round-outline/EOS.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/EOS.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">EUR / INR</p>
@@ -482,7 +469,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="assets/img/crypto-currencies/round-outline/Decred.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Decred.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">ETH / USDT</p>
@@ -498,7 +485,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="assets/img/crypto-currencies/round-outline/IOTA.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/IOTA.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">IOTA / USD</p>
@@ -514,7 +501,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="assets/img/crypto-currencies/round-outline/Litecoin.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Litecoin.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">LTC / USD</p>
@@ -529,7 +516,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="assets/img/crypto-currencies/round-outline/Monero.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Monero.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">XMR / EUR</p>
@@ -544,7 +531,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="assets/img/crypto-currencies/round-outline/NEM.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/NEM.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">ETH / USDT</p>
@@ -559,7 +546,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="assets/img/crypto-currencies/round-outline/Netko-coin.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Netko-coin.svg" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">NEO / USD</p>
@@ -605,57 +592,78 @@
 
         <!-- JQuery min js -->
 
-        <script src="{{ asset("/plugins/jquery/jquery.min.js")}}"></script>
+        <script src="{{ asset('/plugins/jquery/jquery.min.js')}}"></script>
 
         <!-- Datepicker js -->
-        <script src="{{ asset("/plugins/jquery-ui/ui/widgets/datepicker.js")}}"></script>
+        <script src="{{ asset('/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
 
         <!-- Bootstrap Bundle js -->
-        <script src="{{ asset("/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+        <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
         <!-- Internal Newsticker js-->
-        <script src="{{ asset("/plugins/newsticker/jquery.jConveyorTicker.js") }}"></script>
-        <script src="{{ asset("/js/newsticker.js")}}"></script>
+        <script src="{{ asset('/plugins/newsticker/jquery.jConveyorTicker.js') }}"></script>
+        <script src="{{ asset('/js/newsticker.js')}}"></script>
      
         <!-- Eva-icons js -->
-        <script src="{{ asset("/js/eva-icons.min.js")}}"></script>
+        <script src="{{ asset('/js/eva-icons.min.js')}}"></script>
 
         <!-- Internal jquery.maskedinput js -->
-        <script src="{{ asset("/plugins/jquery.maskedinput/jquery.maskedinput.js")}}"></script>
+        <script src="{{ asset('/plugins/jquery.maskedinput/jquery.maskedinput.js')}}"></script>
 
         <!-- Internal jquery-simple-datetimepicker js -->
-        <script src="{{ asset("/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js")}}"></script>
+        <script src="{{ asset('/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js')}}"></script>
 
         <!-- Sidebar js -->
-        <script src="{{ asset("/plugins/side-menu/sidemenu.js")}}"></script>
+        <script src="{{ asset('/plugins/side-menu/sidemenu.js')}}"></script>
 
-        <!-- right-sidebar js -->
-        <script src="{{ asset("/plugins/sidebar/sidebar.js")}}"></script>
-        <script src="{{ asset("/plugins/sidebar/sidebar-custom.js")}}"></script>
+        <!-- right-sidebar js 
+        <script src="{{ asset('/plugins/sidebar/sidebar.js')}}"></script>
+        <script src="{{ asset('/plugins/sidebar/sidebar-custom.js')}}"></script>-->
 
         <!-- Rating js-->
-        <script src="{{ asset("/plugins/rating/jquery.rating-stars.js")}}"></script>
-        <script src="{{ asset("/plugins/rating/jquery.barrating.js")}}"></script>
+        <script src="{{ asset('/plugins/rating/jquery.rating-stars.js')}}"></script>
+        <script src="{{ asset('/plugins/rating/jquery.barrating.js')}}"></script>
 
         <!-- P-scroll js -->
-        <script src="{{ asset("/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}"></script>
-        <script src="{{ asset("/plugins/perfect-scrollbar/p-scroll.js")}}"></script>
+        <script src="{{ asset('/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+        <script src="{{ asset('/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
 
         <!-- Internal Nice-select js-->
-        <script src="{{ asset("/plugins/jquery-nice-select/js/jquery.nice-select.js")}}"></script>
-        <script src="{{ asset("/plugins/jquery-nice-select/js/nice-select.js")}}"></script>
+        <script src="{{ asset('/plugins/jquery-nice-select/js/jquery.nice-select.js')}}"></script>
+        <script src="{{ asset('/plugins/jquery-nice-select/js/nice-select.js')}}"></script>
+
+        <!-- Internal Data tables -->
+        <script src="{{ asset('/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/dataTables.responsive.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/responsive.dataTables.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/jquery.dataTables.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/dataTables.bootstrap4.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/buttons.bootstrap4.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/jszip.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/pdfmake.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/vfs_fonts.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/buttons.print.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/dataTables.responsive.min.js')}}"></script>
+        <script src="{{ asset('/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
+
+        <!-- Internal Datatable js -->
+        <script src="{{ asset('/js/table-data.js')}}"></script>
 
         <!-- Internal form-elements js -->
-        <script src="{{ asset("/js/form-elements.js")}}"></script>
+        <script src="{{ asset('/js/form-elements.js')}}"></script>
 
         <!-- Sticky js -->
-        <script src="{{ asset("/js/sticky.js")}}"></script>
+        <script src="{{ asset('/js/sticky.js')}}"></script>
 
-        <!-- index js -->
-        <script src="{{ asset("/js/dashboard.js")}}"></script>
+        <!-- index js
+        <script src="{{ asset('/js/dashboard.js')}}"></script>-->
 
         <!-- custom js -->
-        <script src="{{ asset("/js/custom.js")}}"></script>
+        <script src="{{ asset('/js/custom.js')}}"></script>
 
 
     </body>
