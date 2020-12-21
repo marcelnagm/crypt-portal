@@ -27,7 +27,7 @@ class ProfileController extends Controller
             $profile = Profile::latest()->paginate($perPage);
         }
 
-        return view('profile.index', compact('profile'));
+        return view('user_profile.index', compact('profile'));
     }
 
     /**
@@ -37,7 +37,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.create');
+        return view('user_user_profile.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class ProfileController extends Controller
         
         Profile::create($requestData);
 
-        return redirect('profile')->with('flash_message', 'Profile added!');
+        return redirect('user_profile')->with('flash_message', 'Profile added!');
     }
 
     /**
@@ -68,7 +68,7 @@ class ProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
 
-        return view('profile.show', compact('profile'));
+        return view('user_profile.show', compact('profile'));
     }
 
     /**
@@ -82,7 +82,7 @@ class ProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
 
-        return view('profile.edit', compact('profile'));
+        return view('user_profile.edit', compact('profile'));
     }
 
     /**
@@ -101,7 +101,7 @@ class ProfileController extends Controller
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
 
-        return redirect('profile')->with('flash_message', 'Profile updated!');
+        return redirect('user_profile')->with('flash_message', 'Profile updated!');
     }
 
     /**
@@ -115,6 +115,6 @@ class ProfileController extends Controller
     {
         Profile::destroy($id);
 
-        return redirect('profile')->with('flash_message', 'Profile deleted!');
+        return redirect('user_profile')->with('flash_message', 'Profile deleted!');
     }
 }

@@ -18,7 +18,7 @@
 						<a class="side-menu__item" href="{{url('user/')}}"><i class="side-menu__icon ti-user"></i><span class="side-menu__label">Usuários</span></a>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" href="{{url('profile/')}}"><i class="side-menu__icon ti-user"></i><span class="side-menu__label">Perfis</span></a>
+						<a class="side-menu__item" href="{{url('user_profile/')}}"><i class="side-menu__icon ti-user"></i><span class="side-menu__label">Perfis</span></a>
 					</li>
 					<li class="slide">
 						<a class="side-menu__item" href="{{url('signature-type/')}}"><i class="side-menu__icon ti-user"></i><span class="side-menu__label">Planos</span></a>

@@ -57,7 +57,7 @@ class SignalController extends Controller
     {
         
         $requestData = $request->all();
-        $requestData['created_by'] = 1;
+        $requestData['created_by'] = $request->user()->id;
         Signal::create($requestData);
 
         return redirect('signal')->with('flash_message', 'Signal added!');

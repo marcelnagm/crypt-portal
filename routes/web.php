@@ -15,22 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/login', function () {
-    return view('login',array('title'=> 'AutroCrypto Bot'));
-});
+}) ->middleware('auth');
+//Route::get('/login', function () {
+//    return view('login',array('title'=> 'AutroCrypto Bot'));
+//})->name('login');
 
-Route::get('/greeting', function () {
-    return 'Hello World';
-});
 
-Route::resource('produtos', 'App\Http\Controllers\ProdutosController');
-Route::resource('user', 'App\Http\Controllers\UserController');
-//        ->middleware('auth');
-Route::resource('profile', 'App\Http\Controllers\ProfileController');
+Route::resource('user', 'App\Http\Controllers\UserController')->middleware('auth');
+// ;
+Route::resource('user_profile', 'App\Http\Controllers\ProfileController');
 
-Route::resource('signature-type', 'App\Http\Controllers\\SignatureTypeController');
-Route::resource('statistics', 'App\Http\Controllers\\StatisticsController');
+Route::resource('signature-type', 'App\Http\Controllers\\SignatureTypeController')->middleware('auth');
+Route::resource('statistics', 'App\Http\Controllers\\StatisticsController')->middleware('auth');
 
 //Route::prefix('produtos')->group(function () {
 //    Route::get('/new', 'App\Http\Controllers\ProdutosController@create');
@@ -68,6 +64,10 @@ Route::resource('statistics', 'App\Http\Controllers\\StatisticsController');
 //        // Matches The "/admin/users" URL
 //    });
 //});p\Http\Controllers\\PrfoleController');
-Route::resource('pair', 'App\Http\Controllers\\PairController');
-Route::resource('signal', 'App\Http\Controllers\\SignalController');
-Route::resource('signal', 'App\Http\Controllers\\SignalController');
+Route::resource('pair', 'App\Http\Controllers\\PairController') ->middleware('auth');;
+Route::resource('signal', 'App\Http\Controllers\\SignalController') ->middleware('auth');;
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+     return view('welcome');
+})->name('dashboard');
+
+Route::resource('user-signature', 'App\Http\Controllers\\UserSignatureController');

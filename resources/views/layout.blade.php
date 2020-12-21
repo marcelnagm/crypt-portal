@@ -152,14 +152,14 @@
                                     <span class="navbar-toggler-icon fe fe-more-vertical "></span>
                                 </button>
                                 <div class="dropdown main-profile-menu nav nav-item nav-link">
-                                    <a class="profile-user" href=""><img alt="" src="{{asset('/img/faces/5.jpg')}}"></a>
+                                    <a class="profile-user" href="#"><img alt="" src="{{asset('/img/faces/5.jpg')}}"></a>
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
                                         <div class="main-header-profile header-img">
                                             <div class="main-img-user"><img alt="" src="{{asset('/img/faces/5.jpg')}}"></div>
                                             <h6>Elizabeth Jane</h6><span>Membro VIP</span>
                                         </div>
-                                        <a class="dropdown-item" href=""><i class="far fa-user"></i> Meu Dados</a>
-                                        <a class="dropdown-item" href="page-signin.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                                        <a class="dropdown-item" href="{{url('user/profile')}}"><i class="far fa-user"></i> Meu Dados</a>
+                                        <a class="dropdown-item" href="{{url('logout')}}"><i class="fas fa-sign-out-alt"></i> Sair</a>
                                     </div>
                                 </div>
                             </div>
