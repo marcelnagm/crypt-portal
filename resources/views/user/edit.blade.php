@@ -1,14 +1,13 @@
 @extends('layout')
 
 @section('content')
-    <div class="container">
         <div class="row">
 
-            <div class="col-md-9">
+            <div class="col-md-12 col-lg-12 col-xl-6 d-block mx-auto">
                 <div class="card">
-                    <div class="card-header">Edit user #{{ $user->id }}</div>
+                    <div class="card-header">Editar Usuário #{{ $user->id }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/user') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/user') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Votlar</button></a>
                         <br />
                         <br />
 
@@ -32,5 +31,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
