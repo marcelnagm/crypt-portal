@@ -31,7 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'whatsapp' => $input['whatsapp'],
             'auth_gmail' => 0,
-            'profile_id' => 2,
+            'profile_id' => 4,
             'password' => Hash::make($input['password']),
         ]);
     }

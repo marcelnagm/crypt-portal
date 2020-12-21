@@ -28,6 +28,9 @@ class CreateProfile extends Migration
          DB::table('profile')->insert([
             'name' => 'signals',
         ]);
+         DB::table('profile')->insert([
+            'name' => 'pendente ativacao',
+        ]);
     }
 
     /**
