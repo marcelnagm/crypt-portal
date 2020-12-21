@@ -37,7 +37,7 @@
 						</ul>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon ti-settings menu-icons"></i><span class="side-menu__label">Configurações</span><i class="angle fe fe-chevron-down"></i></a>
+						<a class="side-menu__item" data-toggle="slide" href=""><i class="side-menu__icon ti-settings menu-icons"></i><span class="side-menu__label">Configurações</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="">Telegram</a></li>
 							<li><a class="slide-item" href="">Outros</a></li>

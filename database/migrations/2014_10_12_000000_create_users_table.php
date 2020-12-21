@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->string('whatsapp');
             $table->string('auth_gmail');
             $table->unsignedBigInteger('profile_id');
-            $table->rememberToken();
             $table->timestamps();
             $table->foreign('profile_id','fk_profile')->references('id')->on('profile');                    
         });
