@@ -391,7 +391,7 @@
                                  <div class="row">
                                   <div class="d-flex">
                                     <div class="">
-                                      <img src="{{ asset('assets/img/crypto-currencies/round-outline/AquariusCoin.svg') }}" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/AquariusCoin.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">ARCO / INR</p>
@@ -406,7 +406,7 @@
                                 <div class="row">
                                   <div class="d-flex">
                                     <div class="">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/BitShares.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/BitShares.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">BTS / INR</p>
@@ -421,7 +421,7 @@
                                  <div class="row">
                                   <div class="d-flex">
                                     <div class="">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Bytecoin.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Bytecoin.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">BCN / INR</p>
@@ -437,7 +437,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="my-auto">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Dash.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Dash.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">Dash / INR</p>
@@ -453,7 +453,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/EOS.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/EOS.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">EUR / INR</p>
@@ -469,7 +469,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Decred.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Decred.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">ETH / USDT</p>
@@ -485,7 +485,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/IOTA.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/IOTA.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">IOTA / USD</p>
@@ -501,7 +501,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Litecoin.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Litecoin.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">LTC / USD</p>
@@ -516,7 +516,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Monero.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Monero.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">XMR / EUR</p>
@@ -531,7 +531,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/NEM.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/NEM.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">ETH / USDT</p>
@@ -546,7 +546,7 @@
                                  <div class="row">
                                   <div class=" d-flex">
                                     <div class="">
-                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Netko-coin.svg" class="w-6 h-6 mt-0" alt="">
+                                      <img src="{{ asset('/img/crypto-currencies/round-outline/Netko-coin.svg') }}" class="w-6 h-6 mt-0" alt="">
                                     </div>
                                     <div class="ml-3">
                                       <p class="mb-1 tx-13">NEO / USD</p>
@@ -571,7 +571,7 @@
                         echo "Não";
                     }
                     ?>
-                    @yield('content');       
+                    @yield('content')       
                 </div>
                 <!-- /conatiner -->
             </div>
@@ -613,8 +613,12 @@
         <!-- Internal jquery-simple-datetimepicker js -->
         <script src="{{ asset('/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js')}}"></script>
 
-        <!-- Sidebar js 
-        <script src="{{ asset('/plugins/side-menu/sidemenu.js')}}"></script>-->
+        <!-- P-scroll js -->
+        <script src="{{ asset('/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+        <script src="{{ asset('/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
+
+        <!-- Sidebar js -->
+        <script src="{{ asset('/plugins/side-menu/sidemenu.js')}}"></script>
 
         <!-- right-sidebar js 
         <script src="{{ asset('/plugins/sidebar/sidebar.js')}}"></script>
@@ -623,10 +627,6 @@
         <!-- Rating js-->
         <script src="{{ asset('/plugins/rating/jquery.rating-stars.js')}}"></script>
         <script src="{{ asset('/plugins/rating/jquery.barrating.js')}}"></script>
-
-        <!-- P-scroll js -->
-        <script src="{{ asset('/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-        <script src="{{ asset('/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
 
         <!-- Internal Nice-select js-->
         <script src="{{ asset('/plugins/jquery-nice-select/js/jquery.nice-select.js')}}"></script>
