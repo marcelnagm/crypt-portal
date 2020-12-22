@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Controller;
 use App\Http\Requests;
 
-use App\Models\Profile;
+use App\Models\Pair;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class PairController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +21,16 @@ class ProfileController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $profile = Profile::where('name', 'LIKE', "%$keyword%")
+            $pair = Pair::where('pair', 'LIKE', "%$keyword%")
+                ->orWhere('main_coin', 'LIKE', "%$keyword%")
+                ->orWhere('sec_coin', 'LIKE', "%$keyword%")
+                ->orWhere('min_quantity', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $profile = Profile::latest()->paginate($perPage);
+            $pair = Pair::latest()->paginate($perPage);
         }
 
-        return view('user_profile.index', compact('profile'));
+        return view('pair.index', compact('pair'));
     }
 
     /**
@@ -37,7 +40,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('user_user_profile.create');
+        return view('pair.create');
     }
 
     /**
@@ -52,9 +55,9 @@ class ProfileController extends Controller
         
         $requestData = $request->all();
         
-        Profile::create($requestData);
+        Pair::create($requestData);
 
-        return redirect('/admin/user_profile')->with('flash_message', 'Profile added!');
+        return redirect('/admin/pair')->with('flash_message', 'Pair added!');
     }
 
     /**
@@ -66,9 +69,9 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $profile = Profile::findOrFail($id);
+        $pair = Pair::findOrFail($id);
 
-        return view('user_profile.show', compact('profile'));
+        return view('pair.show', compact('pair'));
     }
 
     /**
@@ -80,9 +83,9 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = Profile::findOrFail($id);
+        $pair = Pair::findOrFail($id);
 
-        return view('user_profile.edit', compact('profile'));
+        return view('pair.edit', compact('pair'));
     }
 
     /**
@@ -98,10 +101,10 @@ class ProfileController extends Controller
         
         $requestData = $request->all();
         
-        $profile = Profile::findOrFail($id);
-        $profile->update($requestData);
+        $pair = Pair::findOrFail($id);
+        $pair->update($requestData);
 
-        return redirect('/admin/user_profile')->with('flash_message', 'Profile updated!');
+        return redirect('/admin/pair')->with('flash_message', 'Pair updated!');
     }
 
     /**
@@ -113,8 +116,8 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        Profile::destroy($id);
+        Pair::destroy($id);
 
-        return redirect('/admin/user_profile')->with('flash_message', 'Profile deleted!');
+        return redirect('/admin/pair')->with('flash_message', 'Pair deleted!');
     }
 }

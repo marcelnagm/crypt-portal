@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Controller;
 use App\Http\Requests;
+use App\Models\SignatureType;
 
-use App\Models\Pair;
+
+use App\Models\UserSignature;
 use Illuminate\Http\Request;
 
-class PairController extends Controller
+class UserSignatureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,16 +23,16 @@ class PairController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $pair = Pair::where('pair', 'LIKE', "%$keyword%")
-                ->orWhere('main_coin', 'LIKE', "%$keyword%")
-                ->orWhere('sec_coin', 'LIKE', "%$keyword%")
-                ->orWhere('min_quantity', 'LIKE', "%$keyword%")
+            $usersignature = UserSignature::where('user_id', 'LIKE', "%$keyword%")
+                ->orWhere('signature_type_id', 'LIKE', "%$keyword%")
+                ->orWhere('start_at', 'LIKE', "%$keyword%")
+                ->orWhere('finish_at', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $pair = Pair::latest()->paginate($perPage);
+            $usersignature = UserSignature::latest()->paginate($perPage);
         }
 
-        return view('pair.index', compact('pair'));
+        return view('user-signature.index', compact('usersignature'));
     }
 
     /**
@@ -38,9 +40,13 @@ class PairController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('pair.create');
+        $user = $request->get('user');
+        
+         $items = \App\Models\SignatureType::all();
+        return view('user-signature.create', compact('items','user'));
+        
     }
 
     /**
@@ -55,9 +61,9 @@ class PairController extends Controller
         
         $requestData = $request->all();
         
-        Pair::create($requestData);
+        UserSignature::create($requestData);
 
-        return redirect('/admin/pair')->with('flash_message', 'Pair added!');
+        return redirect('/admin/user/'.$requestData['user_id'])->with('flash_message', 'UserSignature added!');
     }
 
     /**
@@ -69,9 +75,9 @@ class PairController extends Controller
      */
     public function show($id)
     {
-        $pair = Pair::findOrFail($id);
+        $usersignature = UserSignature::findOrFail($id);
 
-        return view('pair.show', compact('pair'));
+        return view('user-signature.show', compact('usersignature'));
     }
 
     /**
@@ -83,9 +89,9 @@ class PairController extends Controller
      */
     public function edit($id)
     {
-        $pair = Pair::findOrFail($id);
-
-        return view('pair.edit', compact('pair'));
+        $usersignature = UserSignature::findOrFail($id);
+          $items = \App\Models\SignatureType::all();
+        return view('user-signature.edit', compact('usersignature','items'));
     }
 
     /**
@@ -101,10 +107,10 @@ class PairController extends Controller
         
         $requestData = $request->all();
         
-        $pair = Pair::findOrFail($id);
-        $pair->update($requestData);
+        $usersignature = UserSignature::findOrFail($id);
+        $usersignature->update($requestData);
 
-        return redirect('/admin/pair')->with('flash_message', 'Pair updated!');
+        return redirect('/admin/user/'.$requestData['user_id'])->with('flash_message', 'UserSignature updated!');
     }
 
     /**
@@ -116,8 +122,11 @@ class PairController extends Controller
      */
     public function destroy($id)
     {
-        Pair::destroy($id);
-
-        return redirect('/admin/pair')->with('flash_message', 'Pair deleted!');
+        
+        $user_id = UserSignature::find($id)->user_id;
+        UserSignature::destroy($id);
+        
+        return redirect('/admin/user/'.$user_id)->with('flash_message', 'Deleted updated!');
+        
     }
 }

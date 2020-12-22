@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Controller;
 use App\Http\Requests;
-use App\Models\SignatureType;
 
-
-use App\Models\UserSignature;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
-class UserSignatureController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,16 +21,13 @@ class UserSignatureController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $usersignature = UserSignature::where('user_id', 'LIKE', "%$keyword%")
-                ->orWhere('signature_type_id', 'LIKE', "%$keyword%")
-                ->orWhere('start_at', 'LIKE', "%$keyword%")
-                ->orWhere('finish_at', 'LIKE', "%$keyword%")
+            $profile = Profile::where('name', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $usersignature = UserSignature::latest()->paginate($perPage);
+            $profile = Profile::latest()->paginate($perPage);
         }
 
-        return view('user-signature.index', compact('usersignature'));
+        return view('user_profile.index', compact('profile'));
     }
 
     /**
@@ -40,13 +35,9 @@ class UserSignatureController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(Request $request)
+    public function create()
     {
-        $user = $request->get('user');
-        
-         $items = \App\Models\SignatureType::all();
-        return view('user-signature.create', compact('items','user'));
-        
+        return view('user_user_profile.create');
     }
 
     /**
@@ -61,9 +52,9 @@ class UserSignatureController extends Controller
         
         $requestData = $request->all();
         
-        UserSignature::create($requestData);
+        Profile::create($requestData);
 
-        return redirect('/admin/user/'.$requestData['user_id'])->with('flash_message', 'UserSignature added!');
+        return redirect('/admin/user_profile')->with('flash_message', 'Profile added!');
     }
 
     /**
@@ -75,9 +66,9 @@ class UserSignatureController extends Controller
      */
     public function show($id)
     {
-        $usersignature = UserSignature::findOrFail($id);
+        $profile = Profile::findOrFail($id);
 
-        return view('user-signature.show', compact('usersignature'));
+        return view('user_profile.show', compact('profile'));
     }
 
     /**
@@ -89,9 +80,9 @@ class UserSignatureController extends Controller
      */
     public function edit($id)
     {
-        $usersignature = UserSignature::findOrFail($id);
-          $items = \App\Models\SignatureType::all();
-        return view('user-signature.edit', compact('usersignature','items'));
+        $profile = Profile::findOrFail($id);
+
+        return view('user_profile.edit', compact('profile'));
     }
 
     /**
@@ -107,10 +98,10 @@ class UserSignatureController extends Controller
         
         $requestData = $request->all();
         
-        $usersignature = UserSignature::findOrFail($id);
-        $usersignature->update($requestData);
+        $profile = Profile::findOrFail($id);
+        $profile->update($requestData);
 
-        return redirect('/admin/user/'.$requestData['user_id'])->with('flash_message', 'UserSignature updated!');
+        return redirect('/admin/user_profile')->with('flash_message', 'Profile updated!');
     }
 
     /**
@@ -122,11 +113,8 @@ class UserSignatureController extends Controller
      */
     public function destroy($id)
     {
-        
-        $user_id = UserSignature::find($id)->user_id;
-        UserSignature::destroy($id);
-        
-        return redirect('/admin/user/'.$user_id)->with('flash_message', 'Deleted updated!');
-        
+        Profile::destroy($id);
+
+        return redirect('/admin/user_profile')->with('flash_message', 'Profile deleted!');
     }
 }
