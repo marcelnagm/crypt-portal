@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\MultipleTargets;
 use App\Models\SingleTarget;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SignalController extends Controller {
 
@@ -62,7 +63,19 @@ class SignalController extends Controller {
             $signals = Signal::where('status', '0')
                     ->get();
         }
-        $users = User::where('profile_id', 3)->get();
+//        $users = User::where('profile_id', 3)->join get();
+    
+        
+                $users = User::select(
+                         'users.id', 'configuration.balance_operation'
+                        )
+                        ->join('configuration', 'users.id', '=', 'configuration.user_id')
+            ->where('profile_id','=',3)
+            ->where('configuration.balance_operation','<>',null)
+            ->where('configuration.bot_active','<>',null)
+            ->where('configuration.exchange_id','<>',null)
+                        ->get();
+
         foreach ($signals as $sign) {
             foreach ($users as $user) {
                 if (isset($sign->target_2)) {
@@ -81,9 +94,10 @@ class SignalController extends Controller {
                 $mult->stop_up = $sign->stop_up;
                 $mult->user_id = $user->id;
                 $mult->balance = $user->configuration()->balance_operation;
-                $mult->save();
+                $mult->save();                
             }
             $sign->status = 1;
+            $sign->sended_at = DB::raw('now()');
             $sign->save();
         }
 
