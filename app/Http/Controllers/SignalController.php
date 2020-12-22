@@ -74,6 +74,10 @@ class SignalController extends Controller {
             ->where('configuration.balance_operation','<>',null)
             ->where('configuration.bot_active','<>',null)
             ->where('configuration.exchange_id','<>',null)
+            ->where('configuration.exchange_id','<>',null)
+            ->where('configuration.exchange_id','<>',null)
+            ->where('configuration.target_profile','<>',null)
+            ->where('configuration.stop_loss','<>',null)
                         ->get();
 
         foreach ($signals as $sign) {

@@ -85,6 +85,8 @@ class PopulateUser extends Migration
             'balance_operation' => 0.5  ,
               'bot_active' => 1,
               'exchange_id' => 1,
+              'exchange_id' => 1,
+              'stop_loss' => 1,
         ]);
           DB::table('configuration')->insert([
             'user_id' => 4,
