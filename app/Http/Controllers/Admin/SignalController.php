@@ -34,7 +34,7 @@ class SignalController extends Controller {
             $signal = Signal::latest()->paginate($perPage);
         }
 
-        return view('signal.index', compact('signal'));
+        return view('admin.signal.index', compact('signal'));
     }
 
     /**
@@ -45,7 +45,7 @@ class SignalController extends Controller {
     public function create() {
 
         $items = Pair::all();
-        return view('signal.create', compact('items'));
+        return view('admin.signal.create', compact('items'));
     }
 
     /**
@@ -127,7 +127,7 @@ class SignalController extends Controller {
     public function show($id) {
         $signal = Signal::findOrFail($id);
 
-        return view('signal.show', compact('signal'));
+        return view('admin.signal.show', compact('signal'));
     }
 
     /**
@@ -140,7 +140,7 @@ class SignalController extends Controller {
     public function edit($id) {
         $signal = Signal::findOrFail($id);
         $items = Pair::all();
-        return view('signal.edit', compact('signal', 'items'));
+        return view('admin.signal.edit', compact('signal', 'items'));
     }
 
     /**

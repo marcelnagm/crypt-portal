@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Profile;
+
 use App\Models\Configuration;
 
 class User extends Authenticatable
@@ -68,6 +70,7 @@ class User extends Authenticatable
     public function profile(){
     return Profile::find($this->profile_id);
     }
+    
     public function configuration(){
     return Configuration::where('user_id', $this->id)
                     ->get()[0];
@@ -78,16 +81,16 @@ class User extends Authenticatable
     }
     
     public function isAdmin(){
-        return $this->profile->name == "admin";
+        return $this->profile()->name == "admin";
     }
     
     public function isTrader(){
         
-        return $this->profile->name == "trader";
+        return $this->profile()->name == "trader";
     }
     
     public function isSignal(){
-        return $this->profile->name == "signals";
+        return $this->profile()->name == "user";
     }
     
     

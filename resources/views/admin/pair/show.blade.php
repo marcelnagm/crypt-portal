@@ -10,10 +10,10 @@
                     <div class="card-header">Pair {{ $pair->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/pair') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/pair/' . $pair->id . '/edit') }}" title="Edit Pair"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/admin/pair') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/pair/' . $pair->id . '/edit') }}" title="Edit Pair"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                        <form method="POST" action="{{ url('pair' . '/' . $pair->id) }}" accept-charset="UTF-8" style="display:inline">
+                        <form method="POST" action="{{ url('/admin/pair' . '/' . $pair->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete Pair" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>

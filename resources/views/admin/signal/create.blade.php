@@ -23,7 +23,7 @@
                         <form method="POST" action="{{ url('/admin/signal') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('signal.form', ['formMode' => 'create'])
+                            @include ('admin.signal.form', ['formMode' => 'create'])
 
                         </form>
 

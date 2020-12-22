@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Admin\Controller;
 use App\Http\Requests;
@@ -23,35 +23,9 @@ class ConfigurationController extends Controller
                 
 //        $configuration = Configuration::findOrFail($id);
 
-        return view('admin.configuration.edit', compact('configuration'));
+        return view('user.configuration.edit', compact('configuration'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('admin.configuration.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function store(Request $request)
-    {
-        
-        $requestData = $request->all();
-        
-        Configuration::create($requestData);
-
-        return redirect('/admin/configuration')->with('flash_message', 'Configuration added!');
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -68,7 +42,7 @@ class ConfigurationController extends Controller
                 
 //        $configuration = Configuration::findOrFail($id);
 
-        return view('admin.configuration.edit', compact('configuration'));
+        return view('user.configuration.edit', compact('configuration'));
     }
 
     /**
@@ -87,6 +61,6 @@ class ConfigurationController extends Controller
         $configuration = Configuration::findOrFail($id);
         $configuration->update($requestData);
 
-        return redirect('/admin/configuration')->with('flash_message', 'Configuration updated!');
+        return redirect('/user/configuration')->with('flash_message', 'Configuration updated!');
     }
 }

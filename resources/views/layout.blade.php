@@ -68,7 +68,7 @@
         <div class="page">
 
             <!-- main-sidebar opened -->
-            @include('admin')
+            @include('menu_admin')
             <!-- main-sidebar -->
 
             <!-- main-content -->

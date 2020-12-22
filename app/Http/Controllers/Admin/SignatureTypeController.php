@@ -28,7 +28,7 @@ class SignatureTypeController extends Controller
             $signaturetype = SignatureType::latest()->paginate($perPage);
         }
 
-        return view('signature-type.index', compact('signaturetype'));
+        return view('admin.signature-type.index', compact('signaturetype'));
     }
 
     /**
@@ -38,7 +38,7 @@ class SignatureTypeController extends Controller
      */
     public function create()
     {
-        return view('signature-type.create');
+        return view('admin.signature-type.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class SignatureTypeController extends Controller
     {
         $signaturetype = SignatureType::findOrFail($id);
 
-        return view('signature-type.show', compact('signaturetype'));
+        return view('admin.signature-type.show', compact('signaturetype'));
     }
 
     /**
@@ -83,7 +83,7 @@ class SignatureTypeController extends Controller
     {
         $signaturetype = SignatureType::findOrFail($id);
 
-        return view('signature-type.edit', compact('signaturetype'));
+        return view('admin.signature-type.edit', compact('signaturetype'));
     }
 
     /**

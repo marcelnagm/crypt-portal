@@ -30,7 +30,7 @@ class PairController extends Controller
             $pair = Pair::latest()->paginate($perPage);
         }
 
-        return view('pair.index', compact('pair'));
+        return view('admin.pair.index', compact('pair'));
     }
 
     /**
@@ -40,7 +40,7 @@ class PairController extends Controller
      */
     public function create()
     {
-        return view('pair.create');
+        return view('admin.pair.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class PairController extends Controller
     {
         $pair = Pair::findOrFail($id);
 
-        return view('pair.show', compact('pair'));
+        return view('admin.pair.show', compact('pair'));
     }
 
     /**
@@ -85,7 +85,7 @@ class PairController extends Controller
     {
         $pair = Pair::findOrFail($id);
 
-        return view('pair.edit', compact('pair'));
+        return view('admin.pair.edit', compact('pair'));
     }
 
     /**

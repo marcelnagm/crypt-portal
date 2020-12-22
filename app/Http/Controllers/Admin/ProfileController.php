@@ -27,7 +27,7 @@ class ProfileController extends Controller
             $profile = Profile::latest()->paginate($perPage);
         }
 
-        return view('user_profile.index', compact('profile'));
+        return view('admin.user_profile.index', compact('profile'));
     }
 
     /**
@@ -37,7 +37,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('user_user_profile.create');
+        return view('admin.user_user_profile.create');
     }
 
     /**
@@ -68,7 +68,7 @@ class ProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
 
-        return view('user_profile.show', compact('profile'));
+        return view('admin.user_profile.show', compact('profile'));
     }
 
     /**
@@ -82,7 +82,7 @@ class ProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
 
-        return view('user_profile.edit', compact('profile'));
+        return view('admin.user_profile.edit', compact('profile'));
     }
 
     /**

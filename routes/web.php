@@ -47,12 +47,12 @@ Route::prefix('user')->group(function () {
 Route::resource('signal', SignalController::class)->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return view('welcome');
+    return view('layout_user');
 })->name('dashboard');
 
 Route::resource('user-signature', 'App\Http\Controllers\\UserSignatureController');
 
-Route::resource('configuration', 'App\Http\Controllers\\ConfigurationController');
+Route::resource('configuration', 'App\Http\Controllers\User\ConfigurationController');
 
 });
 

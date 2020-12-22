@@ -1,4 +1,4 @@
-@extends('layouts.app')
+   @extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -8,11 +8,7 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Edit Configuration #{{ $configuration->id }}</div>
-                    <div class="card-body">
-                        <a href="{{ url('/admin/configuration') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <br />
-                        <br />
-
+                    <div class="card-body">                                                
                         @if ($errors->any())
                             <ul class="alert alert-danger">
                                 @foreach ($errors->all() as $error)
@@ -25,7 +21,7 @@
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
-                            @include ('configuration.form', ['formMode' => 'edit'])
+                            @include ('admin.configuration.form', ['formMode' => 'edit'])
 
                         </form>
 

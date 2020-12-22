@@ -32,7 +32,7 @@ class UserSignatureController extends Controller
             $usersignature = UserSignature::latest()->paginate($perPage);
         }
 
-        return view('user-signature.index', compact('usersignature'));
+        return view('admin.user-signature.index', compact('usersignature'));
     }
 
     /**
@@ -45,7 +45,7 @@ class UserSignatureController extends Controller
         $user = $request->get('user');
         
          $items = \App\Models\SignatureType::all();
-        return view('user-signature.create', compact('items','user'));
+        return view('admin.user-signature.create', compact('items','user'));
         
     }
 
@@ -77,7 +77,7 @@ class UserSignatureController extends Controller
     {
         $usersignature = UserSignature::findOrFail($id);
 
-        return view('user-signature.show', compact('usersignature'));
+        return view('admin.user-signature.show', compact('usersignature'));
     }
 
     /**
@@ -91,7 +91,7 @@ class UserSignatureController extends Controller
     {
         $usersignature = UserSignature::findOrFail($id);
           $items = \App\Models\SignatureType::all();
-        return view('user-signature.edit', compact('usersignature','items'));
+        return view('admin.user-signature.edit', compact('usersignature','items'));
     }
 
     /**

@@ -32,7 +32,7 @@ class UserController extends Controller
             $user = User::latest()->paginate($perPage);
         }
 
-        return view('user.index', compact('user'));
+        return view('admin.user.index', compact('user'));
     }
 
     /**
@@ -44,7 +44,7 @@ class UserController extends Controller
     {
         
         $items = \App\Models\Profile::all();
-        return view('user.create', compact('items'));
+        return view('admin.user.create', compact('items'));
     }
 
     /**
@@ -91,7 +91,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('user.show', compact('user'));
+        return view('admin.user.show', compact('user'));
     }
 
     /**
@@ -105,7 +105,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $items = \App\Models\Profile::all();
-        return view('user.edit', compact('user','items'));
+        return view('admin.user.edit', compact('user','items'));
     }
 
     /**
