@@ -45,7 +45,7 @@
                                     <td >{{ $item->stop }}</td>
                                     <td >{{ $item->stop_up }}</td>                                
                                     <td >{{ $item->getStatusName() }}</td>
-                                    <td >{{ $item->getCreatedBy() }}</td>
+                                    <td >{{ $item->getCreatedBy()->name }}</td>
                                     <td >
                                      <a href="#"><i data-placement="top" data-toggle="tooltip-primary" title="" class="ti-sharethis" data-original-title="Enviar Telegram"></i> </a> 
                                      <a href="{{ url('/admin/signal/' . $item->id) }}" title="View Profile"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Visualizar" class="ti-eye"></i></a>
