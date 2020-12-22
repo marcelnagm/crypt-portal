@@ -60,7 +60,7 @@ class SignalController extends Controller
         $requestData['created_by'] = $request->user()->id;
         Signal::create($requestData);
 
-        return redirect('signal')->with('flash_message', 'Signal added!');
+        return redirect('/admin/signal')->with('flash_message', 'Signal added!');
     }
 
     /**
@@ -107,7 +107,7 @@ class SignalController extends Controller
         $signal = Signal::findOrFail($id);
         $signal->update($requestData);
 
-        return redirect('signal')->with('flash_message', 'Signal updated!');
+        return redirect('/admin/signal')->with('flash_message', 'Signal updated!');
     }
 
     /**
@@ -121,6 +121,6 @@ class SignalController extends Controller
     {
         Signal::destroy($id);
 
-        return redirect('signal')->with('flash_message', 'Signal deleted!');
+        return redirect('/admin/signal')->with('flash_message', 'Signal deleted!');
     }
 }

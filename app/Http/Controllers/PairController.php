@@ -57,7 +57,7 @@ class PairController extends Controller
         
         Pair::create($requestData);
 
-        return redirect('pair')->with('flash_message', 'Pair added!');
+        return redirect('/admin/pair')->with('flash_message', 'Pair added!');
     }
 
     /**
@@ -104,7 +104,7 @@ class PairController extends Controller
         $pair = Pair::findOrFail($id);
         $pair->update($requestData);
 
-        return redirect('pair')->with('flash_message', 'Pair updated!');
+        return redirect('/admin/pair')->with('flash_message', 'Pair updated!');
     }
 
     /**
@@ -118,6 +118,6 @@ class PairController extends Controller
     {
         Pair::destroy($id);
 
-        return redirect('pair')->with('flash_message', 'Pair deleted!');
+        return redirect('/admin/pair')->with('flash_message', 'Pair deleted!');
     }
 }

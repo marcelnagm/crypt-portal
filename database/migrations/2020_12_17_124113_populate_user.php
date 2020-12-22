@@ -30,8 +30,8 @@ class PopulateUser extends Migration
         ]);
           DB::table('users')->insert([
             'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
+            'email' => 'm@m.com',
+            'password' => Hash::make('123'),
             'whatsapp' => Str::random(10),
             'auth_gmail' => '0',
             'profile_id' => 1,              

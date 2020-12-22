@@ -26,7 +26,9 @@ class CreateSignals extends Migration
             $table->id();
             $table->unsignedBigInteger('pair_id');
             $table->unsignedFloat('entry_value');
-            $table->unsignedFloat('target');
+            $table->unsignedFloat('target_1');
+            $table->unsignedFloat('target_2')->nullable(true);
+            $table->unsignedFloat('target_3')->nullable(true);
             $table->unsignedFloat('stop');
             $table->unsignedFloat('stop_up');
             $table->smallInteger('status')->default(0);
@@ -46,29 +48,20 @@ class CreateSignals extends Migration
            DB::table('signals')->insert([
             'pair_id' => 1 ,
         'entry_value' => 20,
-        'target' => 25,
+        'target_1' => 25,
+        'target_2' => 26,
+        'target_3' => 27,
         'stop' => 18,
         'stop_up'=> 0.01,
         'created_by'=> 1,
          'sended_at' => '2020-12-01 17:47:15',
           'status' => 1
-        ]);  
+        ]);    
            
            DB::table('signals')->insert([
             'pair_id' => 1 ,
         'entry_value' => 20,
-        'target' => 25,
-        'stop' => 18,
-        'stop_up'=> 0.01,
-        'created_by'=> 1,
-         'sended_at' => '2020-12-01 17:47:15',
-         'status' => 1      
-        ]);  
-           
-           DB::table('signals')->insert([
-            'pair_id' => 1 ,
-        'entry_value' => 20,
-        'target' => 25,
+        'target_1' => 25,
         'stop' => 18,
         'stop_up'=> 0.01,
         'created_by'=> 1,

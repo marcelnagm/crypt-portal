@@ -15,7 +15,7 @@
                     <div class="card-header">Gestão de Sinais</div>
                     <div class="card-body">
                       <div class="table-responsive">
-                        <table id="example2" class="table text-md-nowrap">
+                        <table id="example2" class="table ">
                           <thead>
                             <tr>
                               <th class="border-bottom-0">ID</th>
@@ -23,6 +23,8 @@
                               <th class="border-bottom-0">Par</th>
                               <th class="border-bottom-0">Preço Inicial</th>
                               <th class="border-bottom-0">Alvo 1</th>
+                              <th class="border-bottom-0">Alvo 2</th>
+                              <th class="border-bottom-0">Alvo 3</th>
                               <th class="border-bottom-0">Stop Loss</th>
                               <th class="border-bottom-0">Trailing Stop</th>
                               <th class="border-bottom-0">Status</th>
@@ -37,7 +39,9 @@
                                     <td >{{ $item->sended_at }}</td>
                                     <td>{{ $item->getPair() }}</td>
                                     <td>{{ $item->entry_value }}</td>
-                                    <td>{{ $item->target }}</td>
+                                    <td>{{ $item->target_1 }}</td>
+                                    <td>{{ $item->target_2 }}</td>
+                                    <td>{{ $item->target_3 }}</td>
                                     <td >{{ $item->stop }}</td>
                                     <td >{{ $item->stop_up }}</td>                                
                                     <td >{{ $item->getStatusName() }}</td>

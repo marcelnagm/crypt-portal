@@ -50,7 +50,7 @@ class ConfigurationController extends Controller
         
         Configuration::create($requestData);
 
-        return redirect('configuration')->with('flash_message', 'Configuration added!');
+        return redirect('/admin/configuration')->with('flash_message', 'Configuration added!');
     }
 
     /**
@@ -87,6 +87,6 @@ class ConfigurationController extends Controller
         $configuration = Configuration::findOrFail($id);
         $configuration->update($requestData);
 
-        return redirect('configuration')->with('flash_message', 'Configuration updated!');
+        return redirect('/admin/configuration')->with('flash_message', 'Configuration updated!');
     }
 }

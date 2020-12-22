@@ -55,7 +55,7 @@ class SignatureTypeController extends Controller
         
         SignatureType::create($requestData);
 
-        return redirect('signature-type')->with('flash_message', 'SignatureType added!');
+        return redirect('/admin/signature-type')->with('flash_message', 'SignatureType added!');
     }
 
     /**
@@ -102,7 +102,7 @@ class SignatureTypeController extends Controller
         $signaturetype = SignatureType::findOrFail($id);
         $signaturetype->update($requestData);
 
-        return redirect('signature-type')->with('flash_message', 'SignatureType updated!');
+        return redirect('/admin/signature-type')->with('flash_message', 'SignatureType updated!');
     }
 
     /**
@@ -116,6 +116,6 @@ class SignatureTypeController extends Controller
     {
         SignatureType::destroy($id);
 
-        return redirect('signature-type')->with('flash_message', 'SignatureType deleted!');
+        return redirect('/admin/signature-type')->with('flash_message', 'SignatureType deleted!');
     }
 }

@@ -54,7 +54,7 @@ class ProfileController extends Controller
         
         Profile::create($requestData);
 
-        return redirect('user_profile')->with('flash_message', 'Profile added!');
+        return redirect('/admin/user_profile')->with('flash_message', 'Profile added!');
     }
 
     /**
@@ -101,7 +101,7 @@ class ProfileController extends Controller
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
 
-        return redirect('user_profile')->with('flash_message', 'Profile updated!');
+        return redirect('/admin/user_profile')->with('flash_message', 'Profile updated!');
     }
 
     /**
@@ -115,6 +115,6 @@ class ProfileController extends Controller
     {
         Profile::destroy($id);
 
-        return redirect('user_profile')->with('flash_message', 'Profile deleted!');
+        return redirect('/admin/user_profile')->with('flash_message', 'Profile deleted!');
     }
 }

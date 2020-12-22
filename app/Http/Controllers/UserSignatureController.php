@@ -63,7 +63,7 @@ class UserSignatureController extends Controller
         
         UserSignature::create($requestData);
 
-        return redirect('user/'.$requestData['user_id'])->with('flash_message', 'UserSignature added!');
+        return redirect('/admin/user/'.$requestData['user_id'])->with('flash_message', 'UserSignature added!');
     }
 
     /**
@@ -110,7 +110,7 @@ class UserSignatureController extends Controller
         $usersignature = UserSignature::findOrFail($id);
         $usersignature->update($requestData);
 
-        return redirect('user/'.$requestData['user_id'])->with('flash_message', 'UserSignature updated!');
+        return redirect('/admin/user/'.$requestData['user_id'])->with('flash_message', 'UserSignature updated!');
     }
 
     /**
@@ -126,7 +126,7 @@ class UserSignatureController extends Controller
         $user_id = UserSignature::find($id)->user_id;
         UserSignature::destroy($id);
         
-        return redirect('user/'.$user_id)->with('flash_message', 'Deleted updated!');
+        return redirect('/admin/user/'.$user_id)->with('flash_message', 'Deleted updated!');
         
     }
 }

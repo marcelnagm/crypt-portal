@@ -55,7 +55,7 @@ Route::prefix('admin')->group(function () {
 
 Route::resource('signal', 'App\Http\Controllers\\SignalController')->middleware('auth');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('welcome');
 })->name('dashboard');
 

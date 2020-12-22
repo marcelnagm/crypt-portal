@@ -25,7 +25,11 @@ class Signal extends Model {
      *
      * @var array
      */
-    protected $fillable = ['pair_id', 'entry_value', 'target', 'stop', 'stop_up','created_by','sended_at'];
+    protected $fillable = ['pair_id', 'entry_value', 
+        'target_1',
+        'target_2',
+        'target_3',
+        'stop', 'stop_up','created_by','sended_at'];
 
     public function getPair() {
         return Pair::find($this->pair_id);
