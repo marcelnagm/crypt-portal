@@ -20,8 +20,8 @@ class CreateConfigurationTable extends Migration
             $table->string('api_key','100')->nullable(true);;
             $table->string('api_secret',100)->nullable(true);;
             $table->string('bot_active',1)->nullable(true);;
-            $table->float('balance_operation')->nullable(true);;
-            $table->string('target_profile')->nullable(true);;
+            $table->float('balance_operation')->nullable(true);
+            $table->smallInteger('target_profile')->nullable(true);;
             $table->float('stop_loss')->nullable(true);;
             $table->string('telegram_active',1)->default('0');
             $table->string('telegram_key','100')->nullable(true);

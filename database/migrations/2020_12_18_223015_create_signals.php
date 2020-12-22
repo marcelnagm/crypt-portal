@@ -29,6 +29,7 @@ class CreateSignals extends Migration
             $table->unsignedFloat('target_1');
             $table->unsignedFloat('target_2')->nullable(true);
             $table->unsignedFloat('target_3')->nullable(true);
+            $table->unsignedFloat('reached')->nullable(true);
             $table->unsignedFloat('stop');
             $table->unsignedFloat('stop_up');
             $table->smallInteger('status')->default(0);
@@ -54,8 +55,7 @@ class CreateSignals extends Migration
         'stop' => 18,
         'stop_up'=> 0.01,
         'created_by'=> 1,
-         'sended_at' => '2020-12-01 17:47:15',
-          'status' => 1
+          'status' => 0
         ]);    
            
            DB::table('signals')->insert([

@@ -3,11 +3,6 @@
     <input class="form-control" name="exchange_id" type="number" id="exchange_id" value="{{ isset($configuration->exchange_id) ? $configuration->exchange_id : ''}}" >
     {!! $errors->first('exchange_id', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-    <label for="user_id" class="control-label">{{ 'User Id' }}</label>
-    <input class="form-control" name="user_id" type="number" id="user_id" value="{{ isset($configuration->user_id) ? $configuration->user_id : ''}}" >
-    {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
-</div>
 <div class="form-group {{ $errors->has('api_key') ? 'has-error' : ''}}">
     <label for="api_key" class="control-label">{{ 'Api Key' }}</label>
     <input class="form-control" name="api_key" type="text" id="api_key" value="{{ isset($configuration->api_key) ? $configuration->api_key : ''}}" >

@@ -5,8 +5,8 @@
           @include('admin.sidebar')
           <div class="col-xl-12">
 					<div class="d-flex align-items-end flex-wrap my-auto mg-b-20">
-            <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10"  href="{{ url('/pair') }}">Pares/ Coins</a>
-            <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10" href="">Gerar Sinais IA</a>
+            <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10"  href="{{ url('/admin/pair') }}">Pares/ Coins</a>
+            <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10" href="{{ url('/admin/signals_generate') }}">Gerar Sinais IA</a>
 						<a href="{{ url('/admin/signal/create') }}" class="btn btn-primary mt-2 mt-xl-0 mg-b-20"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Sinal</a>
 					</div>
 					</div>
@@ -44,15 +44,28 @@
                                     <td >{{ $item->stop }}</td>                              
                                     <td >{{ $item->getStatusName() }}</td>
                                     <td >{{ $item->getCreatedBy()->name }}</td>
+<<<<<<< HEAD
 																		<td>
 																				<a href="{{ url('/profile/' . $item->id) }}" title="View user"><button class="btn btn-info btn-sm"><i data-placement="top" data-toggle="tooltip-primary" title="" class="ti-sharethis" data-original-title="Enviar Telegram"></i></button></a>
                                         <!--<a href="{{ url('/admin/signal/' . $item->id) }}" title="View user"><button class="btn btn-info btn-sm"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Visualizar" class="ti-eye"></i></button></a>-->
                                         <a href="{{ url('/profile/' . $item->id . '/edit') }}" title="Edit user"><button class="btn btn-primary btn-sm"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></button></a>
+=======
+                                    <td >
+                                     <a href="#"><i data-placement="top" data-toggle="tooltip-primary" title="" class="ti-sharethis" data-original-title="Enviar Telegram"></i> </a> 
+                                     <a href="{{ url('/admin/signal/' . $item->id) }}" title="View Profile"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Visualizar" class="ti-eye"></i></a>
+                                     <a href="{{ url('/admin/signal/' . $item->id . '/edit') }}" title="Edit Profile"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></a>
+                                     <a href="{{ url('/admin/signals_generate/' . $item->id . '/') }}" title="Generate Signal"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></a>
+                                    <form method="POST" action="{{ url('/admin/signal' . '/' . $item->id) }}" accept-charset="UTF-8">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete Profile" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Remover</button>
+                                    </form>
+>>>>>>> f819fe9911d6e8ae58402717ed15285458f5c2a8
 
                                         <form method="POST" action="{{ url('/admin/signal' . '/' . $item->id) }}" accept-charset="UTF-8" style="display: inline;">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete user" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="ti-trash"></i></button>
+																					<button type="submit" class="btn btn-danger btn-sm" title="Delete user" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="ti-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

@@ -83,7 +83,7 @@ class ConfigurationController extends Controller
     {
         
         $requestData = $request->all();
-        
+        unset($requestData['user_id']);
         $configuration = Configuration::findOrFail($id);
         $configuration->update($requestData);
 
