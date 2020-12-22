@@ -7,10 +7,15 @@ use App\Http\Requests;
 
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Configuration;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
-{
+{       
     /**
      * Display a listing of the resource.
      *
@@ -51,10 +56,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $input =   $request->all();
+         Validator::make($input, [
+            'name' => ['required', 'string', 'max:255'],
+            'whatsapp' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'max:255'],
+        ])->validate();
         
-        $requestData = $request->all();
+        $us = User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'whatsapp' => $input['whatsapp'],
+            'auth_gmail' => 0,
+            'profile_id' => $input['profile_id'],
+            'password' => Hash::make($input['password']),
+        ]);
         
-        User::create($requestData);
+        $conf = new Configuration();
+        $conf->user_id = $us->id;
+        $conf->save();
 
         return redirect('user/')->with('flash_message', 'User added!');
     }

@@ -23,11 +23,6 @@
     <input class="form-control" name="whatsapp" type="text" id="whatsapp" value="{{ isset($user->whatsapp) ? $user->whatsapp : ''}}" >
     {!! $errors->first('whatsapp', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('auth_gmail') ? 'has-error' : ''}}">
-    <label for="auth_gmail" class="control-label">{{ 'Auth Gmail' }}</label>
-    <input class="form-control" name="auth_gmail" type="number" id="auth_gmail" value="{{ isset($user->auth_gmail) ? $user->auth_gmail : ''}}" >
-    {!! $errors->first('auth_gmail', '<p class="help-block">:message</p>') !!}
-</div>
 <div class="form-group {{ $errors->has('profile_id') ? 'has-error' : ''}}">
     <label class="main-content-label tx-11 tx-medium tx-gray-600"> Perfil
 </label>
