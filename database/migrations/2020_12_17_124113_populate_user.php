@@ -30,11 +30,35 @@ class PopulateUser extends Migration
         ]);
           DB::table('users')->insert([
             'name' => Str::random(10),
-            'email' => 'm@m.com',
+            'email' => 'a@a.com',
             'password' => Hash::make('123'),
             'whatsapp' => Str::random(10),
             'auth_gmail' => '0',
             'profile_id' => 1,              
+        ]);
+          DB::table('users')->insert([
+            'name' => Str::random(10),
+            'email' => 't@t.com',
+            'password' => Hash::make('123'),
+            'whatsapp' => Str::random(10),
+            'auth_gmail' => '0',
+            'profile_id' => 2,              
+        ]);
+          DB::table('users')->insert([
+            'name' => Str::random(10),
+            'email' => 'u@u.com',
+            'password' => Hash::make('123'),
+            'whatsapp' => Str::random(10),
+            'auth_gmail' => '0',
+            'profile_id' => 3,              
+        ]);
+          DB::table('users')->insert([
+            'name' => Str::random(10),
+            'email' => 'u2@u.com',
+            'password' => Hash::make('123'),
+            'whatsapp' => Str::random(10),
+            'auth_gmail' => '0',
+            'profile_id' => 3,              
         ]);
           
           DB::table('users_signature')->insert([
@@ -49,6 +73,21 @@ class PopulateUser extends Migration
         'start_at' => '2020-12-01 17:47:15',
         'finish_at'=> '2020-12-24 17:47:15',
         ]);  
+          
+          DB::table('configuration')->insert([
+            'user_id' => 1,
+        ]);
+          DB::table('configuration')->insert([
+            'user_id' => 2,
+        ]);
+          DB::table('configuration')->insert([
+            'user_id' => 3,
+            'balance_operation' => 0.5  
+        ]);
+          DB::table('configuration')->insert([
+            'user_id' => 4,
+            'balance_operation' => 0.4
+        ]);
           
           
     }

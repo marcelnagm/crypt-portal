@@ -4,30 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
 use App\Models\Signal;
 use App\Models\Pair;
+use App\Models\User;
+use App\Models\MultipleTargets;
+use App\Models\SingleTarget;
 use Illuminate\Http\Request;
 
-class SignalController extends Controller
-{
+class SignalController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $keyword = $request->get('search');
         $perPage = 25;
 
         if (!empty($keyword)) {
             $signal = Signal::where('pair_id', 'LIKE', "%$keyword%")
-                ->orWhere('entry_value', 'LIKE', "%$keyword%")
-                ->orWhere('target', 'LIKE', "%$keyword%")
-                ->orWhere('stop', 'LIKE', "%$keyword%")
-                ->orWhere('stop_up', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
+                            ->orWhere('entry_value', 'LIKE', "%$keyword%")
+                            ->orWhere('target', 'LIKE', "%$keyword%")
+                            ->orWhere('stop', 'LIKE', "%$keyword%")
+                            ->orWhere('stop_up', 'LIKE', "%$keyword%")
+                            ->latest()->paginate($perPage);
         } else {
             $signal = Signal::latest()->paginate($perPage);
         }
@@ -40,9 +41,9 @@ class SignalController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
-    {
-         $items = Pair::all();
+    public function create() {
+
+        $items = Pair::all();
         return view('signal.create', compact('items'));
     }
 
@@ -53,9 +54,44 @@ class SignalController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
-    {
-        
+    public function generate(Request $request) {
+
+        if (isset($request->id)) {
+            $signals = Signal::where('id', $request->id)->get();
+        } else {
+            $signals = Signal::where('status', '0')
+                    ->get();
+        }
+        $users = User::where('profile_id', 3)->get();
+        foreach ($signals as $sign) {
+            foreach ($users as $user) {
+                if (isset($sign->target_2)) {
+                    $mult = new MultipleTargets();
+                    $mult->target_1 = $sign->target_1;
+                    $mult->target_2 = $sign->target_2;
+                    $mult->target_3 = $sign->target_3;
+                    $mult->target_3 = $sign->target_3;
+                } else {
+                    $mult = new SingleTarget();
+                    $mult->target = $sign->target_1;
+                }
+                $mult->pair_id = $sign->pair_id;
+                $mult->entry_value = $sign->entry_value;
+                $mult->stop = $sign->stop;
+                $mult->stop_up = $sign->stop_up;
+                $mult->user_id = $user->id;
+                $mult->balance = $user->configuration()->balance_operation;
+                $mult->save();
+            }
+            $sign->status = 1;
+            $sign->save();
+        }
+
+        return redirect('/admin/signal')->with('flash_message', 'Signal added!');
+    }
+
+    public function store(Request $request) {
+
         $requestData = $request->all();
         $requestData['created_by'] = $request->user()->id;
         Signal::create($requestData);
@@ -70,8 +106,7 @@ class SignalController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
-    {
+    public function show($id) {
         $signal = Signal::findOrFail($id);
 
         return view('signal.show', compact('signal'));
@@ -84,11 +119,10 @@ class SignalController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $signal = Signal::findOrFail($id);
-
-        return view('signal.edit', compact('signal'));
+        $items = Pair::all();
+        return view('signal.edit', compact('signal', 'items'));
     }
 
     /**
@@ -99,11 +133,10 @@ class SignalController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
-    {
-        
+    public function update(Request $request, $id) {
+
         $requestData = $request->all();
-        
+
         $signal = Signal::findOrFail($id);
         $signal->update($requestData);
 
@@ -117,10 +150,10 @@ class SignalController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         Signal::destroy($id);
 
         return redirect('/admin/signal')->with('flash_message', 'Signal deleted!');
     }
+
 }

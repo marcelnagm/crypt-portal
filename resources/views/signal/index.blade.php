@@ -5,8 +5,8 @@
           @include('admin.sidebar')
           <div class="col-xl-12">
 					<div class="d-flex align-items-end flex-wrap my-auto mg-b-20">
-            <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10"  href="{{ url('/pair') }}">Pares/ Coins</a>
-            <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10" href="">Gerar Sinais IA</a>
+            <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10"  href="{{ url('/admin/pair') }}">Pares/ Coins</a>
+            <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10" href="{{ url('/admin/signals_generate') }}">Gerar Sinais IA</a>
 						<a href="{{ url('/admin/signal/create') }}" class="btn btn-primary mt-2 mt-xl-0 mg-b-20"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Sinal</a>
 					</div>
 					</div>
@@ -50,6 +50,7 @@
                                      <a href="#"><i data-placement="top" data-toggle="tooltip-primary" title="" class="ti-sharethis" data-original-title="Enviar Telegram"></i> </a> 
                                      <a href="{{ url('/admin/signal/' . $item->id) }}" title="View Profile"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Visualizar" class="ti-eye"></i></a>
                                      <a href="{{ url('/admin/signal/' . $item->id . '/edit') }}" title="Edit Profile"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></a>
+                                     <a href="{{ url('/admin/signals_generate/' . $item->id . '/') }}" title="Generate Signal"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></a>
                                     <form method="POST" action="{{ url('/admin/signal' . '/' . $item->id) }}" accept-charset="UTF-8">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}

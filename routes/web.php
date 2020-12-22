@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SignalController;
 /*
   |--------------------------------------------------------------------------
   | Web Routes
@@ -53,7 +53,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('statistics', 'App\Http\Controllers\\StatisticsController')->middleware('auth');
     Route::resource('pair', 'App\Http\Controllers\\PairController')->middleware('auth');
 
-Route::resource('signal', 'App\Http\Controllers\\SignalController')->middleware('auth');
+Route::resource('signal', SignalController::class)->middleware('auth');
+Route::get('signals_generate/{id?}', 'App\\Http\\Controllers\\SignalController@generate')->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('welcome');

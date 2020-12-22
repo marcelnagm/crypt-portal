@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Configuration;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -65,6 +67,10 @@ class User extends Authenticatable
     
     public function profile(){
     return Profile::find($this->profile_id);
+    }
+    public function configuration(){
+    return Configuration::where('user_id', $this->id)
+                    ->get()[0];
     }
     
     public function signatures(){
