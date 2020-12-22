@@ -71,5 +71,18 @@ class User extends Authenticatable
           return UserSignature::where('user_id',$this->id)->get();
     }
     
+    public function isAdmin(){
+        return $this->profile->name == "admin";
+    }
+    
+    public function isTrader(){
+        
+        return $this->profile->name == "trader";
+    }
+    
+    public function isSignal(){
+        return $this->profile->name == "signals";
+    }
+    
     
 }

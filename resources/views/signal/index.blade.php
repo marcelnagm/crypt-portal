@@ -7,7 +7,7 @@
 					<div class="d-flex align-items-end flex-wrap my-auto mg-b-20">
             <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10"  href="{{ url('/pair') }}">Pares/ Coins</a>
             <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10" href="">Gerar Sinais IA</a>
-						<a href="{{ url('/signal/create') }}" class="btn btn-primary mt-2 mt-xl-0 mg-b-20"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Sinal</a>
+						<a href="{{ url('/admin/signal/create') }}" class="btn btn-primary mt-2 mt-xl-0 mg-b-20"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Sinal</a>
 					</div>
 					</div>
             <div class="col-md-12">
@@ -44,9 +44,9 @@
                                     <td >{{ $item->getCreatedBy() }}</td>
                                     <td >
                                      <a href="#"><i data-placement="top" data-toggle="tooltip-primary" title="" class="ti-sharethis" data-original-title="Enviar Telegram"></i> </a> 
-                                     <a href="{{ url('/signal/' . $item->id) }}" title="View Profile"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Visualizar" class="ti-eye"></i></a>
-                                     <a href="{{ url('/signal/' . $item->id . '/edit') }}" title="Edit Profile"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></a>
-                                    <form method="POST" action="{{ url('/signal' . '/' . $item->id) }}" accept-charset="UTF-8">
+                                     <a href="{{ url('/admin/signal/' . $item->id) }}" title="View Profile"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Visualizar" class="ti-eye"></i></a>
+                                     <a href="{{ url('/admin/signal/' . $item->id . '/edit') }}" title="Edit Profile"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></a>
+                                    <form method="POST" action="{{ url('/admin/signal' . '/' . $item->id) }}" accept-charset="UTF-8">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <button type="submit" class="btn btn-danger btn-sm" title="Delete Profile" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Remover</button>

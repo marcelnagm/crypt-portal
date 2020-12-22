@@ -10,10 +10,10 @@
                     <div class="card-header">user {{ $user->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/user') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/user/' . $user->id . '/edit') }}" title="Edit user"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/admin/user') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/user/' . $user->id . '/edit') }}" title="Edit user"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                        <form method="POST" action="{{ url('user/user' . '/' . $user->id) }}" accept-charset="UTF-8" style="display:inline">
+                        <form method="POST" action="{{ url('/adminuser/user' . '/' . $user->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete user" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-xl-12">
 					<div class="d-flex align-items-end flex-wrap my-auto mg-b-20">
-						<a href="{{ url('/user-signature/create/?user='.$user->id ) }}" class="btn btn-primary mt-2 mt-xl-0 mg-b-20"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Plano</a>
+						<a href="{{ url('/admin/user-signature/create/?user='.$user->id ) }}" class="btn btn-primary mt-2 mt-xl-0 mg-b-20"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Plano</a>
 					</div>
 			</div>
                         <b>Histórico de Assinaturas</b>
@@ -70,10 +70,10 @@
                                         <td>{{ $sign->finish_at }}</td>                                        
                                         <td>{{ $sign->isValid() }}</td>                                        
                                          <td>
-                                            <a href="{{ url('/user-signature/' . $sign->id) }}" title="View UserSignature"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/user-signature/' . $sign->id . '/edit') }}" title="Edit UserSignature"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/user-signature/' . $sign->id) }}" title="View UserSignature"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/user-signature/' . $sign->id . '/edit') }}" title="Edit UserSignature"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                                            <form method="POST" action="{{ url('/user-signature' . '/' . $sign->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/admin/user-signature' . '/' . $sign->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete UserSignature" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>

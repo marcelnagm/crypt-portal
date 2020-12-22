@@ -10,10 +10,10 @@
                     <div class="card-header">SignatureType {{ $signaturetype->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/signature-type') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/signature-type/' . $signaturetype->id . '/edit') }}" title="Edit SignatureType"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/admin/signature-type') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/signature-type/' . $signaturetype->id . '/edit') }}" title="Edit SignatureType"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                        <form method="POST" action="{{ url('signaturetype' . '/' . $signaturetype->id) }}" accept-charset="UTF-8" style="display:inline">
+                        <form method="POST" action="{{ url('/adminsignaturetype' . '/' . $signaturetype->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete SignatureType" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>

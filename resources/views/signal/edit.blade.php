@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">Edit Signal #{{ $signal->id }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/signal') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/signal') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
