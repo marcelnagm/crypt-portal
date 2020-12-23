@@ -14,8 +14,10 @@ use App\Http\Controllers\Admin\SignalController;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 })->middleware('auth');
+
+Route::get('logout','App\Http\Controllers\LogoutController@logout');
 //Route::get('/login', function () {
 //    return view('login',array('title'=> 'AutroCrypto Bot'));
 //})->name('login');
@@ -80,4 +82,5 @@ Route::resource('user-signature', 'App\Http\Controllers\Admin\\UserSignatureCont
 Route::resource('configuration', 'App\Http\Controllers\Admin\\\ConfigurationController');
 
 });
+
 //});p\Http\Controllers\\PrfoleController');

@@ -334,7 +334,7 @@
                                             <h6>{{Auth::user()->name}}</h6><span>Premium Member</span>
                                         </div>
                                         <a class="dropdown-item" href=""><i class="far fa-user"></i> Meus Dados</a>
-                                        <a class="dropdown-item" href="page-signin.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                                        <a class="dropdown-item" href="w"><i class="fas fa-sign-out-alt"></i> Sair</a>
                                     </div>
                                 </div>
                             </div>
