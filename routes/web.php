@@ -50,7 +50,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('layout_user');
 })->name('dashboard');
 
-Route::resource('user-signature', 'App\Http\Controllers\\UserSignatureController');
+Route::resource('op', 'App\Http\Controllers\User\TargetController');
 
 Route::resource('configuration', 'App\Http\Controllers\User\ConfigurationController');
 

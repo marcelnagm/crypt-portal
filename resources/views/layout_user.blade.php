@@ -564,13 +564,13 @@
                   </div>
                   <!-- /row -->
                     <?php
-                    if (Auth::check()) {
-                        // The user is logged in...
-                        echo "sim";
-                    }else{
-                        echo "Não";
-                    }
-                    ?>
+//                    if (Auth::check()) {
+//                        // The user is logged in...
+//                        echo "sim";
+//                    }else{
+//                        echo "Não";
+//                    }
+//                    ?>
                     @yield('content')       
                 </div>
                 <!-- /conatiner -->

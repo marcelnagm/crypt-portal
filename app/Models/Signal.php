@@ -27,9 +27,15 @@ class Signal extends Model {
      */
     protected $fillable = ['pair_id', 'entry_value', 
         'target_1',
+        'target_1_p',
         'target_2',
+        'target_2_p',
         'target_3',
-        'stop', 'stop_up','created_by','sended_at'];
+        'target_3_p',
+        'stop', 
+        'stop_p',
+         'stop_up'
+        ,'created_by','sended_at'];
 
     public function getPair() {
         return Pair::find($this->pair_id);

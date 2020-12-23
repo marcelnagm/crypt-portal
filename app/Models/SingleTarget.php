@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pair as Pairs;
 
 class SingleTarget extends Model
 {
@@ -20,7 +21,11 @@ class SingleTarget extends Model
         'user_id', 'pair_id', 'order_id_generated', 'balance',
         'entry_value',
         'payed',
-        'target', 'stop', 'stop_up'
+        'target', 
+        'target_p', 
+        'stop', 
+        'stop_p', 
+        'stop_up'
         , 'finished'
     ];
 

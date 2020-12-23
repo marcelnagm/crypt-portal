@@ -1,4 +1,4 @@
-@extends('layouts.app')
+   @extends('layout_user')
 
 @section('content')
         <div class="row">
@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">Edit Signal #{{ $signal->id }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/signal') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/user/op') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -20,11 +20,11 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/signal/' . $signal->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/user/op/' . $signal->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
-                            @include ('admin.signal.form', ['formMode' => 'edit'])
+                            @include ('user.signal.form', ['formMode' => 'edit'])
 
                         </form>
 

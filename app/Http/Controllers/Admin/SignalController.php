@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Signal;
 use App\Models\Pair;
@@ -74,12 +74,10 @@ class SignalController extends Controller {
             ->where('configuration.balance_operation','<>',null)
             ->where('configuration.bot_active','<>',null)
             ->where('configuration.exchange_id','<>',null)
-            ->where('configuration.exchange_id','<>',null)
-            ->where('configuration.exchange_id','<>',null)
             ->where('configuration.target_profile','<>',null)
             ->where('configuration.stop_loss','<>',null)
                         ->get();
-
+//        dd($users);
         foreach ($signals as $sign) {
             foreach ($users as $user) {
                 if (isset($sign->target_2)) {
@@ -87,14 +85,18 @@ class SignalController extends Controller {
                     $mult->target_1 = $sign->target_1;
                     $mult->target_2 = $sign->target_2;
                     $mult->target_3 = $sign->target_3;
-                    $mult->target_3 = $sign->target_3;
+                    $mult->target_1_p = $sign->target_1_p;
+                    $mult->target_2_p = $sign->target_2_p;
+                    $mult->target_3_p = $sign->target_3_p;
                 } else {
                     $mult = new SingleTarget();
                     $mult->target = $sign->target_1;
+                    $mult->target_p = $sign->target_1_p;
                 }
                 $mult->pair_id = $sign->pair_id;
                 $mult->entry_value = $sign->entry_value;
                 $mult->stop = $sign->stop;
+                $mult->stop_p = $sign->stop_p;
                 $mult->stop_up = $sign->stop_up;
                 $mult->user_id = $user->id;
                 $mult->balance = $user->configuration()->balance_operation;
@@ -111,9 +113,13 @@ class SignalController extends Controller {
     public function store(Request $request) {
 
         $requestData = $request->all();
+        
+        $requestData['target_1'] = $requestData['entry_value']*(1+($request['target_1_p']/100));
+        $requestData['target_2'] = $requestData['entry_value']*(1+($request['target_2_p']/100));
+        $requestData['target_3'] = $requestData['entry_value']*(1+($request['target_3_p']/100));
+        $requestData['stop'] = $requestData['entry_value']*(1-($request['stop_p']/100));        
         $requestData['created_by'] = $request->user()->id;
         Signal::create($requestData);
-
         return redirect('/admin/signal')->with('flash_message', 'Signal added!');
     }
 
@@ -156,6 +162,10 @@ class SignalController extends Controller {
         $requestData = $request->all();
 
         $signal = Signal::findOrFail($id);
+          $requestData['target_1'] = $requestData['entry_value']*(1+($requestData['target_1_p']/100));
+        $requestData['target_2'] = $requestData['entry_value']*(1+($requestData['target_2_p']/100));
+        $requestData['target_3'] = $requestData['entry_value']*(1+($requestData['target_3_p']/100));
+        $requestData['stop'] = $requestData['entry_value']*(1-($requestData['stop_p']/100));
         $signal->update($requestData);
 
         return redirect('/admin/signal')->with('flash_message', 'Signal updated!');
