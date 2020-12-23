@@ -44,14 +44,12 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('user')->group(function 
 
     Route::resource('signal', SignalController::class)->middleware('auth');
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-        return view('layout_user');
-    })->name('dashboard');
-
-    Route::resource('op', 'App\Http\Controllers\User\TargetController');
+   Route::resource('op', 'App\Http\Controllers\User\TargetController');
 
     Route::resource('configuration', 'App\Http\Controllers\User\ConfigurationController');
-});;
+    
+    Route::get('/dashboard', 'App\Http\Controllers\User\IndexController@index');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function () {
 
@@ -66,9 +64,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::resource('signal', SignalController::class)->middleware('auth');
     Route::get('signals_generate/{id?}', 'App\Http\Controllers\Admin\\SignalController@generate')->middleware('auth');
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-        return view('layout');
-    })->name('dashboard');
+   Route::get('/dashboard', 'App\Http\Controllers\Admin\IndexController@index');
 
     Route::resource('user-signature', 'App\Http\Controllers\Admin\UserSignatureController')->middleware('auth');
 

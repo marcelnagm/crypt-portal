@@ -9,13 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
 use App\Models\Profile;
-
 use App\Models\Configuration;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
@@ -65,33 +63,48 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    
-    
-    public function profile(){
-    return Profile::find($this->profile_id);
+
+    public function profile() {
+        return Profile::find($this->profile_id);
     }
-    
-    public function configuration(){
-    return Configuration::where('user_id', $this->id)
-                    ->get()[0];
+
+    public function configuration() {
+        return Configuration::where('user_id', $this->id)
+                        ->get()[0];
     }
-    
-    public function signatures(){
-          return UserSignature::where('user_id',$this->id)->get();
+
+    public function signatures() {
+        return UserSignature::where('user_id', $this->id)->get();
     }
-    
-    public function isAdmin(){
+
+    public function isAdmin() {
         return $this->profile()->name == "admin";
     }
-    
-    public function isTrader(){
-        
+
+    public function isTrader() {
+
         return $this->profile()->name == "trader";
     }
-    
-    public function isUser(){
+
+    public function isUser() {
         return $this->profile()->name == "user";
     }
-    
-    
+
+    public function balance() {
+        $conf =$this->configuration();
+        $exchange = new \ccxt\binance(array(
+            'apiKey' => $conf->api_key, // replace with your keys
+            'secret' => $conf->api_secret,
+//    'verbose' => true,
+            'enableRateLimit' => true,
+            'timeout' => 30000,
+        ));
+//$prices = $exchange->fetchTicker ($pairs);
+        $balance = $exchange->fetchBalance();
+           
+//     var_dump($balance['free'][$pair->getMainCoin()]);
+//        dd($balance);
+        return $balance;
+    }
+
 }

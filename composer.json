@@ -16,7 +16,8 @@
         "laravel/jetstream": "^1.6",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.0"
+        "livewire/livewire": "^2.0",
+         "ccxt/ccxt": "^1.38"
     },
     "require-dev": {
         "appzcoder/crud-generator": "^3.2",
@@ -25,7 +26,8 @@
         "laravel/sail": "^0.0.5",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+         "ccxt/ccxt": "^1.38"
     },
     "config": {
         "optimize-autoloader": true,

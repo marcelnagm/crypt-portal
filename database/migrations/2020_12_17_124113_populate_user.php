@@ -80,20 +80,29 @@ class PopulateUser extends Migration
           DB::table('configuration')->insert([
             'user_id' => 2,
         ]);
+          
+          $apikey = 'K6MvkXf7HirQP2ckr9av0YRK1pPYdztNzrKYGMSKR38vEIunxVu4fT7cvPUjgLjG';
+$apisecret = 'obvTikunaAIV8e1cUUxshkwlqYTWMrC7DEpkAPCzkxgZr5qKmrzYvsg6IjF84hou';    
           DB::table('configuration')->insert([
             'user_id' => 3,
             'balance_operation' => 0.5  ,
+            'api_key' => $apikey  ,
+            'api_secret' => $apisecret  ,
               'bot_active' => 1,
               'exchange_id' => 1,
               'exchange_id' => 1,
               'stop_loss' => 1,
         ]);
-          DB::table('configuration')->insert([
+           DB::table('configuration')->insert([
             'user_id' => 4,
-            'balance_operation' => 0.4
+            'balance_operation' => 0.6  ,
+            'api_key' => $apikey  ,
+            'api_secret' => $apisecret  ,
+              'bot_active' => 1,
+              'exchange_id' => 1,
+              'exchange_id' => 1,
+              'stop_loss' => 1,
         ]);
-          
-          
     }
 
     /**

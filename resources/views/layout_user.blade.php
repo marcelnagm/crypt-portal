@@ -357,10 +357,15 @@
                         </div>
                         <div class="d-flex align-items-end flex-wrap my-auto right-content breadcrumb-right">
                             <button type="button" class="btn btn-warning mr-3 mt-2 mt-xl-0">
-                                <i class="cf cf-btc"></i> 0.0053342
+                                <i class="cf cf-btc"></i> 
+                                 @if(Session::has('balance'))
+                                        {{ Session::get('balance')['BTC'] }}
+                                @endif
                             </button>
                             <button type="button" class="btn btn-primary mr-3 mt-2 mt-xl-0">
-                                <i class="cf cf-tusd"></i> $ 155.00
+                                <i class="cf cf-tusd"></i>   $                                @if(Session::has('balance'))
+                                        {{ Session::get('balance')['USDT'] }}
+                                @endif
                             </button>
                         </div>
                     </div>
