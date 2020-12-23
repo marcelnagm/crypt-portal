@@ -1,6 +1,11 @@
 <div class="form-group {{ $errors->has('exchange_id') ? 'has-error' : ''}}">
     <label for="exchange_id" class="control-label">{{ 'Exchange Id' }}</label>
-    <input class="form-control" name="exchange_id" type="number" id="exchange_id" value="{{ isset($configuration->exchange_id) ? $configuration->exchange_id : ''}}" >
+      @include('partials.select', 
+    array(
+    'field' => 'exchange_id',
+    'items' => $items,
+    'selected' => isset($configuration->exchange_id) ? $configuration->exchange_id : ''
+    ))
     {!! $errors->first('exchange_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('api_key') ? 'has-error' : ''}}">
@@ -30,12 +35,19 @@
 </div>
 <div class="form-group {{ $errors->has('target_profile') ? 'has-error' : ''}}">
     <label for="target_profile" class="control-label">{{ 'Target Profile' }}</label>
-    <input class="form-control" name="target_profile" type="text" id="target_profile" value="{{ isset($configuration->target_profile) ? $configuration->target_profile : ''}}" >
+      @include('partials.select', 
+    array(
+    'field' => 'target_profile',
+    'items' => $items2,
+    'selected' => isset($configuration->target_profile) ? $configuration->target_profile : ''
+    ))
+    {!! $errors->first('exchange_id', '<p class="help-block">:message</p>') !!}
+    
     {!! $errors->first('target_profile', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('stop_loss') ? 'has-error' : ''}}">
     <label for="stop_loss" class="control-label">{{ 'Stop Loss' }}</label>
-    <input class="form-control" name="stop_loss" type="number" id="stop_loss" value="{{ isset($configuration->stop_loss) ? $configuration->stop_loss : ''}}" >
+    <input class="form-control" name="stop_loss" type="string" id="stop_loss" value="{{ isset($configuration->stop_loss) ? $configuration->stop_loss : ''}}" >
     {!! $errors->first('stop_loss', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('telegram_active') ? 'has-error' : ''}}">

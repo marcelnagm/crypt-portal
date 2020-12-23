@@ -18,12 +18,15 @@ class ConfigurationController extends Controller
      */
     public function index(Request $request)
     {
+       
+        $items = \App\Models\Exchange::all();
+        $items2 = \App\Models\InvestProfile::all();
        $user = Auth::user();
             $configuration = Configuration::where('user_id', '=', auth()->user()->id)->get()[0];
                 
 //        $configuration = Configuration::findOrFail($id);
 
-        return view('admin.configuration.edit', compact('configuration'));
+        return view('admin.configuration.edit', compact('configuration','items','items2'));
     }
 
     /**
