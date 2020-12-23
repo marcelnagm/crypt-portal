@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\MultipleTargets;
+use App\Models\SingleTarget;
 use App\Models\Pair;
 
 class TargetController extends Controller
@@ -16,9 +17,15 @@ class TargetController extends Controller
       //
      public function index(Request $request)
     {
+          $perPage = 25;
           $user = Auth::user();
-        $signal = \App\Models\MultipleTargets::where('user_id',$user->id)->get();
-        return view('user.signal.index', compact('signal'));
+        $signal = MultipleTargets::where('user_id',$user->id)
+                ->latest()->paginate($perPage);
+        $single = SingleTarget::where('user_id',$user->id)
+                ->latest()->paginate($perPage);
+        $signal->merge($single);
+                
+        return view('user.signal.index', compact('signal','single'));
     }
     
      public function create() {
@@ -30,15 +37,22 @@ class TargetController extends Controller
      public function store(Request $request) {
 
         $requestData = $request->all();
-        $requestData['target_1'] = $requestData['entry_value']*(1+($requestData['target_1_p']/100));
-        $requestData['target_2'] = $requestData['entry_value']*(1+($requestData['target_2_p']/100));
-        $requestData['target_3'] = $requestData['entry_value']*(1+($requestData['target_3_p']/100));
+       
         $requestData['stop'] = $requestData['entry_value']*(1-($requestData['stop_p']/100));
         $requestData['stop_up'] = (($request['stop_up']/100));
         $requestData['user_id'] =   $request->user()->id;
         $requestData['balance'] =   $request->user()->configuration()->balance_operation;
+        
+        if(isset($requestData['target_2_p'])){ 
+        $requestData['target_1'] = $requestData['entry_value']*(1+($requestData['target_1_p']/100));
+        $requestData['target_2'] = $requestData['entry_value']*(1+($requestData['target_2_p']/100));
+        $requestData['target_3'] = $requestData['entry_value']*(1+($requestData['target_3_p']/100));
         MultipleTargets::create($requestData);
-
+       }else{
+       $requestData['target'] = $requestData['entry_value']*(1+($requestData['target_1_p']/100));
+       $requestData['target_p'] = $requestData['target_1_p'];
+        SingleTarget::create($requestData);
+       }
         return redirect('/user/op')->with('flash_message', 'Signal added!');
     }
 

@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Pair as Pairs;
 
-class SingleTarget extends Model
-{
+class SingleTarget extends Model {
+
     use HasFactory;
-    
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,10 +20,10 @@ class SingleTarget extends Model
         'user_id', 'pair_id', 'order_id_generated', 'balance',
         'entry_value',
         'payed',
-        'target', 
-        'target_p', 
-        'stop', 
-        'stop_p', 
+        'target',
+        'target_p',
+        'stop',
+        'stop_p',
         'stop_up'
         , 'finished'
     ];
@@ -63,4 +62,15 @@ class SingleTarget extends Model
         return Orders::find($this->order_id_generated);
     }
 
+    public function getStatusName() {
+        if (isset($this->payed) && $this->finished == 1)
+            return 'Finalizado';
+        if (isset($this->payed) && $this->finished == 0) {
+            return 'Para Venda - não alcançado';
+        }
+        if (!isset($this->payed) && $this->finished == 0) {
+
+            return 'Para compra';
+        }
+    }
 }

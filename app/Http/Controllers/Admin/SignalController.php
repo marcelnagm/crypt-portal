@@ -78,6 +78,7 @@ class SignalController extends Controller {
             ->where('configuration.stop_loss','<>',null)
                         ->get();
 //        dd($users);
+                $j =0;
         foreach ($signals as $sign) {
             foreach ($users as $user) {
                 if (isset($sign->target_2)) {
@@ -100,14 +101,16 @@ class SignalController extends Controller {
                 $mult->stop_up = $sign->stop_up;
                 $mult->user_id = $user->id;
                 $mult->balance = $user->configuration()->balance_operation;
-                $mult->save();                
+                $mult->save();       
+                $j++;
             }
             $sign->status = 1;
             $sign->sended_at = DB::raw('now()');
             $sign->save();
         }
-
-        return redirect('/admin/signal')->with('flash_message', 'Signal added!');
+        $flash = 'Foram encontrados Usuarios Hab:'.count($user).'- Targets Gerados: '.$j;
+        Session::flash('flash_message', 'This is a message!'); 
+        return redirect('/admin/signal')->with('flash_message', 'targets gerados: '.$flash);
     }
 
     public function store(Request $request) {

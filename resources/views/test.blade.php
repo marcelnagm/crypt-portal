@@ -1,4 +1,10 @@
-<h1>{{$now}}</h1>
-
-<h2>Message: {{$message}}</h2>
-<h2>Id: {{$id}}</h2>
+@if(Auth::user()->isAdmin())
+<head>
+  <meta http-equiv="refresh" content="0; URL=/admin/dashboard" />
+</head>
+@endif
+@if(Auth::user()->isUser())
+<head>
+  <meta http-equiv="refresh" content="0; URL=/user/dashboard" />
+</head>
+@endif

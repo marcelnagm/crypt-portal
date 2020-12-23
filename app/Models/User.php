@@ -89,7 +89,7 @@ class User extends Authenticatable
         return $this->profile()->name == "trader";
     }
     
-    public function isSignal(){
+    public function isUser(){
         return $this->profile()->name == "user";
     }
     

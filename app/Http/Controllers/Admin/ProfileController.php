@@ -37,7 +37,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('admin.user_user_profile.create');
+        return view('admin.user_profile.create');
     }
 
     /**
