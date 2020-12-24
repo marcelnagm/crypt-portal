@@ -108,7 +108,7 @@ class SignalController extends Controller {
             $sign->sended_at = DB::raw('now()');
             $sign->save();
         }
-        $flash = 'Foram encontrados Usuarios Hab:'.count($user).'- Targets Gerados: '.$j;
+        $flash = 'Foram Targets Gerados: '.$j;
         Session::flash('flash_message', 'This is a message!'); 
         return redirect('/admin/signal')->with('flash_message', 'targets gerados: '.$flash);
     }
