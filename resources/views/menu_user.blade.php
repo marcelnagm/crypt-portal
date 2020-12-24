@@ -11,7 +11,7 @@
 				<ul class="side-menu circle">
 					<li><h3 class="">Principal</h3></li>
 					<li class="slide">
-						<a class="side-menu__item" href="user.html"><i class="side-menu__icon ti-desktop"></i><span class="side-menu__label">Início</span></a>
+						<a class="side-menu__item" href="{{url('/')}}"><i class="side-menu__icon ti-desktop"></i><span class="side-menu__label">Início</span></a>
 					</li>
 					<li><h3>Gestão</h3></li>
 					<li class="slide">

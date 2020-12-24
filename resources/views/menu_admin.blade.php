@@ -11,7 +11,7 @@
 				<ul class="side-menu circle">
 					<li><h3 class="">Principal</h3></li>
 					<li class="slide">
-						<a class="side-menu__item" href="{{url('/admin/')}}"><i class="side-menu__icon ti-desktop"></i><span class="side-menu__label">Início</span></a>
+						<a class="side-menu__item" href="{{url('/')}}"><i class="side-menu__icon ti-desktop"></i><span class="side-menu__label">Início</span></a>
 					</li>
 					<li><h3>Gestão</h3></li>
 					<li class="slide">
@@ -32,7 +32,7 @@
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon ti-write menu-icons"></i><span class="side-menu__label">Estatísticas</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item" href="mail.html">Usuários</a></li>
+							<li><a class="slide-item" href="">Usuários</a></li>
 							<li><a class="slide-item" href="{{url('/admin/statistics')}}">Sinais</a></li>
 						</ul>
 					</li>

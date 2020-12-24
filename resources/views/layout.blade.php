@@ -155,7 +155,7 @@
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
                                         <div class="main-header-profile header-img">
                                             <div class="main-img-user"><img alt="" src="{{asset('/img/faces/5.jpg')}}"></div>
-                                            <h6>{{Auth::user()->name}}</h6><span>Membro VIP</span>
+                                            <h6>{{Auth::user()->name}}</h6><span>Admin / Manager</span>
                                         </div>
                                         <a class="dropdown-item" href="{{url('user/profile')}}"><i class="far fa-user"></i> Meu Dados</a>
                                         <a class="dropdown-item" href="{{url('logout')}}"><i class="fas fa-sign-out-alt"></i> Sair</a>
@@ -175,88 +175,6 @@
                                 <div class="d-md-flex">
                                     <div class="nav-item full-screen fullscreen-button">
                                         <a class="new nav-link full-screen-link" href="#"><i class="ti-fullscreen"></i></span></a>
-                                    </div>
-                                </div>
-                                <div class="dropdown  nav-item main-header-message header-contact">
-                                    <a class="new nav-link" href="#" ><i class="ti-email"></i><span class=" pulse-danger"></span></a>
-                                    <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
-                                        <div class="main-dropdown-header d-sm-none">
-                                            <a class="main-header-arrow" href=""><i class="icon ion-md-arrow-back"></i></a>
-                                        </div>
-                                        <div class="menu-header-content text-left d-flex">
-                                            <div class="">
-                                                <h6 class="menu-header-title text-white mb-0">5 new Messages</h6>
-                                            </div>
-                                            <div class="my-auto ml-auto">
-                                                <span class="badge badge-pill badge-warning float-right">Mark All Read</span>
-                                            </div>
-                                        </div>
-                                        <div class="main-message-list text-scroll">
-                                            <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="  drop-img  cover-image  " data-image-src="{{ asset('/img/faces/3.jpg') }}">
-                                                    <span class="avatar-status bg-teal"></span>
-                                                </div>
-
-                                                <div class="wd-90p">
-                                                    <div class="d-flex">
-                                                        <h5 class="mb-1 name">Paul Molive</h5>
-                                                        <p class="time mb-0 text-right ml-auto float-right">10 min ago</p>
-                                                    </div>
-                                                    <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="drop-img cover-image" data-image-src="{{ asset('/img/faces/2.jpg') }}">
-                                                    <span class="avatar-status bg-teal"></span>
-                                                </div>
-                                                <div class="wd-90p">
-                                                    <div class="d-flex">
-                                                        <h5 class="mb-1 name">Sahar Dary</h5>
-                                                        <p class="time mb-0 text-right ml-auto float-right">13 min ago</p>
-                                                    </div>
-                                                    <p class="mb-0 desc">All set ! Now, time to get to you now......</p>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="drop-img cover-image" data-image-src="{{ asset('/img/faces/9.jpg') }}">
-                                                    <span class="avatar-status bg-teal"></span>
-                                                </div>
-                                                <div class="wd-90p">
-                                                    <div class="d-flex">
-                                                        <h5 class="mb-1 name">Khadija Mehr</h5>
-                                                        <p class="time mb-0 text-right ml-auto float-right">20 min ago</p>
-                                                    </div>
-                                                    <p class="mb-0 desc">Are you ready to pickup your Delivery...</p>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="drop-img cover-image" data-image-src="{{ asset('/img/faces/12.jpg') }}">
-                                                    <span class="avatar-status bg-danger"></span>
-                                                </div>
-                                                <div class="wd-90p">
-                                                    <div class="d-flex">
-                                                        <h5 class="mb-1 name">Barney Cull</h5>
-                                                        <p class="time mb-0 text-right ml-auto float-right">30 min ago</p>
-                                                    </div>
-                                                    <p class="mb-0 desc">Here are some products ...</p>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="p-3 d-flex border-bottom">
-                                                <div class="drop-img cover-image" data-image-src="{{ asset('/img/faces/5.jpg') }}">
-                                                    <span class="avatar-status bg-teal"></span>
-                                                </div>
-                                                <div class="wd-90p">
-                                                    <div class="d-flex">
-                                                        <h5 class="mb-1 name">Petey Cruiser</h5>
-                                                        <p class="time mb-0 text-right ml-auto float-right">35 min ago</p>
-                                                    </div>
-                                                    <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="text-center dropdown-footer">
-                                            <a href="text-center">VIEW ALL</a>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="dropdown nav-item main-header-notification">
@@ -330,7 +248,7 @@
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
                                         <div class="main-header-profile header-img">
                                             <div class="main-img-user"><img alt="" src="{{ asset('/img/faces/5.jpg') }}"></div>
-                                            <h6>{{Auth::user()->name}}</h6><span>Premium Member</span>
+                                            <h6>{{Auth::user()->name}}</h6><span>Admin / Manager</span>
                                         </div>
                                         <a class="dropdown-item" href=""><i class="far fa-user"></i> Meus Dados</a>
                                         <a class="dropdown-item" href="w"><i class="fas fa-sign-out-alt"></i> Sair</a>
@@ -355,12 +273,10 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-end flex-wrap my-auto right-content breadcrumb-right">
-                            <button type="button" class="btn btn-warning mr-3 mt-2 mt-xl-0">
-                                <i class="cf cf-btc"></i> 0.0053342
-                            </button>
                             <button type="button" class="btn btn-primary mr-3 mt-2 mt-xl-0">
-                                <i class="cf cf-tusd"></i> $ 155.00
+                                <i class="ti-user"></i> 123 Online
                             </button>
+
                         </div>
                     </div>
                     <!-- /breadcrumb -->
