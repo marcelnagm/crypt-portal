@@ -9,7 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\QueryException;
 use App\Models\Profile;
+use App\Models\Pair;
 use App\Models\Configuration;
 
 class User extends Authenticatable {
@@ -90,7 +92,37 @@ class User extends Authenticatable {
         return $this->profile()->name == "user";
     }
 
-    public function balance() {
+    public function market() {
+        $conf =$this->configuration();
+        $exchange = new \ccxt\binance(array(
+            'apiKey' => $conf->api_key, // replace with your keys
+            'secret' => $conf->api_secret,
+//    'verbose' => true,
+            'enableRateLimit' => true,
+            'timeout' => 30000,
+        ));       
+        $market= $exchange->fetchMarkets();        
+        
+        for($i=0;$i<count($market);$i++){           
+//            dd($market[$i]);
+            if($market[$i]['quote']=='USDT'){
+                try{
+                $pair = new Pair();
+                $pair->pair = $market[$i]['symbol'];
+                $pair->main_coin = $market[$i]['baseId'];
+                $pair->sec_coin = $market[$i]['quoteId'];
+                $pair->min_quantity = $market[$i]['limits']['amount']['min'];
+                $pair->save();
+                }catch(QueryException $x){
+                    
+                }
+            }
+        }
+    }
+    
+    
+    public function balance(
+            ) {
         $conf =$this->configuration();
         $exchange = new \ccxt\binance(array(
             'apiKey' => $conf->api_key, // replace with your keys

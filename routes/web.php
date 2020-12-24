@@ -60,6 +60,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::resource('signature-type', 'App\Http\Controllers\Admin\SignatureTypeController')->middleware('auth');
     Route::resource('statistics', 'App\Http\Controllers\Admin\StatisticsController')->middleware('auth');
     Route::resource('pair', 'App\Http\Controllers\Admin\PairController')->middleware('auth');
+    Route::get('pair_generate'   , 'App\Http\Controllers\Admin\PairController@retrive');
 
     Route::resource('signal', SignalController::class)->middleware('auth');
     Route::get('signals_generate/{id?}', 'App\Http\Controllers\Admin\\SignalController@generate')->middleware('auth');

@@ -12,6 +12,9 @@
                         <a href="{{ url('/admin/pair/create') }}" class="btn btn-success btn-sm" title="Add New Pair">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
+                        <a href="{{ url('/admin/pair_generate') }}" class="btn btn-success btn-sm" title="Retrive From Binance">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Retrive From Binance
+                        </a>
 
                         <form method="GET" action="{{ url('/admin/pair') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">

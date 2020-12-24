@@ -103,6 +103,16 @@ $apisecret = 'obvTikunaAIV8e1cUUxshkwlqYTWMrC7DEpkAPCzkxgZr5qKmrzYvsg6IjF84hou';
               'exchange_id' => 1,
               'stop_loss' => 1,
         ]);
+           DB::table('configuration')->insert([
+            'user_id' => 1,
+            'balance_operation' => 0.6  ,
+            'api_key' => $apikey  ,
+            'api_secret' => $apisecret  ,
+              'bot_active' => 1,
+              'exchange_id' => 1,
+              'exchange_id' => 1,
+              'stop_loss' => 1,
+        ]);
     }
 
     /**

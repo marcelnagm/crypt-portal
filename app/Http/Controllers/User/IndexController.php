@@ -18,7 +18,7 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         session(['balance' => $request->user()->balance()['free']]);
-        
+              
        return  view('layout_user');
     }
 }

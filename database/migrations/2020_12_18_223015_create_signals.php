@@ -13,14 +13,6 @@ class CreateSignals extends Migration
      */
     public function up()
     {
-        Schema::create('pairs', function (Blueprint $table) {
-            $table->id();
-            $table->string('pair',20);
-            $table->string('main_coin',20);
-            $table->string('sec_coin',20);
-            $table->float('min_quantity');            
-            $table->timestamps();
-        });
         
         Schema::create('signals', function (Blueprint $table) {
             $table->id();
@@ -43,12 +35,6 @@ class CreateSignals extends Migration
             $table->softDeletes();
         });
         
-           DB::table('pairs')->insert([
-            'pair' => 'TUSD/USDT' ,
-        'main_coin' => 'USDT',
-        'sec_coin' => 'TUSD',
-        'min_quantity'=> 10,
-        ]);  
             
         
     }

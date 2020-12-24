@@ -106,6 +106,20 @@ class PairController extends Controller
 
         return redirect('/admin/pair')->with('flash_message', 'Pair updated!');
     }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function retrive(Request $request)
+    {
+        $request->user()->market();
+        return redirect('/admin/pair')->with('flash_message', 'Getted from Binnace!');
+    }
 
     /**
      * Remove the specified resource from storage.

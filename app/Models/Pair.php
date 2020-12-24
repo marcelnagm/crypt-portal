@@ -12,7 +12,6 @@ class Pair extends Model
      * @var string
      */
     protected $table = 'pairs';
-    protected $timestamp = false;
     /**
     * The database primary key value.
     *
