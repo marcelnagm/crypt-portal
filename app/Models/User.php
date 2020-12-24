@@ -93,37 +93,35 @@ class User extends Authenticatable {
     }
 
     public function market() {
-        $conf =$this->configuration();
+        $conf = $this->configuration();
         $exchange = new \ccxt\binance(array(
             'apiKey' => $conf->api_key, // replace with your keys
             'secret' => $conf->api_secret,
 //    'verbose' => true,
             'enableRateLimit' => true,
             'timeout' => 30000,
-        ));       
-        $market= $exchange->fetchMarkets();        
-        
-        for($i=0;$i<count($market);$i++){           
+        ));
+        $market = $exchange->fetchMarkets();
+
+        for ($i = 0; $i < count($market); $i++) {
 //            dd($market[$i]);
-            if($market[$i]['quote']=='USDT'){
-                try{
-                $pair = new Pair();
-                $pair->pair = $market[$i]['symbol'];
-                $pair->main_coin = $market[$i]['baseId'];
-                $pair->sec_coin = $market[$i]['quoteId'];
-                $pair->min_quantity = $market[$i]['limits']['amount']['min'];
-                $pair->save();
-                }catch(QueryException $x){
+            if ($market[$i]['quote'] == 'USDT') {
+                try {
+                    $pair = new Pair();
+                    $pair->pair = $market[$i]['symbol'];
+                    $pair->main_coin = $market[$i]['baseId'];
+                    $pair->sec_coin = $market[$i]['quoteId'];
+                    $pair->min_quantity = $market[$i]['limits']['amount']['min'];
+                    $pair->save();
+                } catch (QueryException $x) {
                     
                 }
             }
         }
     }
-    
-    
-    public function balance(
-            ) {
-        $conf =$this->configuration();
+
+    public function balance() {
+        $conf = $this->configuration();
         $exchange = new \ccxt\binance(array(
             'apiKey' => $conf->api_key, // replace with your keys
             'secret' => $conf->api_secret,
@@ -133,10 +131,41 @@ class User extends Authenticatable {
         ));
 //$prices = $exchange->fetchTicker ($pairs);
         $balance = $exchange->fetchBalance();
-           
+
 //     var_dump($balance['free'][$pair->getMainCoin()]);
 //        dd($balance);
         return $balance;
+    }
+    
+    public function prices() {
+        $conf = $this->configuration();
+        $exchange = new \ccxt\binance(array(
+            'apiKey' => $conf->api_key, // replace with your keys
+            'secret' => $conf->api_secret,
+//    'verbose' => true,
+            'enableRateLimit' => true,
+            'timeout' => 30000,
+        ));
+        $prices = array();
+        foreach(Pair::all() as $pair){
+            $prices[] =$pair.'';
+        }
+        $data = array();
+        $pr = $exchange->fetchTickers($prices) ;
+//        dd($pr);
+        foreach($pr as $pri => $price){        
+        $data[] = array(
+          'symbol' => $price['info']['symbol'],
+          'max' => $price['high'],
+          'min' => $price['low'],
+          'compra'=> $price['info']['askPrice'],
+          'venda'=> $price['info']['bidPrice'],
+        );
+        }
+//        dd($data);
+//     var_dump($balance['free'][$pair->getMainCoin()]);
+//        dd($balance);
+        return $data;
     }
 
 }

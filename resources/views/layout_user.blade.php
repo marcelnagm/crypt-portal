@@ -376,24 +376,28 @@
                             <div class=" overflow-hidden bg-transparent card-crypto-scroll shadow-none">
                                 <div class="js-conveyor-example">
                                     <?php
-                                    $market = Auth::user()->market();
+                                    $prices = Auth::user()->prices();
                                     ?>
                                     <ul class="news-crypto">
                                         <li>
                                             <div class="crypto-card">
                                                 <div class="row">
+                                                    @foreach($prices as $price)
                                                     <div class="d-flex">
                                                         <div class="my-auto">
                                                             <img src="{{ asset('/img/crypto-currencies/round-outline/Augur.svg') }}" class="w-6 h-6 mt-0" alt="">
                                                         </div>
                                                         <div class="ml-3">
-                                                            <p class="mb-1 tx-13">REP / INR</p>
-                                                            <div class="m-0 tx-13 text-warning">$0.0215
-                                                                <span class="text-danger ml-2">
-                                                                    <i class="ion-arrow-down-c mr-1"></i>-0.78%</span>
+                                                            <p class="mb-1 tx-13">{{$price['symbol']}}</p>
+                                                            <div class="m-0 tx-13 text-warning">
+                                                                min: {{$price['min']}}
+                                                                max: {{$price['min']}}
+                                                                compra: {{$price['min']}}
+                                                                venda: {{$price['min']}}
                                                             </div>
-                                                        </div>
+                                                        </div>                                                       
                                                     </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </li>

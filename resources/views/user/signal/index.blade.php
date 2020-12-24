@@ -31,7 +31,7 @@
                         <tbody>
                             @foreach($signal as $item)
                             <tr>
-                                <td>{{ $item->getPair() }}</td>
+                                <td>{{ $item->getPair()->pair }}</td>
                                 <td>{{ $item->entry_value }}</td>
                                 <td>{{ $item->target_1 }} / {{ $item->target_1_p }}%</td>
                                 <td>{{ $item->target_2 }} / {{ $item->target_2_p }}%</td>
@@ -49,9 +49,11 @@
                                     </form>
                                 </td>
                             </tr>
+                             @endforeach
                         </tbody>
-                    </table>
-                    @endforeach
+                    </table>                   
+                </div>
+                <div class="table-responsive">
                     <h2>Targets Moveis</h2>
                     <table id="example-1" class="table ">
                         <thead>
@@ -69,7 +71,7 @@
                         </thead>
                         @foreach($single as $item)
                         <tr>
-                            <td>{{ $item->getPair() }}</td>
+                            <td>{{ $item->getPair()->pair }}</td>
                             <td>{{ $item->entry_value }}</td>
                             <td>{{ $item->target }} / {{ $item->target_p }}%</td>
                             <td>{{ $item->target_2 }} / {{ $item->target_2_p }}%</td>

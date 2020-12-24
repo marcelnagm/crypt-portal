@@ -23,7 +23,7 @@ class TargetController extends Controller
                 ->latest()->paginate($perPage);
         $single = SingleTarget::where('user_id',$user->id)
                 ->latest()->paginate($perPage);
-        $signal->merge($single);
+        
                 
         return view('user.signal.index', compact('signal','single'));
     }
