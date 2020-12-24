@@ -25,12 +25,19 @@ class CreatePairs extends Migration
             $table->unique('pair');
         });
         
-//           DB::table('pairs')->insert([
-//            'pair' => 'TUSD/USDT' ,
-//        'main_coin' => 'USDT',
-//        'sec_coin' => 'TUSD',
-//        'min_quantity'=> 10,
-//        ]);  
+           DB::table('pairs')->insert([
+            'pair' => 'TUSD/USDT' ,
+        'main_coin' => 'USDT',
+        'sec_coin' => 'TUSD',
+        'min_quantity'=> 10,
+        ]);
+           
+           DB::table('pairs')->insert([
+            'pair' => 'BTC/USDT' ,
+        'main_coin' => 'BTC',
+        'sec_coin' => 'USDT',
+        'min_quantity'=> 10,
+        ]);  
     }
 
     /**

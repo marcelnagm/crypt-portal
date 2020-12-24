@@ -168,4 +168,9 @@ class User extends Authenticatable {
         return $data;
     }
 
+    public function notification(){
+       return Notification::where('user_id',$this->id)->latest()->get();
+    }
+    
+    
 }

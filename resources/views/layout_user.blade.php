@@ -96,6 +96,9 @@
                                 <div class="dropdown nav-item main-header-notification">
                                     <a class="new nav-link " href="#"><i class="ti-bell animated bell-animations"></i><span class=" pulse"></span></a>
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
+                                        <?php 
+                                        $notications = Auth::user()->notification();
+                                                ?>
                                         <div class="menu-header-content text-left d-flex">
                                             <div class="">
                                                 <h6 class="menu-header-title text-white mb-0">7 novas notificações</h6>
@@ -105,42 +108,32 @@
                                             </div>
                                         </div>
                                         <div class="main-notification-list Notification-scroll">
-                                            <a class="d-flex p-3 border-bottom">
-                                                <div class="notifyimg bg-success-transparent">
-                                                    <i class="la la-shopping-basket text-success"></i>
+                                            @foreach($notications as $not)
+                                            <a class="d-flex p-3 border-bottom">                                                
+                                                @if($not->type_id == 1)
+                                                <div class="notifyimg bg-success-transparent">                                                    
+                                                    <i class="la la-shopping-basket text-success"></i>                                                    
                                                 </div>
-                                                <div class="ml-3">
-                                                    <h5 class="notification-label mb-1">New Order Received</h5>
-                                                    <div class="notification-subtext">1 hour ago</div>
-                                                </div>
-                                                <div class="ml-auto" >
-                                                    <i class="las la-angle-right text-right text-muted"></i>
-                                                </div>
-                                            </a>
-                                            <a class="d-flex p-3 border-bottom">
+                                                @endif
+                                                @if($not->type_id == 2)                                                
                                                 <div class="notifyimg bg-danger-transparent">
                                                     <i class="la la-user-check text-danger"></i>
                                                 </div>
-                                                <div class="ml-3">
-                                                    <h5 class="notification-label mb-1">22 verified registrations</h5>
-                                                    <div class="notification-subtext">2 hour ago</div>
-                                                </div>
-                                                <div class="ml-auto" >
-                                                    <i class="las la-angle-right text-right text-muted"></i>
-                                                </div>
-                                            </a>
-                                            <a class="d-flex p-3 border-bottom">
-                                                <div class="notifyimg bg-primary-transparent">
+                                                @endif
+                                                @if($not->type_id == 3)                                                
+                                                 <div class="notifyimg bg-primary-transparent">
                                                     <i class="la la-check-circle text-primary"></i>
                                                 </div>
+                                                @endif
                                                 <div class="ml-3">
-                                                    <h5 class="notification-label mb-1">Project has been approved</h5>
-                                                    <div class="notification-subtext">4 hour ago</div>
+                                                    <h5 class="notification-label mb-1">{{$not->title}}</h5>
+                                                    <div class="notification-subtext">{{$not->message}} - 1 hour ago</div>
                                                 </div>
                                                 <div class="ml-auto" >
                                                     <i class="las la-angle-right text-right text-muted"></i>
                                                 </div>
                                             </a>
+                                            @endforeach
                                         </div>
                                         <div class="dropdown-footer">
                                             <a href="">VER TODAS</a>
