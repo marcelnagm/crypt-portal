@@ -109,7 +109,7 @@ class SignalController extends Controller {
             $sign->save();
         }
         $flash = 'Foram Targets Gerados: '.$j;
-        Session::flash('flash_message', 'This is a message!'); 
+        //Session::flash('flash_message', 'This is a message!'); 
         return redirect('/admin/signal')->with('flash_message', 'targets gerados: '.$flash);
     }
 

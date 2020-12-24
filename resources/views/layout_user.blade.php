@@ -324,7 +324,7 @@
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
                                         <div class="main-header-profile header-img">
                                             <div class="main-img-user"><img alt="" src="{{ asset('/img/faces/5.jpg') }}"></div>
-                                            <h6>{{Auth::user()->name}}</h6><span>Premium Member</span>
+                                            <h6>{{Auth::user()->name}}</h6><span>Membro Vip</span>
                                         </div>
                                         <a class="dropdown-item" href=""><i class="far fa-user"></i> Meus Dados</a>
                                         <a class="dropdown-item" href="page-signin.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
@@ -372,28 +372,27 @@
                                     $prices = Auth::user()->prices();
                                     ?>
                                     <ul class="news-crypto">
+                                        @foreach($prices as $price)
                                         <li>
                                             <div class="crypto-card">
                                                 <div class="row">
-                                                    @foreach($prices as $price)
+                                                    
                                                     <div class="d-flex">
                                                         <div class="my-auto">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/Augur.svg') }}" class="w-6 h-6 mt-0" alt="">
+                                                            <img src="{{ asset('/img/crypto-currencies/Tether.png') }}" class="w-6 h-6 mt-0" alt="">
                                                         </div>
                                                         <div class="ml-3">
                                                             <p class="mb-1 tx-13">{{$price['symbol']}}</p>
                                                             <div class="m-0 tx-13 text-warning">
-                                                                min: {{$price['min']}}
-                                                                max: {{$price['min']}}
-                                                                compra: {{$price['min']}}
-                                                                venda: {{$price['min']}}
+                                                                $ {{$price['min']}}
                                                             </div>
                                                         </div>                                                       
                                                     </div>
-                                                    @endforeach
+                                                    
                                                 </div>
                                             </div>
                                         </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
