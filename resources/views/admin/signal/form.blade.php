@@ -1,7 +1,7 @@
 <div class="form-group {{ $errors->has('pair_id') ? 'has-error' : ''}}">
     <label for="pair_id" class="control-label">{{ 'Pares' }}</label>
     
-      @include('partials.select', 
+    @include('partials.select', 
     array(
     'field' => 'pair_id',
     'items' => $items,

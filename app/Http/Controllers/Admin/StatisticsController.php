@@ -13,7 +13,6 @@ class StatisticsController extends Controller
     {
      
             $signal = Signal::where('sended_at','<>','NULL')->get();
-     echo count($signal);
         return view('admin.statistics.index', compact('signal'));
     }
     
