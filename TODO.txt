@@ -12,3 +12,4 @@
 - Para o admin, Informar ao enviar o sinal, a quantidade de usuários que receberam o sinal e a quantidade que não receberam.
 - Para o user que não preencheu todas as infos, informar que os sinais não foram recebidos pois faltam campos a serem preenchidos.
 - Ao reenviar o mesmo sinal, evitar duplicação para quem já recebeu.
+- Na tela de sinais do user, mostrar somente a coluna ALVO com a respectiva configuração de alvo que o usuário definiu em configuração.

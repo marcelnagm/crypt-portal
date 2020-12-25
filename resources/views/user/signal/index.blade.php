@@ -19,12 +19,11 @@
                             <tr>
                                 <th class="border-bottom-0">Par</th>
                                 <th class="border-bottom-0">Preço Inicial</th>
-                                <th class="border-bottom-0">Alvo 1</th>
-                                <th class="border-bottom-0">Alvo 2</th>
-                                <th class="border-bottom-0">Alvo 3</th>
+                                <th class="border-bottom-0">Alvo</th>
                                 <th class="border-bottom-0">Stop Loss</th>
                                 <th class="border-bottom-0">Stop Up$</th>
                                 <th class="border-bottom-0">Status</th>
+                                <th class="border-bottom-0">P/L</th>
                                 <th class="border-bottom-0">Ações</th>
                             </tr>
                         </thead>
@@ -34,11 +33,10 @@
                                 <td>{{ $item->getPair()->pair }}</td>
                                 <td>{{ $item->entry_value }}</td>
                                 <td>{{ $item->target_1 }} / {{ $item->target_1_p }}%</td>
-                                <td>{{ $item->target_2 }} / {{ $item->target_2_p }}%</td>
-                                <td>{{ $item->target_3 }} / {{ $item->target_3_p }}%</td>
                                 <td >{{ $item->stop }}/ {{ $item->stop_p }}%</td>                              
-                                <td >{{ $item->stop_up*100 }}%</td>                              
+                                <td >{{ $item->stop_up }}%</td>                              
                                 <td >{{ $item->getStatusName() }}</td>
+                                <td >Mostrar o prejuizo/lucro atual</td>
                                 <td>
 
                                     <a href="{{ url('/user/op/' . $item->id . '/edit') }}" title="Edit user"><button class="btn btn-primary btn-sm"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></button></a>
@@ -53,7 +51,7 @@
                         </tbody>
                     </table>                   
                 </div>
-                <div class="table-responsive">
+                <!--<div class="table-responsive">
                     <h2>Targets Moveis</h2>
                     <table id="example-1" class="table ">
                         <thead>
@@ -92,7 +90,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
