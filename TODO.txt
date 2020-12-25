@@ -1,8 +1,14 @@
 - Captcha/Gmail Auth no Login.
 - Tela iniciais admin, usuário, guest
+-- Na tela inicial do admin, no botão "123 Online" colocar pra pegar a quantidade de sessões abertas (usuários online) na plataforma.
 - Entry_value opcional. Se preenchido, fica posicionado. Se não, compra a mercado com o preço atual.
 - Editar sinais (Admin), produzindo erro - ok
 - Botão fechar ordem (forçar venda) para o usuário ao lado dos seus sinais (ao invés de remover sinal). - ok
 - Em sinais, mostrar a variação de lucro/prejuízo do sinal em andamento (se for feito em jquery melhor ainda) pra ficar atualizando.
 - Criar o Gerar Sinais IA com o arquivo enviado, em Admin - Sinais. Colocar campos de % target pra preencher, antes de gerar.
 - Telegram
+- Em notificações, no ícone do sino mostrar a bolinha verde piscando apenas quando houver notificação não lida.
+- Ordenar por ordem alfabética o select dos pares.
+- Para o admin, Informar ao enviar o sinal, a quantidade de usuários que receberam o sinal e a quantidade que não receberam.
+- Para o user que não preencheu todas as infos, informar que os sinais não foram recebidos pois faltam campos a serem preenchidos.
+- Ao reenviar o mesmo sinal, evitar duplicação para quem já recebeu.
