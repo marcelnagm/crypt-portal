@@ -79,6 +79,19 @@ class User extends Authenticatable {
         return UserSignature::where('user_id', $this->id)->get();
     }
 
+    
+    public function notification(){
+       return Notification::where('user_id',$this->id)->latest()->get();
+    }
+    
+      
+    public function notification_unread(){
+       return Notification::where('user_id',$this->id)->
+               where('readed',0)
+               ->count();;
+    }
+    
+    
     public function isAdmin() {
         return $this->profile()->name == "admin";
     }
@@ -184,9 +197,5 @@ class User extends Authenticatable {
         return $data;
     }
 
-    public function notification(){
-       return Notification::where('user_id',$this->id)->latest()->get();
-    }
-    
     
 }
