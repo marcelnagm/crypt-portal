@@ -63,10 +63,29 @@ class TargetController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id) {
-        MultipleTargets::destroy($id);
-
-        return redirect('/user/op')->with('flash_message', 'Signal deleted!');
+    public function destroy($id) {       
+        if(isset($target->order_ir_generated)){
+             $target = MultipleTargets::find($id);
+          $val = $target->getOrder()->amount;
+        $exchange = $user = Auth::user()->exchange();
+        $order_bin = $exchange->createMarketOrder($target->getPair() . '', 'sell', $val, $ask);
+        $order = new Orders();
+        $order->user_id = 1;
+        $order->pair_id = $this->pair_id;
+//                $order->order_id = 4545;
+        $order->order_id = $order_bin["info"]["orderId"];
+        $order->type_of = 'sell';
+//                $order->amount = 95215;
+        $order->amount = $order_bin["info"]["executedQty"];
+        $order->payed = $ask;
+        $order->save();
+        $target->finished = 1;
+        $target->save();
+        return redirect('/user/op')->with('flash_message', 'Foi efetuada uma venda forçada');
+        }else{
+             $target = MultipleTargets::destroy($id);
+             return redirect('/user/op')->with('flash_message', 'Sinal excluido');
+        }
     }
  
      public function edit($id) {
