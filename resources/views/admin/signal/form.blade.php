@@ -1,11 +1,13 @@
 <div class="form-group {{ $errors->has('pair_id') ? 'has-error' : ''}}">
     <label for="pair_id" class="control-label">{{ 'Pares' }}</label>
     
-    @include('partials.select', 
+       @include('partials.ajaxCombo', 
     array(
     'field' => 'pair_id',
     'items' => $items,
-    'selected' => isset($signal->pair_id) ? $signal->pair_id : ''
+    'selected' => isset($signal->pair_id) ? $signal->pair_id : '',
+    'url' => '/user/price/',
+    'destination' => 'entry_value'
     ))
     {!! $errors->first('pair_id', '<p class="help-block">:message</p>') !!}
 </div>

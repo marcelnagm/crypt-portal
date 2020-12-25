@@ -1,6 +1,7 @@
 
 {{$selected}}
 <select id="{{$field}}" class="form-control select2" name="{{$field}}">
+<select class="form-control select2" name="{{$field}}" id="{{$field}}">
     
     <option label="Escolha uma opção">
     </option>

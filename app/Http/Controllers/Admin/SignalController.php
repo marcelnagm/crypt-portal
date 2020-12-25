@@ -55,8 +55,9 @@ class SignalController extends Controller {
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function getPrice(Request $request,$id) {
-     return $request->user()->price($id)['compra'];    
+    public function getPrice(Request $request) {
+         $requestData = $request->all();
+     return $request->user()->price($requestData['id'])['compra'];    
     }
     
     /**

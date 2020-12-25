@@ -1,7 +1,7 @@
 - Captcha/Gmail Auth no Login.
 - Tela iniciais admin, usuário, guest
 -- Na tela inicial do admin, no botão "123 Online" colocar pra pegar a quantidade de sessões abertas (usuários online) na plataforma.
-- Entry_value opcional. Se preenchido, fica posicionado. Se não, compra a mercado com o preço atual.
+- Entry_value opcional. Se preenchido, fica posicionado. Se não, compra a mercado com o preço atual. - ok
 - Editar sinais (Admin), produzindo erro - ok
 - Botão fechar ordem (forçar venda) para o usuário ao lado dos seus sinais (ao invés de remover sinal). - ok
 - Em sinais, mostrar a variação de lucro/prejuízo do sinal em andamento (se for feito em jquery melhor ainda) pra ficar atualizando.
