@@ -93,5 +93,13 @@ class MultipleTargets extends Model
          else
          return $val;
      }
+     
+     
+    public function getPercent($buy, $current)
+    {
+        if ($buy == 0 || $current == 0)
+            return null;
+        return (($current - $buy) * 100) / $current;
+    }
     
 }

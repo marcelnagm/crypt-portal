@@ -45,7 +45,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('user')->group(function 
     Route::resource('signal', SignalController::class)->middleware('auth');
 
    Route::resource('op', 'App\Http\Controllers\User\TargetController');
-
+   Route::get('price/{?id}'   , 'App\Http\Controllers\Admin\SignalController@getPrice');
+   
     Route::resource('configuration', 'App\Http\Controllers\User\ConfigurationController');
     
     Route::get('/dashboard', 'App\Http\Controllers\User\IndexController@index');

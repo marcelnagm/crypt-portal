@@ -55,6 +55,17 @@ class SignalController extends Controller {
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
+    public function getPrice(Request $request,$id) {
+     return $request->user()->price($id)['compra'];    
+    }
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function generate(Request $request) {
 
         if (isset($request->id)) {
@@ -108,9 +119,7 @@ class SignalController extends Controller {
             $sign->sended_at = DB::raw('now()');
             $sign->save();
         }
-        $flash = 'Foram Targets Gerados: '.$j;
-        //Session::flash('flash_message', 'This is a message!'); 
-        return redirect('/admin/signal')->with('flash_message', 'targets gerados: '.$flash);
+        return redirect('/admin/signal')->with('flash_message', 'targets gerados: ');
     }
 
     public function store(Request $request) {

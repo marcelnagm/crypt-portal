@@ -10,8 +10,8 @@
     {!! $errors->first('pair_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('entry_value') ? 'has-error' : ''}}">
-    <label for="entry_value" class="control-label">{{ 'Entry Value' }}</label>
-    <input class="form-control" name="entry_value" type="number" id="entry_value" value="{{ isset($signal->entry_value) ? $signal->entry_value : ''}}" >
+    <label for="entry_value" class="control-label">{{ 'Entry Value' }}</label>    
+    <input class="form-control" name="entry_value" type="number" id="entry_value" value="{{ isset($signal->entry_value) ? $signal->entry_value : '' }}" >
     {!! $errors->first('entry_value', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('target_1') ? 'has-error' : ''}}">

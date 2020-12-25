@@ -92,8 +92,8 @@ class User extends Authenticatable {
         return $this->profile()->name == "user";
     }
 
-    public function market() {
-        $conf = $this->configuration();
+    public function exchange() {
+         $conf = $this->configuration();
         $exchange = new \ccxt\binance(array(
             'apiKey' => $conf->api_key, // replace with your keys
             'secret' => $conf->api_secret,
@@ -101,6 +101,13 @@ class User extends Authenticatable {
             'enableRateLimit' => true,
             'timeout' => 30000,
         ));
+        return $exchange;
+    }
+    
+    
+    public function market() {
+       
+        $exchange = $this->exchange();
         $market = $exchange->fetchMarkets();
 
         for ($i = 0; $i < count($market); $i++) {
@@ -121,14 +128,7 @@ class User extends Authenticatable {
     }
 
     public function balance() {
-        $conf = $this->configuration();
-        $exchange = new \ccxt\binance(array(
-            'apiKey' => $conf->api_key, // replace with your keys
-            'secret' => $conf->api_secret,
-//    'verbose' => true,
-            'enableRateLimit' => true,
-            'timeout' => 30000,
-        ));
+        $exchange = $this->exchange();
 //$prices = $exchange->fetchTicker ($pairs);
         $balance = $exchange->fetchBalance();
 
@@ -138,15 +138,10 @@ class User extends Authenticatable {
     }
     
     public function prices() {
-        $conf = $this->configuration();
-        $exchange = new \ccxt\binance(array(
-            'apiKey' => $conf->api_key, // replace with your keys
-            'secret' => $conf->api_secret,
-//    'verbose' => true,
-            'enableRateLimit' => true,
-            'timeout' => 30000,
-        ));
+        
+        $exchange = $this->exchange();
         $prices = array();
+        $pairs= Pair::all();
         foreach(Pair::all() as $pair){
             $prices[] =$pair.'';
         }
@@ -162,6 +157,27 @@ class User extends Authenticatable {
           'venda'=> $price['info']['bidPrice'],
         );
         }
+//        dd($data);
+//     var_dump($balance['free'][$pair->getMainCoin()]);
+//        dd($balance);
+        return $data;
+    }
+    
+    public function price($id) {
+        $exchange = $this->exchange();
+        $pair= Pair::find($id);
+        
+        $data = array();
+        $pr = $exchange->fetchTicker($pair.'') ;
+
+        $data = array(
+          'symbol' => $pr['info']['symbol'],
+          'max' => $pr['high'],
+          'min' => $pr['low'],
+          'compra'=> $pr['info']['askPrice'],
+          'venda'=> $pr['info']['bidPrice'],
+        );
+        
 //        dd($data);
 //     var_dump($balance['free'][$pair->getMainCoin()]);
 //        dd($balance);
