@@ -25,9 +25,9 @@ class PairController extends Controller
                 ->orWhere('main_coin', 'LIKE', "%$keyword%")
                 ->orWhere('sec_coin', 'LIKE', "%$keyword%")
                 ->orWhere('min_quantity', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
+                ->latest()->orderBy("pair")->paginate($perPage);
         } else {
-            $pair = Pair::latest()->paginate($perPage);
+            $pair = Pair::latest()->orderBy("pair")->paginate($perPage);
         }
 
         return view('admin.pair.index', compact('pair'));
