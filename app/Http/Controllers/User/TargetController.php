@@ -70,7 +70,7 @@ class TargetController extends Controller
         $exchange = $user = Auth::user()->exchange();
         $order_bin = $exchange->createMarketOrder($target->getPair() . '', 'sell', $val, $ask);
         $order = new Orders();
-        $order->user_id = 1;
+        $order->user_id = Auth::user()->id;
         $order->pair_id = $this->pair_id;
 //                $order->order_id = 4545;
         $order->order_id = $order_bin["info"]["orderId"];
