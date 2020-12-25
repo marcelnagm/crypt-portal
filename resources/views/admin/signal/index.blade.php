@@ -49,7 +49,7 @@
 																		<td>
 																				<a href="{{ url('/profile/' . $item->id) }}" title="View user"><button class="btn btn-info btn-sm"><i data-placement="top" data-toggle="tooltip-primary" title="" class="ti-sharethis" data-original-title="Enviar Telegram"></i></button></a>
                                         <!--<a href="{{ url('/admin/signal/' . $item->id) }}" title="View user"><button class="btn btn-info btn-sm"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Visualizar" class="ti-eye"></i></button></a>-->
-                                        <a href="{{ url('/profile/' . $item->id . '/edit') }}" title="Edit user"><button class="btn btn-primary btn-sm"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></button></a>
+                                        <a href="{{ url('/admin/signal/' . $item->id . '/edit') }}" title="Edit user"><button class="btn btn-primary btn-sm"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></button></a>
 																		    <a href="{{ url('/admin/signals_generate/' . $item->id . '/') }}" title="Generate Signal"><button class="btn btn-primary btn-sm"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Enviar Sinais" class="ti-bar-chart-alt"></i></button></a>
                                     <form method="POST" action="{{ url('/admin/signal' . '/' . $item->id) }}" accept-charset="UTF-8" style="display: inline;">
                                         {{ method_field('DELETE') }}
