@@ -1,0 +1,8 @@
+- Captcha/Gmail Auth no Login.
+- Tela iniciais admin, usuário, guest
+- Entry_value opcional. Se preenchido, fica posicionado. Se não, compra a mercado com o preço atual.
+- Editar sinais (Admin), produzindo erro
+- Botão fechar ordem (forçar venda) para o usuário ao lado dos seus sinais (ao invés de remover sinal).
+- Em sinais, mostrar a variação de lucro/prejuízo do sinal em andamento (se for feito em jquery melhor ainda) pra ficar atualizando.
+- Criar o Gerar Sinais IA com o arquivo enviado, em Admin - Sinais. Colocar campos de % target pra preencher, antes de gerar.
+- Telegram
