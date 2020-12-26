@@ -139,9 +139,9 @@ class SignalController extends Controller {
                 $mult->save();
                 $j++;
             }
-//            $sign->status = 1;
-//            $sign->sended_at = DB::raw('now()');
-//            $sign->save();
+            $sign->status = 1;
+            $sign->sended_at = DB::raw('now()');
+            $sign->save();
         }
         return redirect('/admin/signal')->with('flash_message', 'users ativados: ' . $user_count . '/' . $user_total . 'targets gerados: ' . $j);
     }
