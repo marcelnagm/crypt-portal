@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Pair as Pairs;
 
+
+use Illuminate\Support\Facades\Auth;
+
 class MultipleTargets extends Model
 {
     use HasFactory;
@@ -102,4 +105,12 @@ class MultipleTargets extends Model
         return (($current - $buy) * 100) / $current;
     }
     
+    public function getProfit(){
+        if($this->payed != null){   
+            $act =Auth::user()->price($this->pair_id);
+            
+            return number_format($this->getPercent($this->payed , $act['venda']) *100,4);
+        }else return null;
+    }
+            
 }

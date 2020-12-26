@@ -4,13 +4,19 @@
 <head>
     <meta http-equiv="refresh" content="0; URL=/admin/dashboard" />
 </head>
-@else
+@emdif
+@if(Auth::user()->isUser()  )
 <head>
     <meta http-equiv="refresh" content="0; URL=/user/dashboard" />
 </head>
 @endif
-@else
+@if(Auth::user()->isGuest()  )
 <head>
     <meta http-equiv="refresh" content="0; URL=/guest/" />
+</head>
+@endif
+@else
+<head>
+    <meta http-equiv="refresh" content="0; URL=/login" />
 </head>
 @endif

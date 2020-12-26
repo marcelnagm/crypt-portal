@@ -104,6 +104,9 @@ class User extends Authenticatable {
     public function isUser() {
         return $this->profile()->name == "user";
     }
+    public function isGuest() {
+        return $this->profile()->id == 4;
+    }
 
     public function exchange() {
          $conf = $this->configuration();

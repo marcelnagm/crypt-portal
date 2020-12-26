@@ -61,7 +61,13 @@
                                 <td >{{ $item->stop }}/ {{ $item->stop_p }}%</td>                              
                                 <td >{{ $item->stop_up }}%</td>                              
                                 <td >{{ $item->getStatusName() }}</td>
-                                <td >Mostrar o prejuizo/lucro atual</td>
+                                <td >
+                                    @if($item->payed != null)
+                                    <?php echo $item->getProfit() ?>
+                                    @else
+                                    Não comprado ainda
+                                    @endif
+                                </td>
                                 <td>
 
                                     <a href="{{ url('/user/op/' . $item->id . '/edit') }}" title="Edit user"><button class="btn btn-primary btn-sm"><i data-placement="top" data-toggle="tooltip-primary" data-original-title="Editar" class="ti-pencil"></i></button></a>
