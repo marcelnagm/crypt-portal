@@ -1,4 +1,4 @@
-<select class="form-control select2" name="{{$field}}" id="{{$field}}" onchange="ajax(this)">
+<select class="form-control select2" name="{{$field}}" id="{{$field}}" onchange="ajax(this)"   required>
 
     <option label="Escolha uma opção">
     </option>

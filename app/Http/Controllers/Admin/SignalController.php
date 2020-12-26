@@ -56,10 +56,10 @@ class SignalController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function getPrice(Request $request) {
-         $requestData = $request->all();
-     return $request->user()->price($requestData['id'])['compra'];    
+        $requestData = $request->all();
+        return $request->user()->price($requestData['id'])['compra'];
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -76,31 +76,54 @@ class SignalController extends Controller {
                     ->get();
         }
 //        $users = User::where('profile_id', 3)->join get();
-    
-        
-                $users = User::select(
-                         'users.id', 'configuration.balance_operation'
-                        )
-                        ->join('configuration', 'users.id', '=', 'configuration.user_id')
-            ->where('profile_id','=',3)
-            ->where('configuration.balance_operation','<>',null)
-            ->where('configuration.bot_active','<>',null)
-            ->where('configuration.exchange_id','<>',null)
-            ->where('configuration.target_profile','<>',null)
-            ->where('configuration.stop_loss','<>',null)
-                        ->get();
+
+
+        $users = User::select(
+                        'users.id', 'configuration.balance_operation'
+                )
+                ->join('configuration', 'users.id', '=', 'configuration.user_id')
+                ->where('profile_id', '=', 3)
+                ->where('configuration.balance_operation', '<>', null)
+                ->where('configuration.bot_active', '<>', null)
+                ->where('configuration.exchange_id', '<>', null)
+                ->where('configuration.target_profile', '<>', null)
+                ->where('configuration.stop_loss', '<>', null)
+                ->get();
+        $user_count = User::select(
+                        'users.id', 'configuration.balance_operation'
+                )
+                ->join('configuration', 'users.id', '=', 'configuration.user_id')
+                ->where('profile_id', '=', 3)
+                ->where('configuration.balance_operation', '<>', null)
+                ->where('configuration.bot_active', '<>', null)
+                ->where('configuration.exchange_id', '<>', null)
+                ->where('configuration.target_profile', '<>', null)
+                ->where('configuration.stop_loss', '<>', null)
+                ->count();
+
+        $user_total = User::select(
+                                'users.id')
+                        ->where('profile_id', '=', 3)->count();
 //        dd($users);
-                $j =0;
+        $j = 0;
         foreach ($signals as $sign) {
             foreach ($users as $user) {
+                $conf = $user->configuration();
+
                 if (isset($sign->target_2)) {
                     $mult = new MultipleTargets();
-                    $mult->target_1 = $sign->target_1;
-                    $mult->target_2 = $sign->target_2;
-                    $mult->target_3 = $sign->target_3;
-                    $mult->target_1_p = $sign->target_1_p;
-                    $mult->target_2_p = $sign->target_2_p;
-                    $mult->target_3_p = $sign->target_3_p;
+                    if ($conf->target_profile >= 1) {
+                        $mult->target_1 = $sign->target_1;
+                        $mult->target_1_p = $sign->target_1_p;
+                    }
+                    if ($conf->target_profile >= 2) {
+                        $mult->target_2 = $sign->target_2;
+                        $mult->target_2_p = $sign->target_2_p;
+                    }
+                    if ($conf->target_profile >= 3) {
+                        $mult->target_3 = $sign->target_3;
+                        $mult->target_3_p = $sign->target_3_p;
+                    }
                 } else {
                     $mult = new SingleTarget();
                     $mult->target = $sign->target_1;
@@ -113,24 +136,24 @@ class SignalController extends Controller {
                 $mult->stop_up = $sign->stop_up;
                 $mult->user_id = $user->id;
                 $mult->balance = $user->configuration()->balance_operation;
-                $mult->save();       
+                $mult->save();
                 $j++;
             }
-            $sign->status = 1;
-            $sign->sended_at = DB::raw('now()');
-            $sign->save();
+//            $sign->status = 1;
+//            $sign->sended_at = DB::raw('now()');
+//            $sign->save();
         }
-        return redirect('/admin/signal')->with('flash_message', 'targets gerados: ');
+        return redirect('/admin/signal')->with('flash_message', 'users ativados: ' . $user_count . '/' . $user_total . 'targets gerados: ' . $j);
     }
 
     public function store(Request $request) {
 
         $requestData = $request->all();
-        
-        $requestData['target_1'] = $requestData['entry_value']*(1+($request['target_1_p']/100));
-        $requestData['target_2'] = $requestData['entry_value']*(1+($request['target_2_p']/100));
-        $requestData['target_3'] = $requestData['entry_value']*(1+($request['target_3_p']/100));
-        $requestData['stop'] = $requestData['entry_value']*(1-($request['stop_p']/100));        
+
+        $requestData['target_1'] = $requestData['entry_value'] * (1 + ($request['target_1_p'] / 100));
+        $requestData['target_2'] = $requestData['entry_value'] * (1 + ($request['target_2_p'] / 100));
+        $requestData['target_3'] = $requestData['entry_value'] * (1 + ($request['target_3_p'] / 100));
+        $requestData['stop'] = $requestData['entry_value'] * (1 - ($request['stop_p'] / 100));
         $requestData['created_by'] = $request->user()->id;
         Signal::create($requestData);
         return redirect('/admin/signal')->with('flash_message', 'Signal added!');
@@ -175,10 +198,10 @@ class SignalController extends Controller {
         $requestData = $request->all();
 
         $signal = Signal::findOrFail($id);
-          $requestData['target_1'] = $requestData['entry_value']*(1+($requestData['target_1_p']/100));
-        $requestData['target_2'] = $requestData['entry_value']*(1+($requestData['target_2_p']/100));
-        $requestData['target_3'] = $requestData['entry_value']*(1+($requestData['target_3_p']/100));
-        $requestData['stop'] = $requestData['entry_value']*(1-($requestData['stop_p']/100));
+        $requestData['target_1'] = $requestData['entry_value'] * (1 + ($requestData['target_1_p'] / 100));
+        $requestData['target_2'] = $requestData['entry_value'] * (1 + ($requestData['target_2_p'] / 100));
+        $requestData['target_3'] = $requestData['entry_value'] * (1 + ($requestData['target_3_p'] / 100));
+        $requestData['stop'] = $requestData['entry_value'] * (1 - ($requestData['stop_p'] / 100));
         $signal->update($requestData);
 
         return redirect('/admin/signal')->with('flash_message', 'Signal updated!');
