@@ -94,17 +94,24 @@
                                     <a class="new nav-link full-screen-link" href="#"><i class="ti-fullscreen"></i></span></a>
                                 </div>
                                 <div class="dropdown nav-item main-header-notification">
-                                    <a class="new nav-link " href="#"><i class="ti-bell animated bell-animations"></i><span class=" pulse"></span></a>
+                                    <?php $unread= Auth::user()->notification_unread();?>
+                                    <a class="new nav-link " href="#"><i class="ti-bell animated bell-animations">
+                                        </i>
+                                        @if($unread>0)
+                                        <span class=" pulse"                                            
+                                              </span>
+                                            @endif
+                                    </a>
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
                                         <?php
                                         $notications = Auth::user()->notification();
                                         ?>
                                         <div class="menu-header-content text-left d-flex">
                                             <div class="">
-                                                <h6 class="menu-header-title text-white mb-0">{{ Auth::user()->notification_unread()}} novas notificações</h6>
+                                                <h6 class="menu-header-title text-white mb-0">{{ $unread}} novas notificações</h6>
                                             </div>
                                             <div class="my-auto ml-auto">
-                                                   <a href="{{url('/user/notification_read_all')}}" >
+                                                <a href="{{url('/user/notification_read_all')}}" >
                                                     <span class="badge badge-pill badge-warning float-right">Marcar todas como lido</span>
                                                 </a>
                                             </div>
@@ -184,7 +191,7 @@
                                                 <h6 class="menu-header-title text-white mb-0">5 new Messages</h6>
                                             </div>
                                             <div class="my-auto ml-auto">
-                                                    <a href="{{url('/user/notification_read_all')}}" >
+                                                <a href="{{url('/user/notification_read_all')}}" >
                                                     <span class="badge badge-pill badge-warning float-right">Marcar todas como lido</span>
                                                 </a>
                                             </div>
