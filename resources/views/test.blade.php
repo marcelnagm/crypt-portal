@@ -8,3 +8,6 @@
   <meta http-equiv="refresh" content="0; URL=/user/dashboard" />
 </head>
 @endif
+<head>
+  <meta http-equiv="refresh" content="0; URL=/guest/" />
+</head>
