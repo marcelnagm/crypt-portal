@@ -31,8 +31,33 @@
                             @foreach($signal as $item)
                             <tr>
                                 <td>{{ $item->getPair()->pair }}</td>
-                                <td>{{ $item->entry_value }}</td>
+                                <td>{{ $item->entry_value }}</td> 
+                                <?php $conf = Auth::user()->configuration(); ?>
+                                @if($conf->target_profile ==1)
                                 <td>{{ $item->target_1 }} / {{ $item->target_1_p }}%</td>
+                                @endif
+                                <?php $conf = Auth::user()->configuration(); ?>
+                                @if($conf->target_profile ==2)
+                                <td>{{ $item->target_1 }} / {{ $item->target_1_p }}%<br>
+                                    @if(isset($item->target_2))
+                                    {{ $item->target_2 }} / {{ $item->target_2_p }}%<br>
+                                    @endif
+                                    @if(isset($item->target_3))
+                                    {{ $item->target_3 }} / {{ $item->target_3_p }}%
+                                    @endif
+                                </td>
+                                @endif
+                                <?php $conf = Auth::user()->configuration(); ?>
+                                @if($conf->target_profile ==3)
+                                <td>{{ $item->target_1 }} / {{ $item->target_1_p }}%<br>
+                                    @if(isset($item->target_2))
+                                    {{ $item->target_2 }} / {{ $item->target_2_p }}%<br>
+                                    @endif
+                                    @if(isset($item->target_3))
+                                    {{ $item->target_3 }} / {{ $item->target_3_p }}%
+                                    @endif
+                                </td>
+                                @endif
                                 <td >{{ $item->stop }}/ {{ $item->stop_p }}%</td>                              
                                 <td >{{ $item->stop_up }}%</td>                              
                                 <td >{{ $item->getStatusName() }}</td>
@@ -47,7 +72,7 @@
                                     </form>
                                 </td>
                             </tr>
-                             @endforeach
+                            @endforeach
                         </tbody>
                     </table>                   
                 </div>
