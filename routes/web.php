@@ -83,11 +83,8 @@ Route::prefix('guest')->group(function () {
     Route::get('/', 'App\Http\Controllers\Guest\IndexController@index');
 });
 
-Route::get('/',function(){
-        return view('test');
-});    
-
 Route::get('/dashboard',function(){
         return view('test');
 });    
 
+Route::redirect('/','/login');  

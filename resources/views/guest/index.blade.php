@@ -6,19 +6,6 @@
         <div class="card-body">
             <div class="d-flex no-block align-items-center">
                 <div>
-                    <h6 class="text-white">Já e Cliente</h6>
-                    <a href="{{url('login')}}"><h2 class="text-white m-0 ">Login</h2></a>
-                </div>
-                <div class="ml-auto"> <span class="text-white display-6"><i class="fas fa-robot fa-2x"></i></span> </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
-    <div class="card bg-primary">
-        <div class="card-body">
-            <div class="d-flex no-block align-items-center">
-                <div>
                     <h6 class="text-white">Status do Robô</h6>
                     <h2 class="text-white m-0 ">Desativado</h2>
                 </div>

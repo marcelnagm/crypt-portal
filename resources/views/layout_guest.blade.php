@@ -136,10 +136,10 @@
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
                                         <div class="main-header-profile header-img">
                                             <div class="main-img-user"><img alt="" src="{{asset('/img/faces/5.jpg')}}"></div>
-                                            <h6><a href='{{url('/login')}}'>Não Logado</a></h6><span>Membro VIP</span>
+                                            <h6><a href='{{url('/login')}}'>Não ativado</a></h6>
                                         </div>
                                         <a class="dropdown-item" href="/"><i class="far fa-user"></i> Meu Dados</a>
-                                        <a class="dropdown-item" href="/"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                                        <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
                                     </div>
                                 </div>
                             </div>
