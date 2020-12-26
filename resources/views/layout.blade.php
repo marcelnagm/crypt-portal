@@ -1,3 +1,4 @@
+<?php use App\Models\Ses;?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -269,7 +270,7 @@
                         </div>
                         <div class="d-flex align-items-end flex-wrap my-auto right-content breadcrumb-right">
                             <button type="button" class="btn btn-primary mr-3 mt-2 mt-xl-0">
-                                <i class="ti-user"></i> 123 Online
+                                <i class="ti-user"></i> <?php echo Ses::count();?> Online
                             </button>
 
                         </div>
