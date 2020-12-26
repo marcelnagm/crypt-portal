@@ -21,10 +21,10 @@
 						<a class="side-menu__item" href="{{url('/')}}"><i class="side-menu__icon ti-pie-chart"></i><span class="side-menu__label">Estatísticas</span></a>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" href="{{url('/guest/configuration')}}"><i class="side-menu__icon ti-settings"></i><span class="side-menu__label">Configurações</span></a>
+						<a class="side-menu__item" href="{{url('/')}}"><i class="side-menu__icon ti-settings"></i><span class="side-menu__label">Configurações</span></a>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" href="user-config.html"><i class="side-menu__icon ti-headphone-alt"></i><span class="side-menu__label">Suporte</span></a>
+						<a class="side-menu__item" href="/"><i class="side-menu__icon ti-headphone-alt"></i><span class="side-menu__label">Suporte</span></a>
 					</li>
 				</ul>
 			</div>

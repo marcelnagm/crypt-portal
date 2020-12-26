@@ -95,13 +95,10 @@
                                 </div>
                                 <div class="dropdown nav-item main-header-notification">
                                     <a class="new nav-link " href="#"><i class="ti-bell animated bell-animations"></i><span class=" pulse"></span></a>
-                                    <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
-                                        <?php
-                                        $notications = Auth::user()->notification();
-                                        ?>
+                                    <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">                                    
                                         <div class="menu-header-content text-left d-flex">
                                             <div class="">
-                                                <h6 class="menu-header-title text-white mb-0">{{ Auth::user()->notification_unread()}} novas notificações</h6>
+                                                <h6 class="menu-header-title text-white mb-0">0 novas notificações</h6>
                                             </div>
                                             <div class="my-auto ml-auto">
                                                    <a href="{{url('/user/notification_read_all')}}" >
@@ -139,10 +136,10 @@
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
                                         <div class="main-header-profile header-img">
                                             <div class="main-img-user"><img alt="" src="{{asset('/img/faces/5.jpg')}}"></div>
-                                            <h6>{{Auth::user()->name}}</h6><span>Membro VIP</span>
+                                            <h6><a href='{{url('/login')}}'>Não Logado</a></h6><span>Membro VIP</span>
                                         </div>
-                                        <a class="dropdown-item" href="{{url('user/profile')}}"><i class="far fa-user"></i> Meu Dados</a>
-                                        <a class="dropdown-item" href="{{url('logout')}}"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                                        <a class="dropdown-item" href="/"><i class="far fa-user"></i> Meu Dados</a>
+                                        <a class="dropdown-item" href="/"><i class="fas fa-sign-out-alt"></i> Sair</a>
                                     </div>
                                 </div>
                             </div>
@@ -318,7 +315,7 @@
                                     <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
                                         <div class="main-header-profile header-img">
                                             <div class="main-img-user"><img alt="" src="{{ asset('/img/faces/5.jpg') }}"></div>
-                                            <h6>{{Auth::user()->name}}</h6><span>Membro Vip</span>
+                                            <h6><a href='{{url('/login')}}' class="dropdown-item"><span>Não Logado</span></a></h6><span>Membro VIP</span>
                                         </div>
                                         <a class="dropdown-item" href=""><i class="far fa-user"></i> Meus Dados</a>
                                         <a class="dropdown-item" href="page-signin.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
