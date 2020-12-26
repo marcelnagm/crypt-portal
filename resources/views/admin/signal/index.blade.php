@@ -42,7 +42,7 @@
 																			{{ $item->target_3 }} / {{ $item->target_3_p }}%
 																	</td>
                                     <td >{{ $item->stop }}/ {{ $item->stop_p }}%</td>                              
-                                    <td >{{ $item->stop_up*100 }}%</td>                                                           
+                                    <td >{{ $item->stop_up }}%</td>                                                           
                                     <td >{{ $item->getStatusName() }}</td>
                                     <td >{{ $item->getCreatedBy()->name }}</td>
 																		<td>
