@@ -22,9 +22,7 @@
                               <th class="border-bottom-0">Data de Envio</th>
                               <th class="border-bottom-0">Par</th>
                               <th class="border-bottom-0">Preço Inicial</th>
-                              <th class="border-bottom-0">Alvo 1</th>
-                              <th class="border-bottom-0">Alvo 2</th>
-                              <th class="border-bottom-0">Alvo 3</th>
+                              <th class="border-bottom-0">Alvos</th>
                               <th class="border-bottom-0">Stop Loss</th>
                               <th class="border-bottom-0">Stop Up</th>
                               <th class="border-bottom-0">Status</th>
@@ -39,11 +37,12 @@
                                     <td >{{ $item->sended_at }}</td>
                                     <td>{{ $item->getPair() }}</td>
                                     <td>{{ $item->entry_value }}</td>
-                                 <td>{{ $item->target_1 }} / {{ $item->target_1_p }}%</td>
-                                    <td>{{ $item->target_2 }} / {{ $item->target_2_p }}%</td>
-                                    <td>{{ $item->target_3 }} / {{ $item->target_3_p }}%</td>
+																	 <td>{{ $item->target_1 }} / {{ $item->target_1_p }}%<br>
+																			{{ $item->target_2 }} / {{ $item->target_2_p }}%<br>
+																			{{ $item->target_3 }} / {{ $item->target_3_p }}%
+																	</td>
                                     <td >{{ $item->stop }}/ {{ $item->stop_p }}%</td>                              
-                                    <td >{{ $item->stop_up*100 }}%</td>                                                           
+                                    <td >{{ $item->stop_up }}%</td>                                                           
                                     <td >{{ $item->getStatusName() }}</td>
                                     <td >{{ $item->getCreatedBy()->name }}</td>
 																		<td>

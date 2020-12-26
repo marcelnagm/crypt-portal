@@ -277,197 +277,35 @@
                     </div>
                     <!-- /breadcrumb -->
                     <!-- row  -->
-                    <div class="row">
+<div class="row">
                         <div class="col-xl-12 col-md-12 col-lg-12">
                             <div class=" overflow-hidden bg-transparent card-crypto-scroll shadow-none">
                                 <div class="js-conveyor-example">
+                                    <?php
+                                    $prices = Auth::user()->prices();
+                                    ?>
                                     <ul class="news-crypto">
+                                        @foreach($prices as $price)
                                         <li>
                                             <div class="crypto-card">
                                                 <div class="row">
+
                                                     <div class="d-flex">
                                                         <div class="my-auto">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/Augur.svg') }}" class="w-6 h-6 mt-0" alt="">
+                                                            <img src="{{ asset('/img/crypto-currencies/Tether.png') }}" class="w-6 h-6 mt-0" alt="">
                                                         </div>
                                                         <div class="ml-3">
-                                                            <p class="mb-1 tx-13">REP / INR</p>
-                                                            <div class="m-0 tx-13 text-warning">$0.0215<span class="text-danger ml-2"><i class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class="d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/AquariusCoin.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">ARCO / INR</p>
-                                                            <div class="m-0 tx-13 text-warning">$425.25<span class="text-success ml-2"><i class="ion-arrow-up-c mr-1"></i>+12.85%</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class="d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/BitShares.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">BTS / INR</p>
-                                                            <div class="m-0 tx-13 text-warning">$2.786<span class="text-success ml-2"><i class="ion-arrow-up-c mr-1"></i>-02.25%</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class="d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/Bytecoin.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">BCN / INR</p>
-                                                            <div class="m-0 tx-13 text-warning">$15.425<span class="text-danger ml-2"><i class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
-                                                        </div>
+                                                            <p class="mb-1 tx-13">{{$price['symbol']}}</p>
+                                                            <div class="m-0 tx-13 text-warning">
+                                                                $ {{$price['min']}}
+                                                            </div>
+                                                        </div>                                                       
                                                     </div>
 
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="crypto-card" >
-                                                <div class="row">
-                                                    <div class=" d-flex">
-                                                        <div class="my-auto">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/Dash.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">Dash / INR</p>
-                                                            <div class="m-0 tx-13 text-warning">$5.125<span class="text-success ml-2"><i class="ion-arrow-up-c mr-1"></i>-11.85%%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class=" d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/EOS.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">EUR / INR</p>
-                                                            <div class="m-0 tx-13 text-warning">$135.425<span class="text-danger ml-2"><i class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class=" d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/Decred.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">ETH / USDT</p>
-                                                            <div class="m-0 tx-13 text-warning">$34.625<span class="text-success ml-2"><i class="ion-arrow-up-c mr-1"></i>-0.32%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class=" d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/IOTA.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">IOTA / USD</p>
-                                                            <div class="m-0 tx-13 text-warning">$67.325<span class="text-danger ml-2"><i class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class=" d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/Litecoin.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">LTC / USD</p>
-                                                            <div class="m-0 tx-13 text-warning">$7.525<span class="text-success ml-2"><i class="ion-arrow-up-c mr-1"></i>-1.42%</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class=" d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/Monero.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">XMR / EUR</p>
-                                                            <div class="m-0 tx-13 text-warning">$4.325<span class="text-danger ml-2"><i class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class=" d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/NEM.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">ETH / USDT</p>
-                                                            <div class="m-0 tx-13 text-warning">$5.525<span class="text-success ml-2"><i class="ion-arrow-up-c mr-1"></i>-1.32%</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="crypto-card">
-                                                <div class="row">
-                                                    <div class=" d-flex">
-                                                        <div class="">
-                                                            <img src="{{ asset('/img/crypto-currencies/round-outline/Netko-coin.svg') }}" class="w-6 h-6 mt-0" alt="">
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="mb-1 tx-13">NEO / USD</p>
-                                                            <div class="m-0 tx-13 text-warning">$6.025<span class="text-danger ml-2"><i class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
