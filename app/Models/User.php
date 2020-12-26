@@ -10,6 +10,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\QueryException;
+
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Profile;
 use App\Models\Pair;
 use App\Models\Configuration;
@@ -77,6 +80,13 @@ class User extends Authenticatable {
 
     public function signatures() {
         return UserSignature::where('user_id', $this->id)->get();
+    }
+    
+    public function signatures_valid() {
+        
+        return UserSignature::where('start_at', '<=', DB::raw('now()'))
+                ->where('finish_at','>=', DB::raw('now()'))->count();
+        
     }
 
     

@@ -12,8 +12,9 @@ use App\Models\Pair;
 class TargetController extends Controller {
 
     //
-    //
+    //       
     public function index(Request $request) {
+
         $perPage = 25;
         $user = Auth::user();
         $signal = MultipleTargets::where('user_id', $user->id)
@@ -32,6 +33,10 @@ class TargetController extends Controller {
     }
 
     public function store(Request $request) {
+        if (session('blocked') == 1) {
+
+            return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada');
+        }
 
         $requestData = $request->all();
 
@@ -65,6 +70,11 @@ class TargetController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id) {
+                if(session('blocked')==1){
+
+             return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada'); 
+         }   
+
         if (isset($target->order_ir_generated)) {
             $target = MultipleTargets::find($id);
             $val = $target->getOrder()->amount;
@@ -90,12 +100,21 @@ class TargetController extends Controller {
     }
 
     public function edit($id) {
+                if(session('blocked')==1){
+
+             return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada'); 
+         }   
+
         $signal = MultipleTargets::findOrFail($id);
         $items = Pair::all();
         return view('user.signal.edit', compact('signal', 'items'));
     }
 
     public function update(Request $request, $id) {
+                if(session('blocked')==1){
+
+             return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada'); 
+         }   
 
         $requestData = $request->all();
 
