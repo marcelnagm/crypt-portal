@@ -28,7 +28,7 @@ class TargetController extends Controller {
 
     public function create() {
 
-        $items = Pair::all();
+        $items = Pair::orderby('pair')->get();
         return view('user.signal.create', compact('items'));
     }
 
@@ -106,7 +106,7 @@ class TargetController extends Controller {
          }   
 
         $signal = MultipleTargets::findOrFail($id);
-        $items = Pair::all();
+        $items = Pair::orderby('pair')->get();
         return view('user.signal.edit', compact('signal', 'items'));
     }
 

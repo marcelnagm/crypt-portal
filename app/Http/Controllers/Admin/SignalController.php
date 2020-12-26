@@ -44,7 +44,7 @@ class SignalController extends Controller {
      */
     public function create() {
 
-        $items = Pair::all();
+        $items = Pair::orderby('pair')->get();
         return view('admin.signal.create', compact('items'));
     }
 
@@ -181,7 +181,7 @@ class SignalController extends Controller {
      */
     public function edit($id) {
         $signal = Signal::findOrFail($id);
-        $items = Pair::all();
+        $items = Pair::orderby('pair')->get();
         return view('admin.signal.edit', compact('signal', 'items'));
     }
 
