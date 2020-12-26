@@ -27,7 +27,7 @@
 						<a class="side-menu__item" href="{{url('/admin/signal')}}"><i class="side-menu__icon ti-stats-up"></i><span class="side-menu__label">Sinais</span></a>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" href="widgets.html"><i class="side-menu__icon ti-comments"></i><span class="side-menu__label">Notificações</span></a>
+						<a class="side-menu__item" href="{{url('/admin/notification')}}"><i class="side-menu__icon ti-comments"></i><span class="side-menu__label">Notificações</span></a>
 					</li>
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon ti-write menu-icons"></i><span class="side-menu__label">Estatísticas</span><i class="angle fe fe-chevron-down"></i></a>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\Notification;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -37,6 +39,55 @@ class NotificationController extends Controller
     }
 
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+             return view('admin.notification.create');
+    }
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(Request $request)
+    {
+        
+        $requestData = $request->all();
+        switch($requestData['user_id']){
+            case 1:
+                $users = User::where('profile_id',1)
+                               ->orWhere('profile_id',2) 
+                               ->orWhere('profile_id',3)                     
+                    ->get();
+            break;    
+            case 2:
+                $users = User::where('profile_id','1')->get();
+            break;    
+            case 3:
+                $users = User::where('profile_id','2')->get();
+            break;    
+            case 4:
+                $users = User::where('profile_id','3')->get();
+            break;                    
+        }
+//        dd($ussers);
+        foreach ($users as $user){
+            $requestData['user_id'] = $user->id;
+            Notification::create($requestData);            
+        }
+
+        return redirect('/admin/notification')->with('flash_message', 'Message added!');
+    }
+    
     /**
      * Display the specified resource.
      *

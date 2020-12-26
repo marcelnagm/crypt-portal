@@ -22,7 +22,7 @@
                         </form>
 
                         <br/>
-                        <br/>
+                        <br/><a href="{{ url('/admin/notification/create') }}" title="Criar Notification"><button class="btn btn-primary btn-sm"><i class="fa" aria-hidden="true"></i> Criar Notificartion</button></a>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>

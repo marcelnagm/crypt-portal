@@ -51,7 +51,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('user')->group(function 
     Route::resource('configuration', 'App\Http\Controllers\User\ConfigurationController');
     
     Route::get('/dashboard', 'App\Http\Controllers\User\IndexController@index');
-    Route::resource('/notification', 'App\Http\Controllers\User\\NotificationController');
+    Route::resource('/notification', 'App\Http\Controllers\User\NotificationController');
     Route::get('/notification_read_all', 'App\Http\Controllers\User\NotificationController@allRead');
 });
 
@@ -74,7 +74,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::resource('user-signature', 'App\Http\Controllers\Admin\UserSignatureController');
     Route::get('price/{?id}'   , 'App\Http\Controllers\Admin\SignalController@getPrice');
     Route::resource('configuration', 'App\Http\Controllers\Admin\ConfigurationController');
-    Route::resource('/notification', 'App\Http\Controllers\ADmin\\NotificationController');
+    Route::resource('/notification', 'App\Http\Controllers\Admin\NotificationController');
     Route::get('/notification_read_all', 'App\Http\Controllers\Admin\NotificationController@allRead');
 });;
 

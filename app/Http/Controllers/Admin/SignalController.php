@@ -67,6 +67,17 @@ class SignalController extends Controller {
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
+    public function generateIA(Request $request) {
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function generate(Request $request) {
 
         if (isset($request->id)) {
