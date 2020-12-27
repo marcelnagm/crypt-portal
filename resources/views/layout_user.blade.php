@@ -397,6 +397,7 @@
                   <!-- TradingView Widget END -->
                   </div>
                 </div>
+                @yield('content')
                 </div>
                 <!-- /conatiner -->
             </div>
