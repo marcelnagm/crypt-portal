@@ -25,6 +25,6 @@ class IndexController extends Controller
             session('blocked', 1);
             session('flash_message','Assinatura Expirada');
         }
-       return  view('layout_user');
+       return  view('user.index');
     }
 }
