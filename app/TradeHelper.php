@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kavehs
- * Date: 12/12/18
- * Time: 02:38
  */
 
 namespace App;
@@ -222,8 +218,8 @@ public static function gravar($buy, $base, $target, $estrategia){
         $sinal = array("id_usuario" => $id, "descricao" => "Sinal IA", "estrategia" => $estrategia, "par" => $pair, "exchange" => "Binance", "preco" => $buy, "preco_real" => $preco_real, "tp1" => $tp1, "tp2" => $tp2, "tp3" => $tp3, "tp4" => $tp4, "tp5" => $tp5, "stop" => $stop, "data_envio" => $now, "data_update" => $now, "status" => 0);
 
 				$r = $db->insert(BD_ROBO_SINAIS, $sinal);
-				if($r) { echo '0'; }
-        else { echo '1'; }
+				if($r) { return true; }
+        else { return false; }
 		}
 }
   
