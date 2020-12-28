@@ -60,7 +60,7 @@ public static function ParabolicSAR($data, $parabolicSAR, $base, $target){
 public static function crossing($base, $target){
     $coin = $base."".$target;
     $url = "https://api.binance.com/api/v1/klines?symbol=".$coin."&interval=15m";
-    $data = getData($url);
+    $data = self::getData($url);
     $data = json_decode($data);        
 
     //PSAR
