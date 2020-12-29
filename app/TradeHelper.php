@@ -213,19 +213,27 @@ class TradeHelper {
             $stop = (int) ($buy - ($buy * 0.03));
         }
         $now = date("Y-m-d H:i:s");
+      
+        $pair = Pair::where('pair',$pair)->get()[0];
+      
+        $res = Signal::where('pair_id',$pair->id)->where('status',0)->count();
 
-        $res = $db->where('par', $pair)->where('exchange', 'Binance')->where('status', 5, '<')->getValue(BD_ROBO_SINAIS, "count(*)");
+        //$res = $db->where('par', $pair)->where('exchange', 'Binance')->where('status', 5, '<')->getValue(BD_ROBO_SINAIS, "count(*)");
 
         if ($res < 1 && $buy != 0) {
-            $pair = Pair::where('pair',$pair)->get()[0];
+            
             $data = array(
                 "created_by" => Auth::user()->id, 
                 "pair_id" => $pair->id, 
                 "entry_value" => $buy,
-                "target_1" => $tp1,                 
-                "target_2" => $tp2, 
-                "target_3" => $tp3, 
-                "stop" => $stop, 
+                "target_1" => $tp1,
+                "target_1_p" => 0.01, 
+                "target_2" => $tp2,
+                "target_2_p" => 0.02,
+                "target_3" => $tp3,
+                "target_3_p" => 0.03, 
+                "stop" => $stop,
+                "stop_p" => 0.05, 
                 "stop_up" => $stop, 
                 "created_at" => $now,
                 "status" => 0
