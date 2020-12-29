@@ -7,6 +7,7 @@
 					<div class="d-flex align-items-end flex-wrap my-auto mg-b-20">
             <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10"  href="{{ url('/admin/pair') }}">Pares/ Coins</a>
             <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10" href="{{ url('/admin/signals_generate') }}">Enviar Sinais</a>
+            <a class="btn btn-primary mt-2 mt-xl-0 mg-b-20 mg-r-10" href="{{ url('/admin/signal_IA') }}">Gerar Sinais IA</a>
 						<a href="{{ url('/admin/signal/create') }}" class="btn btn-primary mt-2 mt-xl-0 mg-b-20"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Sinal</a>
 					</div>
 					</div>

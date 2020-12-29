@@ -68,6 +68,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
 
     Route::resource('signal', SignalController::class);
     Route::get('signals_generate/{id?}', 'App\Http\Controllers\Admin\\SignalController@generate');
+    Route::get('signal_IA/', 'App\Http\Controllers\Admin\\SignalController@generateIA');
 
    Route::get('/dashboard', 'App\Http\Controllers\Admin\IndexController@index');
 

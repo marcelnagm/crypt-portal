@@ -11,6 +11,7 @@ use App\Models\MultipleTargets;
 use App\Models\SingleTarget;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\TradeHelper;
 
 class SignalController extends Controller {
 
@@ -68,7 +69,7 @@ class SignalController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function generateIA(Request $request) {
-        
+     TradeHelper::generateIA();   
     }
 
     /**
