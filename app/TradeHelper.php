@@ -14,7 +14,7 @@ class TradeHelper {
         $data = self::getData($url);
         $data = json_decode($data, false);
         foreach ($data->tickers as $key => $value) {
-            if (($value->target == 'BTC' || $value->target == 'USDT') && ($value->base != 'PSG' && $value - base != 'JUV')) {
+            if ($value->target == 'BTC' || $value->target == 'USDT') {
                 if (intval($value->converted_volume->btc) > 500) {
                     self::crossing($value->base, $value->target);
                 }
@@ -231,8 +231,7 @@ class TradeHelper {
                 "status" => 0
                 );
 
-            Signal::create($data);
-            if ($r) {
+            if (Signal::create($data)) {
                 return true;
             } else {
                 return false;
