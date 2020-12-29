@@ -25,7 +25,8 @@ class CreateTableTargets extends Migration
             $table->unsignedFloat('target_2_p')->nullable(true);
             $table->unsignedFloat('target_3')->nullable(true);
             $table->unsignedFloat('target_3_p')->nullable(true);;
-            $table->unsignedFloat('reached')->nullable(true);
+            $table->unsignedFloat('reached')->nullable(true);            
+            $table->unsignedInteger('signal_id')->nullable(true);
             $table->unsignedInteger('order_id_generated')->nullable(true);
             $table->unsignedFloat('balance');
             $table->unsignedFloat('stop');
@@ -44,6 +45,7 @@ class CreateTableTargets extends Migration
             $table->unsignedFloat('target_p');
             $table->unsignedInteger('order_id_generated')->nullable(true);
             $table->unsignedFloat('balance');
+            $table->unsignedFloat('signal_id')->nullable(true);
             $table->unsignedFloat('stop');
             $table->unsignedFloat('stop_p');
             $table->unsignedFloat('stop_up');

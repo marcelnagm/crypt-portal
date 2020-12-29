@@ -146,6 +146,7 @@ class SignalController extends Controller {
                 $mult->stop_p = $sign->stop_p;
                 $mult->stop_up = $sign->stop_up;
                 $mult->user_id = $user->id;
+                $mult->signal_id = $sign->id;
                 $mult->balance = $user->configuration()->balance_operation;
                 $mult->save();
                 $j++;
