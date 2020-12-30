@@ -61,7 +61,7 @@ class SignalController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function getPrice(Request $request) {
-        if (!Auth::user()->isAdmin())
+        if (!Auth::user()->isUser() && !Auth::user()->isAdmin())
             return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         return $request->user()->price($requestData['id'])['compra'];
