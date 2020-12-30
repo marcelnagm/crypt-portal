@@ -14,7 +14,7 @@ class TradeHelper {
         $data = self::getData($url);
         $data = json_decode($data, false);
         foreach ($data->tickers as $key => $value) {
-            if ($value->target == 'BTC' || $value->target == 'USDT') {
+            if ($value->target == 'USDT') {
                 if (intval($value->converted_volume->btc) > 500) {
                     self::crossing($value->base, $value->target);
                 }
@@ -201,16 +201,16 @@ class TradeHelper {
         $preco_real = $buy;
         if ($target == "USDT" || $target == "USD") {
             $buy = $buy;
-            $tp1 = (float) ($buy + ($buy * 0.01));
-            $tp2 = (float) ($buy + ($buy * 0.02));
-            $tp3 = (float) ($buy + ($buy * 0.03));
-            $stop = (float) ($buy - ($buy * 0.03));
+            $tp1 = (float) ($buy + ($buy * 0.02));
+            $tp2 = (float) ($buy + ($buy * 0.03));
+            $tp3 = (float) ($buy + ($buy * 0.05));
+            $stop = (float) ($buy - ($buy * 0.05));
         } else {
             $buy = $buy * 100000000;
-            $tp1 = (int) ($buy + ($buy * 0.01));
-            $tp2 = (int) ($buy + ($buy * 0.02));
-            $tp3 = (int) ($buy + ($buy * 0.03));
-            $stop = (int) ($buy - ($buy * 0.03));
+            $tp1 = (int) ($buy + ($buy * 2));
+            $tp2 = (int) ($buy + ($buy * 3));
+            $tp3 = (int) ($buy + ($buy * 5));
+            $stop = (int) ($buy - ($buy * 5));
         }
         $now = date("Y-m-d H:i:s");
 //        dd($pair);
@@ -231,14 +231,14 @@ class TradeHelper {
                 "pair_id" => $pair->id,
                 "entry_value" => $buy,
                 "target_1" => $tp1,
-                "target_1_p" => 0.01,
+                "target_1_p" => 2,
                 "target_2" => $tp2,
-                "target_2_p" => 0.02,
+                "target_2_p" => 3,
                 "target_3" => $tp3,
-                "target_3_p" => 0.03,
+                "target_3_p" => 5,
                 "stop" => $stop,
-                "stop_p" => 0.05,
-                "stop_up" => $stop,
+                "stop_p" => 5,
+                "stop_up" => 1,
                 "created_at" => $now,
                 "status" => 0
             );
