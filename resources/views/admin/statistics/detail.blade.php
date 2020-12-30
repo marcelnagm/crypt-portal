@@ -14,38 +14,6 @@ use App\Models\Pair;
 								 <div class="clearfix">
 										<div class="float-right"> <i class="mdi mdi-poll-box text-success icon-size"></i> </div>
 										<div class="float-left">
-											 <p class="mb-0 text-left">Sinais</p>
-											 <div class="">
-													<h3 class="font-weight-semibold text-left mb-0">{{$data['count_all_signal']}}</h3>
-											 </div>
-										</div>
-								 </div>
-								 <p class="text-muted mb-0"> <i class="mdi mdi-arrow-up-drop-circle mr-1 text-success" aria-hidden="true"></i> Total de Sinais Enviados </p>
-							</div>
-					 </div>
-				</div>
-				<div class="col-sm-12 col-lg-6 col-xl-4">
-					 <div class="card">
-							<div class="card-body">
-								 <div class="clearfix">
-										<div class="float-right"> <i class="mdi mdi-poll-box text-success icon-size"></i> </div>
-										<div class="float-left">
-											 <p class="mb-0 text-left">Sinais</p>
-											 <div class="">
-													<h3 class="font-weight-semibold text-left mb-0">{{ $data['count_all_signal_open']}}</h3>
-											 </div>
-										</div>
-								 </div>
-								 <p class="text-muted mb-0"> <i class="mdi mdi-arrow-up-drop-circle mr-1 text-info" aria-hidden="true"></i> Total de Sinais em aberto </p>
-							</div>
-					 </div>
-				</div>
-				<div class="col-sm-12 col-lg-6 col-xl-4">
-					 <div class="card">
-							<div class="card-body">
-								 <div class="clearfix">
-										<div class="float-right"> <i class="mdi mdi-poll-box text-success icon-size"></i> </div>
-										<div class="float-left">
 											 <p class="mb-0 text-left">Acertos</p>
 											 <div class="">
 													<h3 class="font-weight-semibold text-left mb-0">{{$data['count_all_target_sucess']  }}%</h3>
@@ -152,7 +120,7 @@ use App\Models\Pair;
 							</div>
 					 </div>
 				</div>
-        <?php if($data['pair_data'] != null){ ?>
+                                <?php if($data['pair_data'] != null){ ?>
                                 @foreach( $data['pair_data'] as $row)
 				<div class="col-sm-12 col-lg-6 col-xl-4">
 					 <div class="card">
@@ -180,7 +148,6 @@ use App\Models\Pair;
 					 </div>
 				</div>
                                 @endforeach
-                                
                                 <?php } ?>
 				<!-- /row -->
 			</div>

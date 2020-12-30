@@ -32,7 +32,7 @@
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon ti-write menu-icons"></i><span class="side-menu__label">Estatísticas</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item" href="">Usuários</a></li>
+							<li><a class="slide-item" href="{{url('/admin/statistics/index_user')}}">Usuários</a></li>
 							<li><a class="slide-item" href="{{url('/admin/statistics')}}">Sinais</a></li>
 						</ul>
 					</li>
