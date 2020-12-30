@@ -43,7 +43,7 @@
                            <div class="d-flex no-block align-items-center">
                               <div>
                                  <h6 class="text-white">Status do Robô</h6>
-                                 <h2 class="text-white m-0 ">Auth::user()->configuration()->bot_active ==1? 'Ligado' : 'Desligado'</h2>
+                                 <h2 class="text-white m-0 ">{{Auth::user()->configuration()->bot_active ==1? 'Ligado' : 'Desligado'}}</h2>
                               </div>
                               <div class="ml-auto"> <span class="text-white display-6"><i class="fas fa-robot fa-2x"></i></span> </div>
                            </div>
