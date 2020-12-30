@@ -21,6 +21,8 @@ class SignalController extends Controller {
      * @return \Illuminate\View\View
      */
     public function index(Request $request) {
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $keyword = $request->get('search');
         $perPage = 25;
 
@@ -44,7 +46,8 @@ class SignalController extends Controller {
      * @return \Illuminate\View\View
      */
     public function create() {
-
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $items = Pair::orderby('pair')->get();
         return view('admin.signal.create', compact('items'));
     }
@@ -57,6 +60,8 @@ class SignalController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function getPrice(Request $request) {
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         return $request->user()->price($requestData['id'])['compra'];
     }
@@ -69,7 +74,9 @@ class SignalController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function generateIA(Request $request) {
-     TradeHelper::generateIA();   
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
+        TradeHelper::generateIA();
     }
 
     /**
@@ -80,7 +87,8 @@ class SignalController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function generate(Request $request) {
-
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         if (isset($request->id)) {
             $signals = Signal::where('id', $request->id)->get();
         } else {
@@ -160,7 +168,8 @@ class SignalController extends Controller {
     }
 
     public function store(Request $request) {
-
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
 
         $requestData['target_1'] = $requestData['entry_value'] * (1 + ($request['target_1_p'] / 100));
@@ -180,6 +189,8 @@ class SignalController extends Controller {
      * @return \Illuminate\View\View
      */
     public function show($id) {
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $signal = Signal::findOrFail($id);
 
         return view('admin.signal.show', compact('signal'));
@@ -193,6 +204,8 @@ class SignalController extends Controller {
      * @return \Illuminate\View\View
      */
     public function edit($id) {
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $signal = Signal::findOrFail($id);
         $items = Pair::orderby('pair')->get();
         return view('admin.signal.edit', compact('signal', 'items'));
@@ -207,7 +220,8 @@ class SignalController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id) {
-
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
 
         $signal = Signal::findOrFail($id);
@@ -228,6 +242,8 @@ class SignalController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id) {
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         Signal::destroy($id);
 
         return redirect('/admin/signal')->with('flash_message', 'Signal deleted!');

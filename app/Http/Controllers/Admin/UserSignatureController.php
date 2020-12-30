@@ -19,6 +19,7 @@ class UserSignatureController extends Controller
      */
     public function index(Request $request)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $keyword = $request->get('search');
         $perPage = 25;
 
@@ -42,6 +43,7 @@ class UserSignatureController extends Controller
      */
     public function create(Request $request)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $user = $request->get('user');
         
          $items = \App\Models\SignatureType::all();
@@ -58,7 +60,7 @@ class UserSignatureController extends Controller
      */
     public function store(Request $request)
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         
         UserSignature::create($requestData);
@@ -75,6 +77,7 @@ class UserSignatureController extends Controller
      */
     public function show($id)
     {
+       if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $usersignature = UserSignature::findOrFail($id);
 
         return view('admin.user-signature.show', compact('usersignature'));
@@ -89,6 +92,7 @@ class UserSignatureController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $usersignature = UserSignature::findOrFail($id);
           $items = \App\Models\SignatureType::all();
         return view('admin.user-signature.edit', compact('usersignature','items'));
@@ -104,7 +108,7 @@ class UserSignatureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         
         $usersignature = UserSignature::findOrFail($id);
@@ -122,7 +126,7 @@ class UserSignatureController extends Controller
      */
     public function destroy($id)
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $user_id = UserSignature::find($id)->user_id;
         UserSignature::destroy($id);
         

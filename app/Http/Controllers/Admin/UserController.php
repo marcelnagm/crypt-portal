@@ -23,6 +23,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $keyword = $request->get('search');
         $perPage = 25;
 
@@ -42,7 +43,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $items = \App\Models\Profile::all();
         return view('admin.user.create', compact('items'));
     }
@@ -56,6 +57,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $input =   $request->all();
          Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
@@ -89,6 +91,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $user = User::findOrFail($id);
 
         return view('admin.user.show', compact('user'));
@@ -103,6 +106,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $user = User::findOrFail($id);
         $items = \App\Models\Profile::all();
         return view('admin.user.edit', compact('user','items'));
@@ -118,7 +122,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         
         $user = User::findOrFail($id);
@@ -136,6 +140,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         User::destroy($id);
 
         return redirect('/admin/user/')->with('flash_message', 'User deleted!');

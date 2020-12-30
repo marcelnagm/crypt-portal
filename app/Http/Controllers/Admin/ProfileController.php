@@ -17,6 +17,7 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $keyword = $request->get('search');
         $perPage = 25;
 
@@ -37,6 +38,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         return view('admin.user_profile.create');
     }
 
@@ -49,7 +51,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         
         Profile::create($requestData);
@@ -66,6 +68,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $profile = Profile::findOrFail($id);
 
         return view('admin.user_profile.show', compact('profile'));
@@ -80,6 +83,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $profile = Profile::findOrFail($id);
 
         return view('admin.user_profile.edit', compact('profile'));
@@ -95,7 +99,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         
         $profile = Profile::findOrFail($id);
@@ -113,6 +117,7 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         Profile::destroy($id);
 
         return redirect('/admin/user_profile')->with('flash_message', 'Profile deleted!');

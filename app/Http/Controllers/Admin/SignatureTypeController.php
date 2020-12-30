@@ -17,6 +17,7 @@ class SignatureTypeController extends Controller
      */
     public function index(Request $request)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $keyword = $request->get('search');
         $perPage = 25;
 
@@ -38,6 +39,7 @@ class SignatureTypeController extends Controller
      */
     public function create()
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         return view('admin.signature-type.create');
     }
 
@@ -50,7 +52,7 @@ class SignatureTypeController extends Controller
      */
     public function store(Request $request)
     {
-        
+       if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!'); 
         $requestData = $request->all();
         
         SignatureType::create($requestData);
@@ -67,6 +69,7 @@ class SignatureTypeController extends Controller
      */
     public function show($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $signaturetype = SignatureType::findOrFail($id);
 
         return view('admin.signature-type.show', compact('signaturetype'));
@@ -96,7 +99,7 @@ class SignatureTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         
         $signaturetype = SignatureType::findOrFail($id);
@@ -114,6 +117,7 @@ class SignatureTypeController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         SignatureType::destroy($id);
 
         return redirect('/admin/signature-type')->with('flash_message', 'SignatureType deleted!');

@@ -19,6 +19,7 @@ class NotificationController extends Controller
      */
     public function index(Request $request)
     {
+        if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $keyword = $request->get('search');
         $perPage = 25;
         $user = Auth::user();
@@ -46,6 +47,7 @@ class NotificationController extends Controller
      */
     public function show($id)
     {
+        if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $notification = Notification::findOrFail($id);
 
         return view('user.notification.show', compact('notification'));
@@ -60,6 +62,7 @@ class NotificationController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $notification = Notification::findOrFail($id);
         $notification->readed = 1;
         $notification->save();
@@ -68,6 +71,7 @@ class NotificationController extends Controller
     }
 
       public function allRead(Request $request){
+          if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $user = Auth::user();
         DB::statement('UPDATE `notification` SET `readed`=1 where user_id = '.$user->id);
         
@@ -84,7 +88,7 @@ class NotificationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         
         $notification = Notification::findOrFail($id);
@@ -102,6 +106,7 @@ class NotificationController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         Notification::destroy($id);
 
         return redirect('/user/notification')->with('flash_message', 'Notification deleted!');

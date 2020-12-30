@@ -19,6 +19,7 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+        if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         session(['balance' => $request->user()->balance()['free']]);
         if($request->user()->signatures_valid() <1) {
             

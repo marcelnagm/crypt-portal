@@ -14,7 +14,8 @@ class TargetController extends Controller {
     //
     //       
     public function index(Request $request) {
-
+        if (!Auth::user()->isUser())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $perPage = 25;
         $user = Auth::user();
         $signal = MultipleTargets::where('user_id', $user->id)
@@ -27,7 +28,8 @@ class TargetController extends Controller {
     }
 
     public function create() {
-
+        if (!Auth::user()->isUser())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $items = Pair::orderby('pair')->get();
         return view('user.signal.create', compact('items'));
     }
@@ -70,10 +72,12 @@ class TargetController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id) {
-                if(session('blocked')==1){
+        if (!Auth::user()->isUser())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
+        if (session('blocked') == 1) {
 
-             return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada'); 
-         }   
+            return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada');
+        }
 
         if (isset($target->order_ir_generated)) {
             $target = MultipleTargets::find($id);
@@ -100,10 +104,12 @@ class TargetController extends Controller {
     }
 
     public function edit($id) {
-                if(session('blocked')==1){
+        if (!Auth::user()->isUser())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
+        if (session('blocked') == 1) {
 
-             return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada'); 
-         }   
+            return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada');
+        }
 
         $signal = MultipleTargets::findOrFail($id);
         $items = Pair::orderby('pair')->get();
@@ -111,10 +117,12 @@ class TargetController extends Controller {
     }
 
     public function update(Request $request, $id) {
-                if(session('blocked')==1){
+        if (!Auth::user()->isUser())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
+        if (session('blocked') == 1) {
 
-             return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada'); 
-         }   
+            return redirect('/user/dashboard')->with('flash_message', 'Assinatura Expirada');
+        }
 
         $requestData = $request->all();
 

@@ -11,17 +11,18 @@ use Illuminate\Http\Request;
 
 class ConfigurationController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
-    {
-       
+    {        
+        
+       if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');       
         $items = \App\Models\Exchange::all();
         $items2 = \App\Models\InvestProfile::all();
-       $user = Auth::user();
+       ;
             $configuration = Configuration::where('user_id', '=', auth()->user()->id)->get()[0];
                 
 //        $configuration = Configuration::findOrFail($id);
@@ -36,6 +37,7 @@ class ConfigurationController extends Controller
      */
     public function create()
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         return view('admin.configuration.create');
     }
 
@@ -48,7 +50,7 @@ class ConfigurationController extends Controller
      */
     public function store(Request $request)
     {
-        
+    if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');    
         $requestData = $request->all();
         
         Configuration::create($requestData);
@@ -65,7 +67,7 @@ class ConfigurationController extends Controller
      */
     public function edit($id)
     {
-        
+    if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');    
             $user = Auth::user();
             $configuration = Configuration::where('user_id', '=', auth()->user()->id)->get()[0];
                 
@@ -84,7 +86,7 @@ class ConfigurationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+    if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');    
         $requestData = $request->all();
         unset($requestData['user_id']);
         $configuration = Configuration::findOrFail($id);

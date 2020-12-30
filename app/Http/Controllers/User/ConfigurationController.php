@@ -18,7 +18,7 @@ class ConfigurationController extends Controller
      */
     public function index(Request $request)
     {
-        
+        if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $items = \App\Models\Exchange::all();
         $items2 = \App\Models\InvestProfile::all();
        $user = Auth::user();
@@ -39,7 +39,7 @@ class ConfigurationController extends Controller
      */
     public function edit($id)
     {
-        
+        if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
             $user = Auth::user();
             $configuration = Configuration::where('user_id', '=', auth()->user()->id)->get()[0];
                 
@@ -58,7 +58,7 @@ class ConfigurationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if(!Auth::user()->isUser())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         unset($requestData['user_id']);
         $configuration = Configuration::findOrFail($id);

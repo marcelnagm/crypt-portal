@@ -17,6 +17,7 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         return view('layout');
     }
 }

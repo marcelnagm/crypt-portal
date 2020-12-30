@@ -12,7 +12,7 @@ class StatisticsController extends Controller {
 
     //
     public function index(Request $request) {
-
+if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $data = array();
         $data['count_all_signal'] = Signal::count();
         $data['count_all_signal_open'] = Signal::where('status', 0)->count();

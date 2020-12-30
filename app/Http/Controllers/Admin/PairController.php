@@ -17,6 +17,7 @@ class PairController extends Controller
      */
     public function index(Request $request)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $keyword = $request->get('search');
         $perPage = 25;
 
@@ -40,6 +41,7 @@ class PairController extends Controller
      */
     public function create()
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         return view('admin.pair.create');
     }
 
@@ -52,7 +54,7 @@ class PairController extends Controller
      */
     public function store(Request $request)
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         
         Pair::create($requestData);
@@ -69,6 +71,7 @@ class PairController extends Controller
      */
     public function show($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $pair = Pair::findOrFail($id);
 
         return view('admin.pair.show', compact('pair'));
@@ -83,6 +86,7 @@ class PairController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $pair = Pair::findOrFail($id);
 
         return view('admin.pair.edit', compact('pair'));
@@ -98,7 +102,7 @@ class PairController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
         
         $pair = Pair::findOrFail($id);
@@ -117,6 +121,7 @@ class PairController extends Controller
      */
     public function retrive(Request $request)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $request->user()->market();
         return redirect('/admin/pair')->with('flash_message', 'Getted from Binnace!');
     }
@@ -130,6 +135,7 @@ class PairController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         Pair::destroy($id);
 
         return redirect('/admin/pair')->with('flash_message', 'Pair deleted!');
