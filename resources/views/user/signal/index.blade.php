@@ -68,7 +68,7 @@
                                 <td >{{ $item->getStatusName() }}</td>
                                 <td >
                                     @if($item->payed != null)
-                                    <?php echo $item->getProfit() ?>
+                                    <?php echo number_format($item->getProfit(),2 )?>
                                     @else
                                     Não comprado ainda
                                     @endif
