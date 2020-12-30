@@ -40,7 +40,8 @@ Route::get('logout', 'App\Http\Controllers\LogoutController@logout');
 //)->name('profile');
 // ideal para modulos
 Route::middleware(['auth:sanctum', 'verified'])->prefix('user')->group(function () {
-    Route::resource('statistics', 'App\Http\Controllers\Admin\StatisticsController');
+    Route::get('statistics', 'App\Http\Controllers\User\StatisticsController@index');
+    
 
     Route::resource('signal', SignalController::class);
 

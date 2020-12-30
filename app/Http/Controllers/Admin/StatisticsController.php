@@ -14,6 +14,8 @@ class StatisticsController extends Controller {
 
     //
     public function edit($id) {
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $data = array();
         $requestData['id'] = $id;
         $data['count_all_target'] = MultipleTargets::where('user_id', $requestData['id'])->count();
@@ -88,7 +90,8 @@ class StatisticsController extends Controller {
     }
 
     public function show(Request $request) {
-
+        if (!Auth::user()->isAdmin())
+            return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $user = User::where('profile_id', 3)->get();
         return view('admin.statistics.user', compact('user'));
     }
