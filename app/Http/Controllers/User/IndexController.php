@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 
+use App\Models\Orders;
 
 class IndexController extends Controller
 {
@@ -26,6 +28,23 @@ class IndexController extends Controller
             session('blocked', 1);
             session('flash_message','Assinatura Expirada');
         }
-       return  view('user.index');
+        $start_date = date('Y-m-d H:i:s');
+        $date = strtotime($start_date);
+        $date = strtotime("-1 day", $date);
+        $week = date('Y-m-d H:i:s', $date);
+        
+        $data = array();
+        
+        $data['operations_day']  = Orders::where('created_at','>=',$week)->count();
+        
+        $val = DB::select('SELECT sum(payed) as payed,sum(reached) as profit FROM `multiples_targets` WHERE payed is not null and (updated_at >='."'$week'"
+                . 'or created_at >='."'$week'"
+                . ")");
+        $val = json_decode(json_encode($val), true)[0];
+        $data['profitability_day'] = $val['profit'] / $val['payed'];
+        $data['profitability_day'] = $data['profitability_day'] >= 1 ? ($data['profitability_day'] - 1) * 100 : -((1-$data['profitability_day']) * 100);
+        $data['profitability_day'] = number_format(($data['profitability_day']), 2);
+
+       return  view('user.index', compact('data'));
     }
 }
