@@ -213,9 +213,9 @@ class TradeHelper {
             $stop = (int) ($buy - ($buy * 0.03));
         }
         $now = date("Y-m-d H:i:s");
-      
-        $pair = Pair::where('pair',$pair)->get()[0];
-      
+        
+        $pair = Pair::where('pair',$pair)->first();
+        
         $res = Signal::where('pair_id',$pair->id)->where('status',0)->count();
 
         //$res = $db->where('par', $pair)->where('exchange', 'Binance')->where('status', 5, '<')->getValue(BD_ROBO_SINAIS, "count(*)");

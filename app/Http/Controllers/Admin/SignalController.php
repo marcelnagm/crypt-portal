@@ -78,6 +78,7 @@ class SignalController extends Controller {
         if (!Auth::user()->isAdmin())
             return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         TradeHelper::generateIA();
+        return redirect('/admin/signal')->with('flash_message', 'Sinais IA Gerado');
     }
 
     /**
