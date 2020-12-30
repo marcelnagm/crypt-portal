@@ -15,7 +15,6 @@ class PopulatePair extends Migration {
 
         DB::statement("
 INSERT INTO `pairs` (`id`, `pair`, `main_coin`, `sec_coin`, `min_quantity`, `created_at`, `updated_at`) VALUES
-(3, 'ETH/USDT', 'ETH', 'USDT', 0.00, '2020-12-29 16:44:38', '2020-12-29 16:44:38'),
 (4, 'ETH/USDT', 'ETH', 'USDT', 0.00, '2020-12-29 16:44:38', '2020-12-29 16:44:38'),
 (5, 'BNB/USDT', 'BNB', 'USDT', 0.00, '2020-12-29 16:44:38', '2020-12-29 16:44:38'),
 (6, 'BCC/USDT', 'BCC', 'USDT', 0.00, '2020-12-29 16:44:38', '2020-12-29 16:44:38'),
