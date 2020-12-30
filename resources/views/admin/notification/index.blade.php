@@ -28,9 +28,8 @@
                                 <thead>
                                     <tr>
                                         <th>#</th><th>Type Id</th>
-                                        <th>Title</th>
-                                        <th>Readed</th>
-                                        <th>Actions</th>
+                                        <th>Mensagem</th>
+                                        <th>Para quem?</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,17 +38,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->type_id }}</td>
                                         <td>{{ $item->title.' - '.$item->message }}</td>
-                                        <td>{{ $item->readed }}</td>
-                                        <td>
-                                            <a href="{{ url('/user/notification/' . $item->id) }}" title="View Notification"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/user/notification/' . $item->id . '/edit') }}" title="Edit Notification"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Marcar como lida</button></a>
-
-                                            <form method="POST" action="{{ url('/user/notification' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Notification" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
+                                        <td>{{ $item->getUserId() }}</td>                                     
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -17,27 +17,27 @@ class PopulateNotification extends Migration
     {
         //
        
-          DB::table('notification')->insert([
-            'user_id' => '3',
-            'type_id' => 1,
-            'title' => 'Novo Sinal',
-            'message' => 'Sinal de USD/CAD',
-            'readed' => 1,
-        ]);
-          DB::table('notification')->insert([
-            'user_id' => '3',
-            'type_id' => 2,
-            'title' => 'Novo Sinal',
-            'message' => 'Sinal de USD/CAD',
-            'readed' => 1,
-        ]);
-          DB::table('notification')->insert([
-            'user_id' => '3',
-            'type_id' => 3,
-            'title' => 'Novo Sinal',
-            'message' => 'Sinal de USD/CAD',
-            'readed' => 1,
-        ]);
+//          DB::table('notification')->insert([
+//            'user_id' => '3',
+//            'type_id' => 1,
+//            'title' => 'Novo Sinal',
+//            'message' => 'Sinal de USD/CAD',
+//            'readed' => 1,
+//        ]);
+//          DB::table('notification')->insert([
+//            'user_id' => '3',
+//            'type_id' => 2,
+//            'title' => 'Novo Sinal',
+//            'message' => 'Sinal de USD/CAD',
+//            'readed' => 1,
+//        ]);
+//          DB::table('notification')->insert([
+//            'user_id' => '3',
+//            'type_id' => 3,
+//            'title' => 'Novo Sinal',
+//            'message' => 'Sinal de USD/CAD',
+//            'readed' => 1,
+//        ]);
     }
 
     /**

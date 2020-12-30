@@ -1,6 +1,11 @@
 @extends('layout_user')
 
 @section('content')
+<script type="text/javascript">    
+    window.setInterval(function(){
+        Location.reload(true);
+    }, 60*1000); //NOTE: period is passed in milliseconds
+</script>
 <div class="row">
     @include('admin.sidebar')
     <div class="col-xl-12">
@@ -30,7 +35,7 @@
                         <tbody>
                             @foreach($signal as $item)
                             <tr>
-                                <td>{{ $item->getPair()->pair }}</td>
+                                <td>{{ $item->getPair() }}</td>
                                 <td>{{ $item->entry_value }}</td> 
                                 <?php $conf = Auth::user()->configuration(); ?>
                                 @if($conf->target_profile ==1)

@@ -41,8 +41,15 @@ class IndexController extends Controller
                 . 'or created_at >='."'$week'"
                 . ")");
         $val = json_decode(json_encode($val), true)[0];
-        $data['profitability_day'] = $val['profit'] / $val['payed'];
+        
+        
+        $data['profitability_day'] = $val['payed'] >0? $val['profit'] / $val['payed']: $val['profit'] ;
+        
+        if($data['profitability_day'] != null ){
         $data['profitability_day'] = $data['profitability_day'] >= 1 ? ($data['profitability_day'] - 1) * 100 : -((1-$data['profitability_day']) * 100);
+        }else{
+            $data['profitability_day'] = 0;
+        }
         $data['profitability_day'] = number_format(($data['profitability_day']), 2);
 
        return  view('user.index', compact('data'));

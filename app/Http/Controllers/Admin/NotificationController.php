@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Notification;
+use App\Models\NotificationGenerated;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -25,14 +26,13 @@ class NotificationController extends Controller
         $perPage = 25;
         $user = Auth::user();
         if (!empty($keyword)) {
-            $notification = Notification::where('type_id', 'LIKE', "%$keyword%")
-                ->where('user_id',$user->id)
+            $notification = NotificationGenerated::where('type_id', 'LIKE', "%$keyword%")                
                 ->orWhere('title', 'LIKE', "%$keyword%")
                 ->orWhere('message', 'LIKE', "%$keyword%")
                 ->orWhere('readed', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $notification = Notification::where('user_id',$user->id)->latest()->paginate($perPage);
+            $notification = NotificationGenerated::latest()->paginate($perPage);
         }
 
         return view('admin.notification.index', compact('notification'));
@@ -63,6 +63,9 @@ class NotificationController extends Controller
     {
         if(!Auth::user()->isAdmin())return redirect('/dashboard')->with('flash_message', 'Acesso Não autorizado!');
         $requestData = $request->all();
+        $requestData['created_by'] = $request->user()->id;
+        NotificationGenerated::create($requestData);        
+        unset($requestData['created_by'] );
         switch($requestData['user_id']){
             case 1:
                 $users = User::where('profile_id',1)
@@ -85,7 +88,7 @@ class NotificationController extends Controller
             $requestData['user_id'] = $user->id;
             Notification::create($requestData);            
         }
-
+        
         return redirect('/admin/notification')->with('flash_message', 'Message added!');
     }
     
