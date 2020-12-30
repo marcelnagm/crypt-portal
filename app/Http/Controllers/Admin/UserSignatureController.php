@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\SignatureType;
-
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\UserSignature;
 use Illuminate\Http\Request;

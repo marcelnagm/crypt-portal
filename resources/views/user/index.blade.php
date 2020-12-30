@@ -43,7 +43,7 @@
                            <div class="d-flex no-block align-items-center">
                               <div>
                                  <h6 class="text-white">Status do Robô</h6>
-                                 <h2 class="text-white m-0 ">Ligado</h2>
+                                 <h2 class="text-white m-0 ">Auth::user()->configuration()->bot_active ==1? 'Ligado' : 'Desligado'</h2>
                               </div>
                               <div class="ml-auto"> <span class="text-white display-6"><i class="fas fa-robot fa-2x"></i></span> </div>
                            </div>
@@ -56,7 +56,7 @@
                            <div class="d-flex no-block align-items-center">
                               <div>
                                  <h6 class="text-white">Operações Hoje</h6>
-                                 <h2 class="text-white m-0 ">11</h2>
+                                 <h2 class="text-white m-0 ">{{$data['operations_day']}}</h2>
                               </div>
                               <div class="ml-auto"> <span class="text-white display-6"><i class="fas fa-tasks fa-2x"></i></span> </div>
                            </div>
@@ -69,7 +69,7 @@
                            <div class="d-flex no-block align-items-center">
                               <div>
                                  <h6 class="text-white">Rentabilidade do dia</h6>
-                                 <h2 class="text-white m-0 ">3.4%</h2>
+                                 <h2 class="text-white m-0 ">{{$data['profitability_day']}}%</h2>
                               </div>
                               <div class="ml-auto"> <span class="text-white display-6"><i class="fas fa-chart-line fa-2x"></i></span> </div>
                            </div>

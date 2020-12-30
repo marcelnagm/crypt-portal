@@ -7,6 +7,7 @@ use App\Models\Signal;
 use App\Models\MultipleTargets;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class StatisticsController extends Controller {
 

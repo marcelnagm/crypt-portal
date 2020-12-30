@@ -12,6 +12,7 @@ use App\Models\SingleTarget;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\TradeHelper;
+use Illuminate\Support\Facades\Auth;
 
 class SignalController extends Controller {
 
