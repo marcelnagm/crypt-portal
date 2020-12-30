@@ -214,10 +214,10 @@ class TradeHelper {
         }
         $now = date("Y-m-d H:i:s");
 //        dd($pair);
-        if($pair != null){
+        
         $pair = Pair::where('pair', $pair)->first();
 
-        
+        if($pair != null){
             $res = Signal::where('pair_id', $pair->id)->where('status', 0)->count();
         }else{
             $res = 1;
